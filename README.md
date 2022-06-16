@@ -5,3 +5,5 @@ frogA
 frogger port android
 
 only initial commit done
+
+GPL3.0 root@darkstar.work
