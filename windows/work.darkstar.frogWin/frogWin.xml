@@ -1,0 +1,868 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>frogWin</name>
+    </assembly>
+    <members>
+        <member name="F:work.darkstar.frogWin.AboutBox.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.AboutBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.AboutBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.CarControl.#ctor">
+            <summary>
+            Default void Constructor
+            </summary>
+        </member>
+        <member name="F:work.darkstar.frogWin.Controls.CarControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.CarControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.CarControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Controls.FrogCustomControl.MenuLevelId">
+            <summary>
+            MenuLevelId for current supu menu level
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.#ctor">
+            <summary>
+            Default void Constructor
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.#ctor(System.Int32)">
+            <summary>
+            Constructor with Level
+            </summary>
+            <param name="levelCnt">int</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:work.darkstar.frogWin.Controls.FrogCustomControl.OnPaint(System.Windows.Forms.PaintEventArgs)" -->
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.SetGameMode(System.Int32)">
+            <summary>
+            SetGameMode sets basic generic for all SupuUserControls needed game modes
+            </summary>
+            <param name="level">real board sized level</param>
+            <returns>frogA User Level (begins with 1 for 5x5 board)</returns>       
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.ResetGameMode">
+            <summary>
+            Reset Game mode
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.GetScreenResolution(System.Double@,System.Double@)">
+            <summary>
+            GetScreenResolution gets desktop screen from current cursor point
+            </summary>
+            <param name="screenX">double</param>
+            <param name="screenY">double</param>
+            <returns>Point with X as screen width and Y as screen height</returns>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.GetControlByNameType(System.Windows.Forms.Control,System.String,System.Type)">
+            <summary>
+            Get recursivley Windows.Forms.Control by name and type
+            </summary>
+            <param name="parentCntrl">parent entry / root control of tree</param>
+            <param name="cntrlName">name to search</param>
+            <param name="cntrlType">typeof control</param>
+            <returns>control with name, otherwise null</returns>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.GetControlByName(System.Windows.Forms.Control,System.String)">
+            <summary>
+            Get recursivley Windows.Forms.Control by name 
+            </summary>
+            <param name="parentCntrl">parent entry / root control of tree</param>
+            <param name="cntrlName">name to search</param>
+            <returns>control with name, otherwise null</returns>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.log(System.Int32,System.String)">
+            <summary>
+            log - logs to NLog, if SupuAppRegSets.Singelton.Debug is set to true
+            to enable Debug and logging use command line Supu.exe with additional <para>debug</para> parameter
+            <c>Supu.exe master debug</c>       
+            </summary>
+            <param name="level">log level: 0 for Trace, 1 for Debug, ..., 4 for Error, 5 for Fatal</param>
+            <param name="msg">debug msg to log</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.log(System.Int32,System.Exception)">
+            <summary>
+            log Exception
+            </summary>
+            <param name="level">log level: 0 for Trace, 1 for Debug, ..., 4 for Error, 5 for Fatal</param>
+            <param name="ex">Exception ex to log</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.GetBitmap(System.String)">
+            <summary>
+            Get Bitmap by Name from Ressources
+            </summary>
+            <param name="bitmapName">name of bitmap graphic</param>
+            <returns>System.Drawing.Bitmap</returns>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.GetIcon">
+            <summary>
+            Get Icon by selected index from Ressources
+            </summary>
+            <returns>System.Drawing.Icon</returns>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.PlaySoundFromAssembly(System.String,System.String)">
+            <summary>
+            PlaySoundFromResource - plays a sound embedded in executing assembly
+            </summary>
+            <param name="soundName">unique qualified name inside ressource file for embedded sound file</param>
+            <param name="soundFormatExtension">format extension of sound file</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.PlaySoundFromResource(System.String)">
+            <summary>
+            PlaySoundFromResource - plays a sound embedded in application ressource file
+            </summary>
+            <param name="soundName">unique qualified name for sound</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.PlaySound(System.String)">
+            <summary>
+            Plays a sound in Supu Game
+            Use this method, because you don't have to think and care, what's happening behind / inside the blackbox
+            </summary>
+            <param name="soundName">unique qualified name for sound</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.PlaySoundFromPath(System.String,System.String)">
+            <summary>
+            PlaySoundFromPath - plays a sound, that is deployed relative (beyond) to applicatio directory
+            </summary>
+            <param name="soundName">filename of sound file</param>
+            <param name="soundFormatExtension">format extension of sound file</param>
+        </member>
+        <member name="F:work.darkstar.frogWin.Controls.FrogCustomControl.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogCustomControl.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogFieldControl.#ctor">
+            <summary>
+            Default void Constructor
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogFieldControl.#ctor(System.Int32)">
+            <summary>
+            Constructor with Level
+            </summary>
+            <param name="frogType">int for frog type</param>
+        </member>
+        <member name="F:work.darkstar.frogWin.Controls.FrogFieldControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogFieldControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogFieldControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogLevelControl.GetControlByName(System.Windows.Forms.Control,System.String)">
+            <summary>
+            Get recursivley Windows.Forms.Control by name 
+            </summary>
+            <param name="parentCntrl">parent entry / root control of tree</param>
+            <param name="cntrlName">name to search</param>
+            <returns>control with name, otherwise null</returns>
+        </member>
+        <member name="F:work.darkstar.frogWin.Controls.FrogLevelControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogLevelControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogLevelControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:work.darkstar.frogWin.Controls.FrogUserControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogUserControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogUserControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.MoveControl.#ctor">
+            <summary>
+            Default void Constructor
+            </summary>
+        </member>
+        <member name="F:work.darkstar.frogWin.Controls.MoveControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.MoveControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.Controls.MoveControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:work.darkstar.frogWin.FrogWinForm">
+            <summary>
+            main game form
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.FrogWinForm.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.FrogWinForm.menuItemAbout_Click(System.Object,System.EventArgs)">
+            <summary>
+            menuItemAbout_Click - fired, when on menu item about is clicked
+            </summary>
+            <param name="sender">object sender</param>
+            <param name="e">EventArgs e</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.FrogWinForm.menuItemHelp_Click(System.Object,System.EventArgs)">
+            <summary>
+            menuItemHelp_Click - fired, when on menu item about is clicked
+            </summary>
+            <param name="sender">object sender</param>
+            <param name="e">EventArgs e</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:work.darkstar.frogWin.FrogWinForm.menuItemExit_Click(System.Object,System.EventArgs)" -->
+        <member name="F:work.darkstar.frogWin.FrogWinForm.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.FrogWinForm.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:work.darkstar.frogWin.FrogWinForm.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:work.darkstar.frogWin.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.about">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.app_name">
+            <summary>
+              Looks up a localized string similar to frogWin - frogger Windows.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.arrow_down">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.arrow_down_left">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.arrow_down_right">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.arrow_left">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.arrow_right">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.arrow_up">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.arrow_up_left">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.arrow_up_right">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.camera">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.car0">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.car0crashed">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.car1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.car1crashed">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.crash">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.djinn">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.dog0">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.dragon">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.froga">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.frogb">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.frogc">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.frogd">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.frogend0t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.frogger">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.froggerheader">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.frogstart0b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.frogstart1b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.frogWin">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.header">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.header_small">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.help_uri">
+            <summary>
+              Looks up a localized string similar to https://darkstar.work/frogA/.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.jump01">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.jump02">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow0b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow0m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow0t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow1b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow1t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow2b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow2m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow2t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow3b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow3t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow4b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow5b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.meadow6b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.message_gameover">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.message_level1completed">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.message_level2completed">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.message_level3completed">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.message_levelcompleted">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.message_next_level">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.message_next_level_i">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.message_perfect">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.poision">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.skateboard0">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.steet0b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.steet0m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.steet0t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.steet1b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.steet1t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.steet5">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.steeta">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.steetb">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.steetb0">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street0b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street0m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street0t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street1b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street1m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street1t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street2b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street2m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street2t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street3b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street3m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street3t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street4m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street5m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street6m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.street7m">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.streetb0">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.swamp0b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.swamp0t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.swamp1b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.swamp1t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.underwater01">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.underwater02">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.water0b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.water0t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.water1b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.water1t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.water2b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.water2t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.water3b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.water3t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.wood0b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.wood0t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.wood1b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.wood1t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.wood2b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.wood2t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.wood3b">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:work.darkstar.frogWin.Properties.Resources.wood3t">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:work.darkstar.frogWin.ApplicationConfiguration">
+            <summary>
+             Bootstrap the application configuration.
+            </summary>
+        </member>
+        <member name="M:work.darkstar.frogWin.ApplicationConfiguration.Initialize">
+            <summary>
+             Bootstrap the application as follows:
+             <code>
+             global::System.Windows.Forms.Application.EnableVisualStyles();
+             global::System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+             global::System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            </code>
+            </summary>
+        </member>
+    </members>
+</doc>

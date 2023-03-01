@@ -1,0 +1,338 @@
+<resources>
+    <string name="app_name">Frogger Froga</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="version_name">-v001</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_start">Start</string>
+    <string name="action_layout">Layout</string>
+    <string name="action_layoutgems">Gems</string>
+    <string name="action_layoutstones">Stones</string>
+    <string name="action_stop">Stop</string>
+    <string name="action_help">Help</string>
+    <string name="help_text">Help</string>
+    <string name="build_with">Build with Android Studio 3.1.3</string>
+    <string name="learn_more">Learn more</string>
+    <string name="back_button">Back</string>
+    <string name="help_uri">https://www.georg-toth.com/supu</string>
+    <string name="action_level">Level</string>
+    <string name="next_level">Next level</string>
+
+    <string name="replay_level" translatable="false">Replay level</string>
+    <string name="string_started" translatable="false">Game started.</string>
+    <string name="string_stopped" translatable="false">Game stopped.</string>
+
+    <string name="floatingactionbutton_screenshot" translatable="false">floatingactionbutton screenshot</string>
+    <string name="header_frog_image" translatable="false">header_frog_image</string>
+
+    <string name="header_frog_counter" translatable="false">header_frog_counter</string>
+    <string name="mlabel_frog_counter" translatable="false">mlabel_frog_counter</string>
+    <string name="frog_counter_string" translatable="false">frogs: 4</string>
+
+    <string name="header_frogA_level" translatable="false">header_frogA_level</string>
+    <string name="lbFrogLevel" translatable="false">labelFrogLevel</string>
+    <string name="mlabelFrogLevel" translatable="false">labelFrogLevel</string>
+    <string name="mlbFrogLevelGO" translatable="false">labelFrogLevel</string>
+    <string name="string_frog_level" translatable="false">1</string>
+
+    <string name="string_notstarted" translatable="false">Game isn\'t started, click start in main menu.</string>
+    <string name="github_uri" translatable="false">https://github.com/heinrichelsigan/frogA</string>
+    <string name="msg_perfect" translatable="false">perfect</string>
+    <string name="msg_levelCompleted" translatable="false">level completed</string>
+    <string name="message_next_level" translatable="false">next level</string>
+    <string name="msg_gameOver" translatable="false">game over</string>
+    <string name="message_gameover" translatable="false">game over</string>
+    <string name="fragment_finished_level_dialog" translatable="false">fragment_finished_level_dialog</string>
+    <string name="level_current" translatable="false">currentLevel</string>
+    <string name="replay_current_level" translatable="false">replay current level</string>
+    <string name="restart" translatable="false">restart</string>
+
+    <string name="frog0" translatable="false">frog0</string>
+    <string name="frog1" translatable="false">frog1</string>
+    <string name="frog2" translatable="false">frog2</string>
+    <string name="frog3" translatable="false">frog3</string>
+    <string name="frogA" translatable="false">frogA</string>
+
+    <string name="car0a" translatable="false">car0a</string>
+    <string name="car0b" translatable="false">car0b</string>
+    <string name="car0c" translatable="false">car0c</string>
+    <string name="car0d" translatable="false">car0d</string>
+    <string name="car0e" translatable="false">car0e</string>
+
+    <string name="car1a" translatable="false">car1a</string>
+    <string name="car1b" translatable="false">car1b</string>
+    <string name="car1c" translatable="false">car1c</string>
+    <string name="car1d" translatable="false">car1d</string>
+    <string name="car1e" translatable="false">car1e</string>
+
+    <string name="wood0a" translatable="false">wood0a</string>
+    <string name="wood0b" translatable="false">wood0b</string>
+    <string name="wood0c" translatable="false">wood0c</string>
+    <string name="wood0d" translatable="false">wood0d</string>
+    <string name="wood0t" translatable="false">wood0t</string>
+
+    <string name="wood1a" translatable="false">wood1a</string>
+    <string name="wood1b" translatable="false">wood1b</string>
+    <string name="wood1c" translatable="false">wood1c</string>
+    <string name="wood1d" translatable="false">wood1d</string>
+    <string name="wood1t" translatable="false">wood1t</string>
+
+    <string name="frogstart0b" translatable="false">frogstart0b</string>
+    <string name="frogstart1b" translatable="false">frogstart1b</string>
+    <string name="frogStart0" translatable="false">frogStart0</string>
+    <string name="frogStart1" translatable="false">frogStart1</string>
+    <string name="frogStart2" translatable="false">frogStart2</string>
+    <string name="frogStart3" translatable="false">frogStart3</string>
+
+    <string name="s_dog" translatable="false">dog</string>
+    <string name="s_dog0" translatable="false">dog0</string>
+    <string name="s_dog1" translatable="false">dog1</string>
+    <string name="s_skateboard" translatable="false">skateboard</string>
+    <string name="s_android" translatable="false">android</string>
+    <string name="s_dragon" translatable="false">dragon</string>
+    <string name="s_djinn" translatable="false">djinn</string>
+
+    <string name="s_row0" translatable="false">row0</string>
+    <string name="s_row1" translatable="false">row1</string>
+    <string name="s_row2" translatable="false">row2</string>
+
+    <string name="s_a0" translatable="false">a0</string>
+    <string name="s_b0" translatable="false">b0</string>
+    <string name="s_c0" translatable="false">c0</string>
+    <string name="s_d0" translatable="false">d0</string>
+    <string name="s_e0" translatable="false">e0</string>
+    <string name="s_f0" translatable="false">f0</string>
+    <string name="s_g0" translatable="false">g0</string>
+    <string name="s_h0" translatable="false">h0</string>
+    <string name="s_i0" translatable="false">i0</string>
+    <string name="s_j0" translatable="false">j0</string>
+
+    <string name="s_A0" translatable="false">a0</string>
+    <string name="s_B0" translatable="false">b0</string>
+    <string name="s_C0" translatable="false">c0</string>
+    <string name="s_D0" translatable="false">d0</string>
+    <string name="s_E0" translatable="false">e0</string>
+    <string name="s_F0" translatable="false">f0</string>
+    <string name="s_G0" translatable="false">g0</string>
+    <string name="s_H0" translatable="false">h0</string>
+    <string name="s_I0" translatable="false">i0</string>
+    <string name="s_J0" translatable="false">j0</string>
+
+
+    <string name="s_a1" translatable="false">a1</string>
+    <string name="s_b1" translatable="false">b1</string>
+    <string name="s_c1" translatable="false">c1</string>
+    <string name="s_d1" translatable="false">d1</string>
+    <string name="s_e1" translatable="false">e1</string>
+    <string name="s_f1" translatable="false">f1</string>
+    <string name="s_g1" translatable="false">g1</string>
+    <string name="s_h1" translatable="false">h1</string>
+    <string name="s_i1" translatable="false">i1</string>
+    <string name="s_j1" translatable="false">j1</string>
+
+    <string name="s_A1" translatable="false">a1</string>
+    <string name="s_B1" translatable="false">b1</string>
+    <string name="s_C1" translatable="false">c1</string>
+    <string name="s_D1" translatable="false">d1</string>
+    <string name="s_E1" translatable="false">e1</string>
+    <string name="s_F1" translatable="false">f1</string>
+    <string name="s_G1" translatable="false">g1</string>
+    <string name="s_H1" translatable="false">h1</string>
+    <string name="s_I1" translatable="false">i1</string>
+    <string name="s_J1" translatable="false">j1</string>
+
+    <string name="s_a2" translatable="false">a2</string>
+    <string name="s_b2" translatable="false">b2</string>
+    <string name="s_c2" translatable="false">c2</string>
+    <string name="s_d2" translatable="false">d2</string>
+    <string name="s_e2" translatable="false">e2</string>
+    <string name="s_f2" translatable="false">f2</string>
+    <string name="s_g2" translatable="false">g2</string>
+    <string name="s_h2" translatable="false">h2</string>
+    <string name="s_i2" translatable="false">i2</string>
+    <string name="s_j2" translatable="false">j2</string>
+
+    <string name="s_A2" translatable="false">a2</string>
+    <string name="s_B2" translatable="false">b2</string>
+    <string name="s_C2" translatable="false">c2</string>
+    <string name="s_D2" translatable="false">d2</string>
+    <string name="s_E2" translatable="false">e2</string>
+    <string name="s_F2" translatable="false">f2</string>
+    <string name="s_G2" translatable="false">g2</string>
+    <string name="s_H2" translatable="false">h2</string>
+    <string name="s_I2" translatable="false">i2</string>
+    <string name="s_J2" translatable="false">j2</string>
+
+
+    <string name="s_a3" translatable="false">a3</string>
+    <string name="s_b3" translatable="false">b3</string>
+    <string name="s_c3" translatable="false">c3</string>
+    <string name="s_d3" translatable="false">d3</string>
+    <string name="s_e3" translatable="false">e3</string>
+    <string name="s_f3" translatable="false">f3</string>
+    <string name="s_g3" translatable="false">g3</string>
+    <string name="s_h3" translatable="false">h3</string>
+    <string name="s_i3" translatable="false">i3</string>
+    <string name="s_j3" translatable="false">j3</string>
+
+    <string name="s_A3" translatable="false">a3</string>
+    <string name="s_B3" translatable="false">b3</string>
+    <string name="s_C3" translatable="false">b3</string>
+    <string name="s_D3" translatable="false">c3</string>
+    <string name="s_E3" translatable="false">d3</string>
+    <string name="s_R3" translatable="false">e3</string>
+    <string name="s_F3" translatable="false">f3</string>
+    <string name="s_G3" translatable="false">g3</string>
+    <string name="s_H3" translatable="false">h3</string>
+    <string name="s_I3" translatable="false">i3</string>
+    <string name="s_J3" translatable="false">j3</string>
+
+
+    <string name="s_a4" translatable="false">a4</string>
+    <string name="s_b4" translatable="false">b4</string>
+    <string name="s_c4" translatable="false">c4</string>
+    <string name="s_d4" translatable="false">d4</string>
+    <string name="s_e4" translatable="false">e4</string>
+    <string name="s_f4" translatable="false">f4</string>
+    <string name="s_g4" translatable="false">g4</string>
+    <string name="s_h4" translatable="false">h4</string>
+    <string name="s_i4" translatable="false">i4</string>
+    <string name="s_j4" translatable="false">j4</string>
+
+    <string name="s_A4" translatable="false">a4</string>
+    <string name="s_B4" translatable="false">b4</string>
+    <string name="s_C4" translatable="false">c4</string>
+    <string name="s_D4" translatable="false">d4</string>
+    <string name="s_E4" translatable="false">e4</string>
+    <string name="s_F4" translatable="false">f4</string>
+    <string name="s_G4" translatable="false">g4</string>
+    <string name="s_H4" translatable="false">h4</string>
+    <string name="s_I4" translatable="false">i4</string>
+    <string name="s_J4" translatable="false">j4</string>
+
+
+    <string name="s_a5" translatable="false">a5</string>
+    <string name="s_b5" translatable="false">b5</string>
+    <string name="s_c5" translatable="false">c5</string>
+    <string name="s_d5" translatable="false">d5</string>
+    <string name="s_e5" translatable="false">e5</string>
+    <string name="s_f5" translatable="false">f5</string>
+    <string name="s_g5" translatable="false">g5</string>
+    <string name="s_h5" translatable="false">h5</string>
+    <string name="s_i5" translatable="false">i5</string>
+    <string name="s_j5" translatable="false">j5</string>
+
+    <string name="s_A5" translatable="false">a5</string>
+    <string name="s_B5" translatable="false">b5</string>
+    <string name="s_C5" translatable="false">c5</string>
+    <string name="s_D5" translatable="false">d5</string>
+    <string name="s_E5" translatable="false">e5</string>
+    <string name="s_F5" translatable="false">f5</string>
+    <string name="s_G5" translatable="false">g5</string>
+    <string name="s_H5" translatable="false">h5</string>
+    <string name="s_I5" translatable="false">i5</string>
+    <string name="s_J5" translatable="false">j5</string>
+
+    <string name="s_a6" translatable="false">a6</string>
+    <string name="s_b6" translatable="false">b6</string>
+    <string name="s_c6" translatable="false">c6</string>
+    <string name="s_d6" translatable="false">d6</string>
+    <string name="s_e6" translatable="false">e6</string>
+    <string name="s_f6" translatable="false">f6</string>
+    <string name="s_g6" translatable="false">g6</string>
+    <string name="s_h6" translatable="false">h6</string>
+    <string name="s_i6" translatable="false">i6</string>
+    <string name="s_j6" translatable="false">j6</string>
+
+    <string name="s_A6" translatable="false">a6</string>
+    <string name="s_B6" translatable="false">b6</string>
+    <string name="s_C6" translatable="false">c6</string>
+    <string name="s_D6" translatable="false">d6</string>
+    <string name="s_E6" translatable="false">e6</string>
+    <string name="s_F6" translatable="false">f6</string>
+    <string name="s_G6" translatable="false">g6</string>
+    <string name="s_H6" translatable="false">h6</string>
+    <string name="s_I6" translatable="false">i6</string>
+    <string name="s_J6" translatable="false">j6</string>
+
+
+    <string name="s_a7" translatable="false">a7</string>
+    <string name="s_b7" translatable="false">b7</string>
+    <string name="s_c7" translatable="false">c7</string>
+    <string name="s_d7" translatable="false">d7</string>
+    <string name="s_e7" translatable="false">e7</string>
+    <string name="s_f7" translatable="false">f7</string>
+    <string name="s_g7" translatable="false">g7</string>
+    <string name="s_h7" translatable="false">h7</string>
+    <string name="s_i7" translatable="false">i7</string>
+    <string name="s_j7" translatable="false">j7</string>
+
+    <string name="s_A7" translatable="false">a7</string>
+    <string name="s_B7" translatable="false">b7</string>
+    <string name="s_C7" translatable="false">c7</string>
+    <string name="s_D7" translatable="false">d7</string>
+    <string name="s_E7" translatable="false">e7</string>
+    <string name="s_F7" translatable="false">f7</string>
+    <string name="s_G7" translatable="false">g7</string>
+    <string name="s_H7" translatable="false">h7</string>
+    <string name="s_I7" translatable="false">i7</string>
+    <string name="s_J7" translatable="false">j7</string>
+
+
+    <string name="s_a8" translatable="false">a8</string>
+    <string name="s_b8" translatable="false">b8</string>
+    <string name="s_c8" translatable="false">c8</string>
+    <string name="s_d8" translatable="false">d8</string>
+    <string name="s_e8" translatable="false">e8</string>
+    <string name="s_f8" translatable="false">f8</string>
+    <string name="s_g8" translatable="false">g8</string>
+    <string name="s_h8" translatable="false">h8</string>
+    <string name="s_i8" translatable="false">i8</string>
+    <string name="s_j8" translatable="false">j8</string>
+
+    <string name="s_A8" translatable="false">a8</string>
+    <string name="s_B8" translatable="false">b8</string>
+    <string name="s_C8" translatable="false">c8</string>
+    <string name="s_D8" translatable="false">d8</string>
+    <string name="s_E8" translatable="false">e8</string>
+    <string name="s_F8" translatable="false">f8</string>
+    <string name="s_G8" translatable="false">g8</string>
+    <string name="s_H8" translatable="false">h8</string>
+    <string name="s_I8" translatable="false">i8</string>
+    <string name="s_J8" translatable="false">j8</string>
+
+
+    <string name="s_a9" translatable="false">a9</string>
+    <string name="s_b9" translatable="false">b9</string>
+    <string name="s_c9" translatable="false">c9</string>
+    <string name="s_d9" translatable="false">d9</string>
+    <string name="s_e9" translatable="false">e9</string>
+    <string name="s_f9" translatable="false">f9</string>
+    <string name="s_g9" translatable="false">g9</string>
+    <string name="s_h9" translatable="false">h9</string>
+    <string name="s_i9" translatable="false">i9</string>
+    <string name="s_j9" translatable="false">j9</string>
+
+    <string name="s_A9" translatable="false">a9</string>
+    <string name="s_B9" translatable="false">b9</string>
+    <string name="s_C9" translatable="false">c9</string>
+    <string name="s_D9" translatable="false">d9</string>
+    <string name="s_E9" translatable="false">e9</string>
+    <string name="s_F9" translatable="false">f9</string>
+    <string name="s_G9" translatable="false">g9</string>
+    <string name="s_H9" translatable="false">h9</string>
+    <string name="s_I9" translatable="false">i9</string>
+    <string name="s_J9" translatable="false">j9</string>
+
+    <string name="p0" translatable="true">p0</string>
+    <string name="p1" translatable="true">p1</string>
+    <string name="p2" translatable="true">p2</string>
+    <string name="p3" translatable="true">p3</string>
+    <string name="p4" translatable="true">p4</string>
+    <string name="p5" translatable="true">p5</string>
+    <string name="p6" translatable="true">p6</string>
+    <string name="p7" translatable="true">p7</string>
+    <string name="p8" translatable="true">p8</string>
+    <string name="p9" translatable="true">p9</string>
+</resources>
