@@ -10,7 +10,16 @@
 /frogdroid/.idea/assetWizardSettings.xml
 /frogdroid/.idea/shelf/
 /frogdroid/.DS_Store
-/frogdroid/build
+/frogdroid/app/build/generated
+/frogdroid/app/build/intermediates
+/frogdroid/app/build/tmp
+/frogdroid/app/build/outputs/mapping
+/frogdroid/app/build/outputs/logs
+/frogdroid/app/build/outputs/logs/manifest-merger-debug-report.txt
+/frogdroid/app/build/outputs/logs/manifest-merger-release-report.txt
+/frogdroid/app/build/outputs/sdk-dependencies
+/frogdroid/app/build/outputs/sdk-dependencies/release
+/frogdroid/app/build/outputs/sdk-dependencies/release/sdkDependencies.txt
 /frogdroid/captures
 /frogdroid/.externalNativeBuild
 .cxx
