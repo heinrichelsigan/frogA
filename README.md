@@ -22,6 +22,7 @@ https://youtube.com/shorts/e1nI1_Mkl2U
 
 https://www.youtube.com/shorts/bP5zCAk6quE
 
+https://youtu.be/9AgXPR7FJuY
 
 use Android Studio https://developer.android.com/studio to build app.
 
