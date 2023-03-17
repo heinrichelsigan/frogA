@@ -15,6 +15,7 @@ namespace work.darkstar.frogWin.Models
         public int CurrentFrog { get; set; } = 0;
         public int FrogCounter { get; set; } = 4;
         public int FrogInGoal { get; set; } = 0;
+        public bool FrogCrashed { get; set; } = false;
 
         private char[] chArStreet0 = new char[3];
         public char[] CharStreet0 { get => chArStreet0; set => chArStreet0 = value; }
@@ -30,6 +31,8 @@ namespace work.darkstar.frogWin.Models
 
         private char[] chArRiver1 = new char[4];
         public char[] CharRiver1 { get => chArRiver1; set => chArRiver1 = value; }
+
+        public string frogPos = "";
 
         public Game()
         {

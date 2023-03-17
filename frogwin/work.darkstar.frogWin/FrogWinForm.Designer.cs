@@ -31,6 +31,7 @@ namespace work.darkstar.frogWin
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrogWinForm));
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemFrogWin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemStart = new System.Windows.Forms.ToolStripMenuItem();

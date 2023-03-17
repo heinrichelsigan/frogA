@@ -76,6 +76,18 @@ namespace work.darkstar.frogWin.Controls
             {
                 this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.wood0t;
             }
+            else if (carType == 8)
+            {
+                this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.car0crashed;
+            }
+            else if (carType == 9)
+            {
+                this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.car1crashed;
+            }
+            else if (carType == 10)
+            {
+                this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street7m;
+            }
             else
             {
                 throw new ArgumentException("Illegal type = " + carType);

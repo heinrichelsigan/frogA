@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using work.darkstar.frogWin;
 using System.Reflection.Emit;
+using System.Security.AccessControl;
 
 
 namespace work.darkstar.frogWin.Controls
@@ -73,6 +74,18 @@ namespace work.darkstar.frogWin.Controls
             else if (ImgType == 7)
             {
                 this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.wood0t;
+            }
+            else if (ImgType == 8)
+            {
+                this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.car0crashed;
+            }
+            else if (ImgType == 9)
+            {
+                this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.car1crashed;
+            }
+            else if (ImgType == 10)
+            {
+                this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street7m;
             }
             else
             {

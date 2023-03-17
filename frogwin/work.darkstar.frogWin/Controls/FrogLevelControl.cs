@@ -15,7 +15,7 @@ namespace work.darkstar.frogWin.Controls
     {
         internal Models.Game game;
         object? startInitLock, initLock;
-        CarControl car0a, car0b, car0c, car1a, car1b, car1c, car1d, car4a, car4b, car4c;
+        CarControl car0a, car0b, car0c, car1a, car1b, car1c, car1d, car4a, car4b, car4c, crashedCar0, crashedCar1, crashedCar4;
         MoveControl wood0b, wood1b, wood2b, wood3b, wood0t, wood1t, wood2t, wood3t;
         volatile bool looperStarted = false;
         internal volatile uint currenTicks = 9;
@@ -205,6 +205,9 @@ namespace work.darkstar.frogWin.Controls
             wood2t = new MoveControl(7);
             // if (wood3t == null)
             wood3t = new MoveControl(7);
+            crashedCar0 = new CarControl(8);
+            crashedCar1 = new CarControl(9);
+            crashedCar4 = new CarControl(10);
             if (cFrog == null) 
                 cFrog = frog0f;
             DrawMap();
@@ -214,6 +217,9 @@ namespace work.darkstar.frogWin.Controls
 
         public virtual void DrawMap()
         {
+            string carPos = "";
+            game.FrogCrashed = false;
+
             foreach (String moveStr in Constants.MOVES_STRS)
             {
                 string moveName = "frogFCtrl" + moveStr.ToString();
@@ -230,40 +236,74 @@ namespace work.darkstar.frogWin.Controls
             {
                 char chStreet1 = game.CharStreet0[chs1];
                 string streetName1 = "frogFCtrl8" + chStreet1.ToString();
+                carPos = "8" + chStreet1.ToString();
                 Control streetCtrl1 = GetControlByName(this, streetName1);
                 if (streetCtrl1 != null && streetCtrl1.Controls != null)
                 {
-                    switch (chs1)
+                    if (game.frogPos.ToLower() != carPos.ToLower())
                     {
-                        case 0:
-                            streetCtrl1.Controls.Add(car0a); break;
-                        case 1:
-                            streetCtrl1.Controls.Add(car0b); break;
-                        case 2:
-                            streetCtrl1.Controls.Add(car0c); break;
-                        default: break;
-                    }                    
-                }
+                        switch (chs1)
+                        {
+                            case 0:
+                                streetCtrl1.Controls.Add(car0a); break;
+                            case 1:
+                                streetCtrl1.Controls.Add(car0b); break;
+                            case 2:
+                                streetCtrl1.Controls.Add(car0c); break;
+                            default: break;
+                        }
+                    }
+                    if (game.frogPos.ToLower() == carPos.ToLower())
+                    {
+                        try
+                        {
+                            streetCtrl1.Controls.Remove(cFrog);
+                            streetCtrl1.Controls.Add(crashedCar0);
+                            game.FrogCrashed = true;
+                        }
+                        catch (Exception carEx0)
+                        {
+                            throw carEx0;
+                        }
+                    }                
+                }               
             }
 
             for (int chs2 = 0; chs2 < game.CharStreet1.Length; chs2++)
             {
                 char chStreet2 = game.CharStreet1[chs2];
                 string streetName2 = "frogFCtrl7" + chStreet2.ToString();
+                carPos = "7" + chStreet2.ToString();
                 Control streetCtrl2 = GetControlByName(this, streetName2);
                 if (streetCtrl2 != null && streetCtrl2.Controls != null)
                 {
-                    switch (chs2)
+                    if (game.frogPos.ToLower() != carPos.ToLower())
                     {
-                        case 0:
-                            streetCtrl2.Controls.Add(car1a); break;
-                        case 1:
-                            streetCtrl2.Controls.Add(car1b); break;
-                        case 2:
-                            streetCtrl2.Controls.Add(car1c); break;
-                        case 3:
-                            streetCtrl2.Controls.Add(car1d); break;
-                        default: break;
+                        switch (chs2)
+                        {
+                            case 0:
+                                streetCtrl2.Controls.Add(car1a); break;
+                            case 1:
+                                streetCtrl2.Controls.Add(car1b); break;
+                            case 2:
+                                streetCtrl2.Controls.Add(car1c); break;
+                            case 3:
+                                streetCtrl2.Controls.Add(car1d); break;
+                            default: break;
+                        }
+                    }
+                    if (game.frogPos.ToLower() == carPos.ToLower())
+                    {
+                        try
+                        {
+                            streetCtrl2.Controls.Remove(cFrog);
+                            streetCtrl2.Controls.Add(crashedCar1);
+                            game.FrogCrashed = true;
+                        }
+                        catch (Exception carEx1)
+                        {
+                            throw carEx1;
+                        }
                     }
                 }
             }
@@ -272,18 +312,35 @@ namespace work.darkstar.frogWin.Controls
             {
                 char chStreet4 = game.CharStreet4m[chs4];
                 string streetName4 = "frogFCtrl5" + chStreet4.ToString();
+                carPos = "5" + chStreet4.ToString();
                 Control streetCtrl4 = GetControlByName(this, streetName4);
                 if (streetCtrl4 != null && streetCtrl4.Controls != null)
                 {
-                    switch (chs4)
+                    if (game.frogPos.ToLower() != carPos.ToLower())
                     {
-                        case 0:
-                            streetCtrl4.Controls.Add(car4a); break;
-                        case 1:
-                            streetCtrl4.Controls.Add(car4b); break;
-                        case 2:
-                            streetCtrl4.Controls.Add(car4c); break;
-                        default: break;
+                        switch (chs4)
+                        {
+                            case 0:
+                                streetCtrl4.Controls.Add(car4a); break;
+                            case 1:
+                                streetCtrl4.Controls.Add(car4b); break;
+                            case 2:
+                                streetCtrl4.Controls.Add(car4c); break;
+                            default: break;
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            streetCtrl4.Controls.Remove(cFrog);
+                            streetCtrl4.Controls.Add(crashedCar4);
+                            game.FrogCrashed = true;
+                        }
+                        catch (Exception carEx4)
+                        {
+                            throw carEx4;
+                        }
                     }
                 }
             }
@@ -332,6 +389,11 @@ namespace work.darkstar.frogWin.Controls
                     }
                 }
             }
+
+            if (game.FrogCrashed)
+            {
+                InitNewFrog(false);
+            }
         }
 
         /// <summary>
@@ -359,10 +421,10 @@ namespace work.darkstar.frogWin.Controls
             FrogFieldControl acFrog = cFrog;
             switch (game.CurrentFrog)
             {
-                case 0: acFrog = frog0f; break;
-                case 1: acFrog = frog1f; break;
-                case 2: acFrog = frog2f; break;
-                case 3: acFrog = frog3f; break;
+                case 0: acFrog = frog0f; game.frogPos = "9c"; break;
+                case 1: acFrog = frog1f; game.frogPos = "9d"; break;
+                case 2: acFrog = frog2f; game.frogPos = "9e"; break;
+                case 3: acFrog = frog3f; game.frogPos = "9f"; break;
                 default: acFrog = null; break;
             }
             return acFrog;
@@ -392,6 +454,7 @@ namespace work.darkstar.frogWin.Controls
                             if (intUp > 0)
                                 intUp--;
                             string fUpName = "frogFCtrl" + intUp.ToString() + charUp.ToString();
+                            game.frogPos = intUp.ToString() + charUp.ToString();
                             Control fUpControl = GetControlByName(this, fUpName);
                             fUpControl.Controls.Add(cFrog);
                         }
@@ -412,6 +475,7 @@ namespace work.darkstar.frogWin.Controls
                                 charLeft = (char)intCharLeft;
                             }
                             string fLeftName = "frogFCtrl" + intLeft.ToString() + charLeft.ToString();
+                            game.frogPos = intLeft.ToString() + charLeft.ToString();
                             Control fLeftControl = GetControlByName(this, fLeftName);
                             fLeftControl.Controls.Add(cFrog);
                         }
@@ -432,6 +496,7 @@ namespace work.darkstar.frogWin.Controls
                                 charRight = (char)intCharRight;
                             }
                             string fRigthName = "frogFCtrl" + intRight.ToString() + charRight.ToString();
+                            game.frogPos = intRight.ToString() + charRight.ToString();
                             Control fRightControl = GetControlByName(this, fRigthName);
                             fRightControl.Controls.Add(cFrog);
                         }
@@ -448,6 +513,7 @@ namespace work.darkstar.frogWin.Controls
                             if (intDown < 9)
                                 intDown++;
                             string fDownName = "frogFCtrl" + intDown.ToString() + charDown.ToString();
+                            game.frogPos = intDown.ToString() + charDown.ToString();
                             Control fDownControl = GetControlByName(this, fDownName);
                             fDownControl.Controls.Add(cFrog);
                         }
@@ -462,13 +528,26 @@ namespace work.darkstar.frogWin.Controls
 
             if (nName == "0c" || nName == "0g")
             {
-                initLock = new object();
-                lock (initLock)
-                {
+                InitNewFrog(true);
+            }
+        }
+
+        /// <summary>
+        /// Init a new frog
+        /// </summary>
+        /// <param name="inGoal">true for in goal, false for crashed</param>
+        public void InitNewFrog(bool inGoal)
+        {
+            initLock = new object();
+            lock (initLock)
+            {
+                if (inGoal)
                     game.FrogInGoal++;
-                    game.CurrentFrog++;
-                    cFrog = GetCFrog();
-                }
+                else
+                    game.FrogCounter--;
+                game.CurrentFrog++;
+                cFrog = GetCFrog();
+                game.FrogCrashed = false;
             }
         }
 

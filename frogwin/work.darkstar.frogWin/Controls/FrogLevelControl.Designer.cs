@@ -983,7 +983,7 @@
             frogFCtrl8a.Padding = new Padding(0, 0, 0, 0);
             frogFCtrl8a.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8a.TabIndex = 180;
-            frogFCtrl8a.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8a.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8a.Location = new Point(0, 432);
             frogFCtrl8a.BackgroundImageLayout = ImageLayout.Stretch;
             // 
@@ -993,7 +993,7 @@
             frogFCtrl8b.Padding = new Padding(0, 0, 0, 0);
             frogFCtrl8b.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8b.TabIndex = 181;
-            frogFCtrl8b.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8b.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8b.Location = new Point(72, 432);
             frogFCtrl8b.BackgroundImageLayout = ImageLayout.Stretch;
             // 
@@ -1004,7 +1004,7 @@
             frogFCtrl8c.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8c.TabIndex = 182;
             frogFCtrl8c.Location = new Point(144, 432);
-            frogFCtrl8c.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8c.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8c.BackgroundImageLayout = ImageLayout.Stretch;
             // 
             // frogFCtrl8d
@@ -1014,7 +1014,7 @@
             frogFCtrl8d.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8d.TabIndex = 183;
             frogFCtrl8d.Location = new Point(216, 432);
-            frogFCtrl8d.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8d.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8d.BackgroundImageLayout = ImageLayout.Stretch;
             // 
             // frogFCtrl8e
@@ -1024,7 +1024,7 @@
             frogFCtrl8e.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8e.TabIndex = 184;
             frogFCtrl8e.Location = new Point(288, 432);
-            frogFCtrl8e.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8e.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8e.BackgroundImageLayout = ImageLayout.Stretch;
             // 
             // frogFCtrl8f
@@ -1033,7 +1033,7 @@
             frogFCtrl8f.Padding = new Padding(0, 0, 0, 0);
             frogFCtrl8f.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8f.TabIndex = 185;
-            frogFCtrl8f.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8f.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8f.Location = new Point(360, 432);
             frogFCtrl8f.BackgroundImageLayout = ImageLayout.Stretch;
             // 
@@ -1043,7 +1043,7 @@
             frogFCtrl8g.Padding = new Padding(0, 0, 0, 0);
             frogFCtrl8g.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8g.TabIndex = 186;
-            frogFCtrl8g.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8g.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8g.Location = new Point(432, 432);
             frogFCtrl8g.BackgroundImageLayout = ImageLayout.Stretch;
             // 
@@ -1054,7 +1054,7 @@
             frogFCtrl8h.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8h.TabIndex = 187;
             frogFCtrl8h.Location = new Point(504, 432);
-            frogFCtrl8h.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8h.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8h.BackgroundImageLayout = ImageLayout.Stretch;
             // 
             // frogFCtrl8i
@@ -1064,7 +1064,7 @@
             frogFCtrl8i.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8i.TabIndex = 188;
             frogFCtrl8i.BackgroundImageLayout = ImageLayout.Stretch;
-            frogFCtrl8i.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8i.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8i.Location = new Point(576, 432);
             // 
             // frogFCtrl8j
@@ -1074,7 +1074,7 @@
             frogFCtrl8j.Size = new System.Drawing.Size(72, 54);
             frogFCtrl8j.TabIndex = 189;
             frogFCtrl8j.Location = new Point(648, 432);
-            frogFCtrl8j.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street1b;
+            frogFCtrl8j.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street0b;
             frogFCtrl8j.BackgroundImageLayout = ImageLayout.Stretch;
             // 
             // frogFCtrl9a
