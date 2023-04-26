@@ -205,6 +205,12 @@
             <param name="cntrlName">name to search</param>
             <returns>control with name, otherwise null</returns>
         </member>
+        <member name="M:work.darkstar.frogWin.Controls.FrogLevelControl.InitNewFrog(System.Boolean)">
+            <summary>
+            Init a new frog
+            </summary>
+            <param name="inGoal">true for in goal, false for crashed</param>
+        </member>
         <member name="F:work.darkstar.frogWin.Controls.FrogLevelControl.components">
             <summary> 
             Required designer variable.

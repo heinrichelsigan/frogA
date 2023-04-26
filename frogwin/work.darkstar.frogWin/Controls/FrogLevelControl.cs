@@ -17,6 +17,7 @@ namespace work.darkstar.frogWin.Controls
         object? startInitLock, initLock;
         CarControl car0a, car0b, car0c, car1a, car1b, car1c, car1d, car4a, car4b, car4c, crashedCar0, crashedCar1, crashedCar4;
         MoveControl wood0b, wood1b, wood2b, wood3b, wood0t, wood1t, wood2t, wood3t;
+        MoveControl frogOnWoodb, frogOnWoodt;
         volatile bool looperStarted = false;
         internal volatile uint currenTicks = 9;
         FrogFieldControl cFrog = null;
@@ -205,6 +206,9 @@ namespace work.darkstar.frogWin.Controls
             wood2t = new MoveControl(7);
             // if (wood3t == null)
             wood3t = new MoveControl(7);
+            frogOnWoodb = new MoveControl(11);
+            frogOnWoodt = new MoveControl(12);
+
             crashedCar0 = new CarControl(8);
             crashedCar1 = new CarControl(9);
             crashedCar4 = new CarControl(10);
@@ -353,18 +357,25 @@ namespace work.darkstar.frogWin.Controls
                 Control riverCtrl3 = GetControlByName(this, riverName3);
                 if (riverCtrl3 != null && riverCtrl3.Controls != null)
                 {
-                    switch (chr3)
-                    {
-                        case 0:
-                            riverCtrl3.Controls.Add(wood0b); break;
-                        case 1:
-                            riverCtrl3.Controls.Add(wood1b); break;
-                        case 2:
-                            riverCtrl3.Controls.Add(wood2b); break;
-                        case 3:
-                            riverCtrl3.Controls.Add(wood3b); break;
-                        default: break;
-                    }
+                    //if (game.frogPos.ToLower().StartsWith('3') && game.frogPos.ToLower() == "3" + chRiver3)
+                    //{
+                    //    riverCtrl3.Controls.Add(frogOnWoodb);
+                    //}
+                    //else
+                    //{
+                        switch (chr3)
+                        {
+                            case 0:
+                                riverCtrl3.Controls.Add(wood0b); break;
+                            case 1:
+                                riverCtrl3.Controls.Add(wood1b); break;
+                            case 2:
+                                riverCtrl3.Controls.Add(wood2b); break;
+                            case 3:
+                                riverCtrl3.Controls.Add(wood3b); break;
+                            default: break;
+                        }
+                    //}
                 }
             }
 

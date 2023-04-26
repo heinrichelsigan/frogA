@@ -87,6 +87,14 @@ namespace work.darkstar.frogWin.Controls
             {
                 this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.street7m;
             }
+            else if (ImgType == 11)
+            {
+                this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.wood1b;
+            }
+            else if (ImgType == 12)
+            {
+                this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.wood1t;
+            }
             else
             {
                 this.BackgroundImage = global::work.darkstar.frogWin.Properties.Resources.car0;
