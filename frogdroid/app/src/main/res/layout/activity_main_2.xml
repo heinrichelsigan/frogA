@@ -751,7 +751,7 @@
                 android:layout_height="wrap_content"
                 android:tag="@string/s_dog0"
                 android:contentDescription="@string/s_dog0"
-                android:src="@drawable/djinn"
+                android:src="@drawable/djinn0m"
                 android:visibility="visible" />
         </LinearLayout>
 
@@ -1019,7 +1019,7 @@
                 android:layout_height="wrap_content"
                 android:tag="@string/car1a"
                 android:contentDescription="@string/car1a"
-                android:src="@drawable/car1"
+                android:src="@drawable/car11"
                 android:visibility="visible" />
         </LinearLayout>
 
@@ -1044,16 +1044,14 @@
             android:layout_row="7"
             android:layout_column="3"
             android:background="@drawable/street1t">
-
             <ImageView
                 android:id="@+id/car1b"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:tag="@string/car1b"
                 android:contentDescription="@string/car1b"
-                android:src="@drawable/car1"
+                android:src="@drawable/car11"
                 android:visibility="visible" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -1095,7 +1093,7 @@
                 android:layout_height="wrap_content"
                 android:tag="@string/car1c"
                 android:contentDescription="@string/car1c"
-                android:src="@drawable/car1"
+                android:src="@drawable/car11"
                 android:visibility="visible" />
         </LinearLayout>
 
@@ -1126,9 +1124,8 @@
                 android:layout_height="wrap_content"
                 android:tag="@string/car1d"
                 android:contentDescription="@string/car1d"
-                android:src="@drawable/car1"
+                android:src="@drawable/car11"
                 android:visibility="visible" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -1159,7 +1156,7 @@
                 android:layout_height="wrap_content"
                 android:tag="@string/car0a"
                 android:contentDescription="@string/car0a"
-                android:src="@drawable/car0"
+                android:src="@drawable/car00"
                 android:visibility="visible" />
         </LinearLayout>
 
@@ -1214,9 +1211,8 @@
                 android:layout_height="wrap_content"
                 android:tag="@string/car0b"
                 android:contentDescription="@string/car0b"
-                android:src="@drawable/car0"
+                android:src="@drawable/car00"
                 android:visibility="visible" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -1270,9 +1266,8 @@
                 android:layout_height="wrap_content"
                 android:tag="@string/car0c"
                 android:contentDescription="@string/car0c"
-                android:src="@drawable/car0"
+                android:src="@drawable/car00"
                 android:visibility="visible" />
-
         </LinearLayout>
 
         <LinearLayout

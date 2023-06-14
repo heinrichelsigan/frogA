@@ -393,7 +393,7 @@ public class MainActivity extends BaseActivity implements FinishedLevel.NoticeDi
                 }
 
                 if (car0 != null) {
-                    Drawable car0Shape = getResources().getDrawable(R.drawable.car0, null);
+                    Drawable car0Shape = getResources().getDrawable(R.drawable.car00, null);
                     car0.setImageDrawable(car0Shape);
 
                     if (linCar0a != null)
@@ -464,7 +464,7 @@ public class MainActivity extends BaseActivity implements FinishedLevel.NoticeDi
                     }
 
                     if (car1 != null) {
-                        Drawable car1Shape = getResources().getDrawable(R.drawable.car1, null);
+                        Drawable car1Shape = getResources().getDrawable(R.drawable.car11, null);
                         car1.setImageDrawable(car1Shape);
 
                         if (linCar0b != null)
@@ -594,7 +594,7 @@ public class MainActivity extends BaseActivity implements FinishedLevel.NoticeDi
                         case 0:
                             walk0 = (ImageView) findViewById(R.id.dog0);
                             walk0Shape = (level == 2) ?
-                                    getResources().getDrawable(R.drawable.djinn, null) :
+                                    getResources().getDrawable(R.drawable.djinn0m, null) :
                                     getResources().getDrawable(R.drawable.street5m, null);
                             break;
                         case 1:
@@ -609,7 +609,7 @@ public class MainActivity extends BaseActivity implements FinishedLevel.NoticeDi
                         case 2:
                             walk0 = (ImageView) findViewById(R.id.dog1);
                             walk0Shape = (level == 3) ?
-                                    getResources().getDrawable(R.drawable.dragon, null) :
+                                    getResources().getDrawable(R.drawable.dragon0m, null) :
                                     getResources().getDrawable(R.drawable.street5m, null);
                             break;
                         default:
