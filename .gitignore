@@ -1,3 +1,10 @@
+/.idea/*
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
+/.idea/.gitignore
 /frogdroid/.gradle
 /local.properties
 /frogdroid/.idea
