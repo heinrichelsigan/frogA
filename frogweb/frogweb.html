@@ -4,48 +4,112 @@
     <title>Frog.Web</title>
 <style>
     table {
-        width: 80%; 
-		height: 80%; 
-		padding: 0 0 0 0; 
-		margin: 0 0 0 0; 
-		border-style: none;
-		border-spacing: 0px; 
-		background-repeat: no-repeat;
+        width: 80%;
+		min-width: 320px;
+        height: 80%;
+        min-height: 224px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        background-repeat: no-repeat;
     }
     tr {
-        // width: 80%; 
-        height: 10%;
-		padding: 0 0 0 0; 
-		margin: 0 0 0 0; 
-		border-style: none;
-		border-spacing: 0px; 
-		border-width: 0px;
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
+        width: 80%;
+        min-width: 320px;
+        height: 108%;
+        min-height: 27px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
     }
     td {
-        // width: 8%; 
+        width: 8%;
+        min-width: 32px;
         height: 10%;
-		padding: 0 0 0 0; 
-		margin: 0 0 0 0; ;
-		border-style: none;
-		border-spacing: 0px; 
-		border-width: 0px;
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
+        min-height: 27px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
     }
     img {
-		width: 100%; 
+        width: 100%;
+		min-width: 32px;
         height: 100%;
-        padding: 0 0 0 0; 
-		margin: 0 0 0 0; 
-		border-style: none;
-		border-spacing: 0px; 
-		border-width: 0px;
-		background-repeat: no-repeat; 		
-		background-size: 100% 100%;
+        min-height: 27px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
     }
-    div {
+    #frog0 {
+        min-width: 32px;
+        min-height: 27px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    #frog1 {
+        min-width: 32px;
+        min-height: 27px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    #frog2 {
+        min-width: 32px;
+        min-height: 27px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    #aLeft {
+        min-width: 32px;
+        min-height: 27px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    #aRight {
+        min-width: 32px;
+        min-height: 27px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+	div {
         line-height: normal;
         vertical-align: middle;
     }
@@ -68,25 +132,99 @@
         var fX;
 		var fY;
 
+		function frogInit() {
 
-        //window.onkeydown = function (e) {
-        //    if (e.which == 37) {
-        //        frogLEFT();
-        //    }
-        //    if (e.which == 39) {
-        //        frogRIGHT();
-        //    }
-        //    if (e.which == 38) {
-        //        frogUP();
-        //    }
-        //    if (e.which == 40) {
-        //        frogDOWN();
-        //    }
-        //};
+			window.onkeydown = function (e) {
+				if (e.which == 37) {
+					frogLEFT();
+				}
+				if (e.which == 39) {
+					frogRIGHT();
+				}
+				if (e.which == 38) {
+					frogUP();
+				}
+				if (e.which == 40) {
+					frogDOWN();
+				}
+			};
+		}
 
 		// function initFrogJS() {
-		//	alert("initFrogJS()");			
+		//	alert("initFrogJS()");
 		//}
+
+        function frogMove(frX, frY, nrX, nrY, oldTd, newTd, rowColTag) {
+
+            var lastFrog = document.getElementById(currentFrogId);
+            document.getElementById(oldTd).removeChild(lastFrog);
+
+			var additionalRemove;
+
+			lastFrog.alt = newTd;
+            lastFrog.id = currentFrogId;
+            lastFrog.title = "ActiveFrog";            
+            lastFrog.border = "0";
+			lastFrog.src = "img/frogactive.png";
+
+            if (nrY == 1)
+                lastFrog.src = "img/street3b.png";
+            if (nrY == 2)
+                lastFrog.src = "img/street2t.png";
+            if (nrY == 3)
+                lastFrog.src = "img/meadow2m.png";
+            if (nrY == 4)
+                lastFrog.src = "img/street2m.png";
+
+            if (nrY == 5) {
+                if (nrX.charAt(0) == 'b')
+                    additionalRemove = document.getElementById("woodB0");
+                if (nrX.charAt(0) == 'c')
+                    additionalRemove = document.getElementById("woodB1");
+                if (nrX.charAt(0) == 'g')
+                    additionalRemove = document.getElementById("woodD0");
+                if (nrX.charAt(0) == 'h')
+                    additionalRemove = document.getElementById("woodD1");
+
+                if (additionalRemove != null)
+                    lastFrog.src = "img/wood1b.png";
+            }
+
+            if (nrY == 6) {
+                if (nrX.charAt(0) == 'c')
+                    additionalRemove = document.getElementById("woodT0");
+                if (nrX.charAt(0) == 'd')
+                    additionalRemove = document.getElementById("woodT1");
+                if (nrX.charAt(0) == 'h')
+                    additionalRemove = document.getElementById("woodU0");
+                if (nrX.charAt(0) == 'i')
+                    additionalRemove = document.getElementById("woodU1");
+
+                if (additionalRemove != null)
+                    lastFrog.src = "img/wood1t.png";
+            }
+
+            if (nrY == 7) {
+                if (nrX.charAt(0) == 'c')
+                    additionalRemove = document.getElementById("whole0");
+                if (nrX.charAt(0) == 'g')
+                    additionalRemove = document.getElementById("whole1");
+
+				if (additionalRemove != null) {
+					let savedNr = parseInt(lastFrog.id.charAt(4));
+					lastFrog.src = "img/frogend1.png";
+					lastFrog.id = "frogSaved" + savedNr;
+                    lastFrog.title = "FrogInWhole";
+				}
+            }            
+
+            var tdCell = document.getElementById(newTd);
+            if (additionalRemove != null)
+				tdCell.removeChild(additionalRemove);
+
+            tdCell.appendChild(lastFrog);
+            // document.getElementById(oldTd).innerHTML = "";
+		}
 
 		function frogUP() {
 
@@ -99,22 +237,23 @@
             var frY = parseInt(rowByFrogTag(rowColTag));
             var oldTd = "td" + fY + fX;
 
+			var nrX = frX;
 			let nrY = frY + 1;			
             var newTd = "td" + nrY + fX;
 			
 			// document.getElementById(newTd).firstChild =
-			var lastFrog = document.getElementById(currentFrogId);
-            document.getElementById(oldTd).removeChild(lastFrog);
+			frogMove(frX, frY, nrX, nrY, oldTd, newTd, rowColTag);
 
-            var newImage = document.createElement("img");
-            newImage.src = "img/frogactive.png";
-            newImage.alt = newTd;
-            newImage.title = "ActiveFrog";
-            newImage.id = "frog0";
-            newImage.border = "0";
-
-			var tdCell = document.getElementById(newTd);
-			tdCell.appendChild(newImage);
+			// Sample for creating an image beyond document
+			//			var newImage = document.createElement("img");
+			//			newImage.src = "img/frogactive.png";			
+			//			newImage.alt = newTd;
+			//			newImage.title = "ActiveFrog";
+			//			newImage.id = currentFrogId;
+			//			newImage.border = "0";
+			//
+			//			var tdCell = document.getElementById(newTd);
+			//			tdCell.appendChild(newImage);
             			
 		}
 		
@@ -125,20 +264,16 @@
 			var frogU = getActiveFrog();
 			var rowColTag = currentFrog.getAttribute("alt");
 
-
             var frX = columnByFrogTag(rowColTag);
 			var frY = parseInt(rowByFrogTag(rowColTag));
 			var oldTd = "td" + fY + fX;
 
+            var nrX = fX;
 			var nrY = parseInt(fY);
 			if (nrY > 0) nrY--;
 			var newTd = "td" + nrY + fX;
 
-            var lastFrog = document.getElementById(currentFrogId);
-			document.getElementById(oldTd).removeChild(lastFrog);
-			lastFrog.alt = newTd;
-            var tdCell = document.getElementById(newTd);
-            tdCell.appendChild(lastFrog);
+            frogMove(frX, frY, nrX, nrY, oldTd, newTd, rowColTag);            
 		}
 		
 		function frogLEFT() {
@@ -158,13 +293,8 @@
 				nrX = 'a';
 			var newTd = "td" + fY + nrX;
 
-            var lastFrog = document.getElementById(currentFrogId);
-            document.getElementById(oldTd).removeChild(lastFrog);
-            lastFrog.alt = newTd;
-            var tdCell = document.getElementById(newTd);
-            tdCell.appendChild(lastFrog);
-
-			document.getElementById(oldTd).innerHTML = "";
+            frogMove(frX, frY, nrX, nrY, oldTd, newTd, rowColTag);
+            
 		}
 		
 		function frogRIGHT() {
@@ -184,36 +314,40 @@
 				nrX = 'j';
 			var newTd = "td" + fY + nrX;
 
-            var lastFrog = document.getElementById(currentFrogId);
-            document.getElementById(oldTd).removeChild(lastFrog);
-            lastFrog.alt = newTd;
-            var tdCell = document.getElementById(newTd);
-            tdCell.appendChild(lastFrog);
-
-			document.getElementById(oldTd).innerHTML = "";
+            frogMove(frX, frY, nrX, nrY, oldTd, newTd, rowColTag);
 		}
+
 		
 		function getActiveFrog() {
 
             currentFrogId = "frog0";
-			currentFrog = document.getElementById("frog0");            
+            currentFrog = document.getElementById(currentFrogId);            
             if (currentFrog != null && currentFrog.title == "ActiveFrog") 
 				return currentFrog;
 
             currentFrogId = "frog1";
 			currentFrog = document.getElementById("frog1");
-			if (currentFrog != null && currentFrog.title == "ActiveFrog") 
+			if (currentFrog != null) {
+				if (currentFrog.title != "ActiveFrog")
+					currentFrog.title = "ActiveFrog";
 				return currentFrog;
-
+			}
+	
 			currentFrogId = "frog2";
 			currentFrog = document.getElementById("frog2");
-			if (currentFrog != null && currentFrog.title == "ActiveFrog") 
-                return currentFrog;
+			if (currentFrog != null) {
+				if (currentFrog.title != "ActiveFrog")
+					currentFrog.title = "ActiveFrog";
+				return currentFrog;
+			}
 
 			currentFrogId = "frog3";
 			currentFrog = document.getElementById("frog3");			
-            if (currentFrog != null && currentFrog.title == "ActiveFrog") 
-				return currentFrog;
+			if (currentFrog != null) {
+				if (currentFrog.title != "ActiveFrog")
+					currentFrog.title = "ActiveFrog";
+				return currentFrog;					
+			}			
 
 			return currentFrog;
 		}
@@ -274,21 +408,20 @@
 	</script>
 </head>
 
-
-<body>
+<body onload="frogInit()">
 		<table border="0" cellpadding="0" cellpadding="0">
-			<tr id="tr7	">
-				<td width="8%" background="img/swamp0t.png" 	id="td7a"><img src="img/swamp0t.png" border="0" /></td>
+			<tr id="tr7">
+				<td width="8%" background="img/swamp0t.png" 	id="td7a"></td>
 				<td width="8%" background="img/swamp0t.png" 	id="td7b"></td>
-				<td width="8%" background="img/frogend0t.png" 	id="td7c"></td>
+				<td width="8%" background="img/frogend0t.png" id="td7c"><img src="img/frogend0t.png" border="0" id="whole0" /></td>
 				<td width="8%" background="img/swamp0t.png" 	id="td7d"></td>
-				<td width="8%" background="img/swamp0t.png" 	id="td7e"></td>
+				<td width="8%" background="img/swamp0t.png" id="td7e"><img src="img/arrow_up.png" border="0" id="aLeft" onclick="frogUP()" /></td>
 				<td width="8%" background="img/swamp0t.png" 	id="td7f"></td>
-				<td width="8%" background="img/frogend0t.png" 	id="td7g"></td>
-				<td width="8%" background="img/swamp0t.png" 	id="td7h"></td>
+				<td width="8%" background="img/frogend0t.png" 	id="td7g"><img src="img/frogend0t.png" border="0" id="whole1" /></td>
+				<td width="8%" background="img/swamp0t.png" 	id="td7h"</td>
 				<td width="8%" background="img/swamp0t.png" 	id="td7i"></td>
 				<td width="8%" background="img/swamp0t.png" 	id="td7j"></td>
-			</tr>			
+			</tr>		
 			<tr id="tr6">
 				<td width="8%" background="img/water0t.png" id="td6a"></td>
 				<td width="8%" background="img/water0t.png" id="td6b"></td>
@@ -299,19 +432,19 @@
 				<td width="8%" background="img/water0t.png" id="td6g"></td>
 				<td width="8%" background="img/water0t.png" id="td6h"><img src="img/wood0t.png" border="0" 	id="woodU0"  /></td>
 				<td width="8%" background="img/water3t.png" id="td6i"><img src="img/wood0t.png" border="0" 	id="woodU1"  /></td>
-				<td width="8%" background="img/water0t.png" id="td6j"><img src="img/wood0t.png" border="0"  id="woodU2" /></td>
+				<td width="8%" background="img/water0t.png" id="td6j"></td>
 			</tr>			
 			<tr id="tr5">
 				<td width="8%" background="img/water0b.png" id="td5a"></td>
 				<td width="8%" background="img/water0b.png" id="td5b"><img src="img/wood0b.png" border="0"  id="woodB0"  /></td>
 				<td width="8%" background="img/water3b.png" id="td5c"><img src="img/wood0b.png" border="0" 	id="woodB1"  /></td>
-				<td width="8%" background="img/water0b.png" id="td5d"><img src="img/wood0b.png" border="0" 	id="woodB2" /></td>
+				<td width="8%" background="img/water0b.png" id="td5d"></td>
 				<td width="8%" background="img/water0b.png" id="td5e"></td>
 				<td width="8%" background="img/water0b.png" id="td5f"></td>
 				<td width="8%" background="img/water0b.png" id="td5g"><img src="img/wood0b.png" border="0"	id="woodD0"   /></td>
 				<td width="8%" background="img/water0b.png" id="td5h"><img src="img/wood0b.png" border="0" 	id="woodD1" /></td>
 				<td width="8%" background="img/water0b.png" id="td5i"></td>
-				<td width="8%" background="img/water0b.png" id="td5j">	</td>
+				<td width="8%" background="img/water0b.png" id="td5j"></td>
 			</tr>					
 			<tr id="tr4">
 				<td width="8%" background="img/street0m.png" id="td4a"></td>
@@ -326,7 +459,7 @@
 				<td width="8%" background="img/street0m.png" id="td4j"></td>
 			</tr>
 			<tr id="tr3">
-				<td width="8%" background="img/meadow0m.png" id="td3a"></td>
+				<td width="8%" background="img/meadow0m.png" id="td3a"><img src="img/arrow_left.png" border="0" id="aLeft" onclick="frogLEFT()" /><</td>
 				<td width="8%" background="img/meadow0m.png" id="td3b"></td>
 				<td width="8%" background="img/meadow0m.png" id="td3c"></td>
 				<td width="8%" background="img/meadow0m.png" id="td3d"></td>
@@ -335,43 +468,43 @@
 				<td width="8%" background="img/meadow0m.png" id="td3g"></td>
 				<td width="8%" background="img/meadow0m.png" id="td3h"></td>
 				<td width="8%" background="img/meadow0m.png" id="td3i"></td>
-				<td width="8%" background="img/meadow0m.png" id="td3j"></td>
+				<td width="8%" background="img/meadow0m.png" id="td3j"><img src="img/arrow_right.png" border="0" id="aRight" onclick="frogRIGHT()" /></td>
 			</tr>		
 			<tr id="tr2">
-				<td width="8%" background="img/street1t.png" id="td2a"></td>
-				<td width="8%" background="img/street1t.png" id="td2b"><img src="img/car1.png" border="0"  id="carA1"  /></td>
+				<td width="8%" background="img/street1t.png" id="td2a"><img src="img/car1.png" border="0" id="carA1" /></td>
+				<td width="8%" background="img/street1t.png" id="td2b"></td>
 				<td width="8%" background="img/street1t.png" id="td2c"></td>
 				<td width="8%" background="img/street1t.png" id="td2d"></td>
 				<td width="8%" background="img/street1t.png" id="td2e"><img src="img/car1.png" border="0"  id="carB1" /></td>
 				<td width="8%" background="img/street1t.png" id="td2f"></td>
 				<td width="8%" background="img/street1t.png" id="td2g"></td>
-				<td width="8%" background="img/street1t.png" id="td2h"><img src="img/car1.png" border="0"  id="carC1" /></td>
-				<td width="8%" background="img/street1t.png" id="td2i"></td>
+				<td width="8%" background="img/street1t.png" id="td2h"></td>
+				<td width="8%" background="img/street1t.png" id="td2i"><img src="img/car1.png" border="0" id="carC1" /></td>
 				<td width="8%" background="img/street1t.png" id="td2j"></td>
 			</tr>			
 			<tr id="tr1">
 				<td width="8%" background="img/street1b.png" id="td1a"><img src="img/car0.png" border="0" id="carA0" /></td>
 				<td width="8%" background="img/street1b.png" id="td1b"></td>
 				<td width="8%" background="img/street1b.png" id="td1c"></td>
-				<td width="8%" background="img/street1b.png" id="td1d"><img src="img/car0.png" border="0" id="carB0" /></td>
+				<td width="8%" background="img/street1b.png" id="td1d"></td>
 				<td width="8%" background="img/street1b.png" id="td1e"></td>
 				<td width="8%" background="img/street1b.png" id="td1f"></td>
 				<td width="8%" background="img/street1b.png" id="td1g"></td>
-				<td width="8%" background="img/street1b.png" id="td1h"><img src="img/car0.png" border="0" id="carC0" /></td>
+				<td width="8%" background="img/street1b.png" id="td1h"><img src="img/car0.png" border="0" id="carB0" /></td>
 				<td width="8%" background="img/street1b.png" id="td1i"></td>
 				<td width="8%" background="img/street1b.png" id="td1j"></td>
 			</tr>
 			<tr id="tr0">
-				<td width="8%" background="img/meadow4b.png" id="td0a"><img src="img/arrow_left.png" border="0" id="aLeft" onclick="frogLEFT()" /><</td>
-				<td width="8%" background="img/meadow5b.png" id="td0b"><img src="img/arrow_up.png" border="0" id="aLeft" onclick="frogUP()" /></td>
+				<td width="8%" background="img/meadow4b.png" id="td0a"></td>
+				<td width="8%" background="img/meadow5b.png" id="td0b"</td>
 				<td width="8%" background="img/meadow5b.png" id="td0c"></td>
 				<td width="8%" background="img/meadow5b.png" id="td0d"><img src="img/frogactive.png" border="0" id="frog0" title="ActiveFrog" alt="td0d" /></td>
-				<td width="8%" background="img/meadow5b.png" id="td0e"><img src="img/frogger.png" border="0" id="frog1" alt="td0e" /></td>
-				<td width="8%" background="img/meadow5b.png" id="td0f"><img src="img/frogger.png" border="0" id="frog2" alt="td0f" /></td>
-				<td width="8%" background="img/meadow5b.png" id="td0g"><img src="img/frogger.png" border="0" id="frog3" alt="td0g" /></td>
+				<td width="8%" background="img/meadow5b.png" id="td0e"><img src="img/froga.png" border="0" id="frog1" alt="td0e" /></td>
+				<td width="8%" background="img/meadow5b.png" id="td0f"><img src="img/arrow_down.png" border="0" id="aLeft" onclick="frogDOWN()" /><</td>
+				<td width="8%" background="img/meadow5b.png" id="td0g"><img src="img/froga.png" border="0" id="frog2" alt="td0g" /></td>
 				<td width="8%" background="img/meadow5b.png" id="td0h"></td>
-				<td width="8%" background="img/meadow5b.png" id="td0i"><img src="img/arrow_down.png" border="0" id="aLeft" onclick="frogDOWN()" /></td>
-				<td width="8%" background="img/meadow4b.png" id="td0j"><img src="img/arrow_right.png" border="0" id="aLeft" onclick="frogRIGHT()" /></td>
+				<td width="8%" background="img/meadow5b.png" id="td0i">/td>
+				<td width="8%" background="img/meadow4b.png" id="td0j"></td>
 			</tr>				
 		</table>
         <hr />
