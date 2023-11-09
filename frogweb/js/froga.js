@@ -1,4 +1,7 @@
-﻿var currentFrog;
+﻿/*
+	2023-11-05 froga.js by Heinrich Elsigan
+*/
+var currentFrog;
 var currentFrogId;
 var currentFrogName;
 var fX;
@@ -7,6 +10,8 @@ var loopTicks = 0;
 var loopDelay = 1200;
 var frogDied = -1;
 var frogsInWhole = 0;
+var imgSavedWoodB;
+var imgSavedWoodT;
 
 function frogInit() {
 
@@ -138,12 +143,12 @@ function frogMove(jumpDir) {
 	var frogNr = parseInt(currentFrogId.charAt(4));	// TODO		better implementation of frog number
 
 	var additionalRemove;
-	var imgDisApear;
-	var imgReApear;
-	
+	var imgDisApear = null;
+	var imgReApear = null;
+
 	frogDied = -1;
 	var currentInWhole = 0;
-	
+
 	// var rowColTag = currentFrog.getAttribute("alt");
 
 	var frX = columnByTag(currentFrog);
@@ -162,7 +167,7 @@ function frogMove(jumpDir) {
 		nrY = upper(frY);										// up 					
 	} else if (jumpDir.charAt(0) == 'd') {
 		nrY = below(frY);										// down 		
-	} 
+	}
 	if (jumpDir.charAt(0) == 'r' || jumpDir.charAt(1) == 'r')
 		nrX = righter(frX);										// right
 	else if (jumpDir.charAt(0) == 'l' || jumpDir.charAt(1) == 'l')
@@ -171,7 +176,7 @@ function frogMove(jumpDir) {
 	var newTd = "td" + nrY + nrX;
 	var newCell = document.getElementById(newTd);
 	var newFrog = document.getElementById(currentFrogId);
-	
+
 	newFrog.id = currentFrogId;
 	newFrog.title = "ActiveFrog";
 	newFrog.border = "0";
@@ -190,31 +195,19 @@ function frogMove(jumpDir) {
 
 	let woodIt = 0;
 	if (frY == 6 && (nrY == 5 || nrY == 7)) {
-		
-		imgReApear = null;		
-		while (imgReApear == null && woodIt < 4) {
-
-			imgReApear = oldTdCell.children["woodB" + woodIt];
-			if (imgReApear != null) {
-				woodIt = 4;
-				if (imgReApear.clientWidth == "0" || imgReApear.visibility == "hidden" || imgReApear.visibility != "visible") {
-					break;
-				}
-			}			
-			else
-				imgReApear = null;
-
-			woodIt++;
+		if (imgSavedWoodB != null) {
+			imgReApear = imgSavedWoodB;
 		}
 	}
-	
+
 	if (nrY == 6) {
 		woodIt = 0;
 		imgDisApear = null;
-		while (imgDisApear == null && woodIt < 4) {						
+		while (imgDisApear == null && woodIt < 4) {
 
-			imgDisApear = newCell.children["woodB" + woodIt];	
+			imgDisApear = newCell.children["woodB" + woodIt];
 			if (imgDisApear != null) {
+				imgSavedWoodB = imgDisApear;
 				woodIt = 4;
 				break;
 			}
@@ -231,28 +224,16 @@ function frogMove(jumpDir) {
 			newFrog.src = "img/wood4b.gif";
 			newFrog.title = "FrogDied";
 			frogDied = frogNr;
-		}			
-	}
-	
-	if (frY == 7 && (nrY == 6 || nrY == 8)) {
-		woodIt = 0;
-		imgReApear = null;
-		while (imgReApear == null && woodIt < 4) {			
-
-			imgReApear = oldTdCell.children["woodT" + woodIt];
-			if (imgReApear != null) {
-				woodIt = 4;
-				if (imgReApear.visibility == "hidden" || imgReApear.style.visibility == "hidden" || imgReApear.clientWidth == "0") {
-					break;
-				}
-			}
-			else 
-				imgReApear = null;
-
-			woodIt++;
 		}
 	}
-	
+
+	if (frY == 7 && (nrY == 6 || nrY == 8)) {
+		imgReApear = null;
+		if (imgSavedWoodT != null) {
+			imgReApear = imgSavedWoodT;
+		}
+	}
+
 	if (nrY == 7) {
 		woodIt = 0;
 		imgDisApear = null;
@@ -260,6 +241,7 @@ function frogMove(jumpDir) {
 
 			imgDisApear = newCell.children["woodT" + woodIt];
 			if (imgDisApear != null) {
+				imgSavedWoodT = imgDisApear;
 				woodIt = 4;
 				break;
 			}
@@ -271,11 +253,11 @@ function frogMove(jumpDir) {
 		if (imgDisApear != null)
 			newFrog.src = "img/wood1t.png";
 		else {
-			newFrog.src = "img/wood4t.gif";		
+			newFrog.src = "img/wood4t.gif";
 			newFrog.title = "FrogDied";
 			// TODO: add sound
 			frogDied = frogNr;
-		}	
+		}
 	}
 
 	if (nrY == 8)
@@ -283,7 +265,7 @@ function frogMove(jumpDir) {
 
 	if (nrY == 9) {
 		woodIt = 0;
-		imgDisApear = null;		
+		imgDisApear = null;
 		while (imgDisApear == null && woodIt < 3) {
 
 			imgDisApear = newCell.children["whole" + woodIt];
@@ -303,48 +285,39 @@ function frogMove(jumpDir) {
 				imgDisApear = document.getElementById("whole1");
 		}
 
-		if (imgDisApear != null) {			
+		if (imgDisApear != null) {
 			currentInWhole++;
 			frogsInWhole++;
 			let savedNr = parseInt(newFrog.id.charAt(4));
 			newFrog.src = "img/frogend1.png";
 			newFrog.id = "save" + frogNr;
-			newFrog.title = "FrogInWhole";			
+			newFrog.title = "FrogInWhole";
 		}
 	}
 
-	var oldCell = document.getElementById(oldTd);
-	if (oldCell != null) {
-		// oldFrog = oldCell.getElementById(currentFrogId);
-		oldFrog = oldCell.children[currentFrogId];
+	oldTdCell = document.getElementById(oldTd);
+	if (oldTdCell != null) {
+		// oldFrog = oldTdCell.getElementById(currentFrogId);
+		oldFrog = oldTdCell.children[currentFrogId];
 	}
 	if (oldFrog == null)
-		oldFrog = document.getElementById(currentFrogId);	
+		oldFrog = document.getElementById(currentFrogId);
 
-	var tdCell = document.getElementById(newTd);	
-	
+	newCell = document.getElementById(newTd);
 	newFrog.alt = newTd;
+
 	if (imgDisApear != null) {
-		if (currentInWhole > 0) {
-			tdCell.removeChild(imgDisApear);
-		}
-		else {
-			// imgDisApear.style.visibility = "hidden";
-			imgDisApear.visibility = "hidden";
-			imgDisApear.clientWidth = "0";
-		}
+		newCell.removeChild(imgDisApear);
 	}
 
 	if (frogDied > -1) {
-		newFrog.id = "died" + oldTdCell;		
+		newFrog.id = "died" + oldTdCell;
 	}
 
-	tdCell.appendChild(newFrog);
+	newCell.appendChild(newFrog);
 
 	if (imgReApear != null) {
-		imgReApear.clientWidth = "36";
-		imgReApear.visibility = "visible";		
-		// imgDisApear.style.visibility = "visible";
+		oldTdCell.appendChild(imgReApear);
 	}
 
 }
