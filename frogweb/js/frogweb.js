@@ -61,7 +61,7 @@ function frogMove(frX, frY, nrX, nrY, oldTd, newTd, rowColTag) {
 	if (nrY == 3)
 		lastFrog.src = "img/meadow2m.png";
 	if (nrY == 4)
-		lastFrog.src = "img/street2m.png";
+		lastFrog.src = "img/walk2m.png";
 
 	if (nrY == 5) {
 		if (nrX.charAt(0) == 'b')

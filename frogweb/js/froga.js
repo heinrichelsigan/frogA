@@ -189,7 +189,7 @@ function frogMove(jumpDir) {
 	if (nrY == 3)
 		newFrog.src = "img/meadow2m.png";
 	if (nrY == 4)
-		newFrog.src = "img/street2m.png";
+		newFrog.src = "img/walk2m.png";
 	if (nrY == 5)
 		newFrog.src = "img/meadow2t.png";
 
@@ -261,7 +261,7 @@ function frogMove(jumpDir) {
 	}
 
 	if (nrY == 8)
-		newFrog.src = "img/meadow2b.png";
+		newFrog.src = "img/meadow2t.png";
 
 	if (nrY == 9) {
 		woodIt = 0;
@@ -309,7 +309,7 @@ function frogMove(jumpDir) {
 	if (imgDisApear != null) {
 		newCell.removeChild(imgDisApear);
 	}
-
+		
 	if (frogDied > -1) {
 		newFrog.id = "died" + oldTdCell;
 	}
