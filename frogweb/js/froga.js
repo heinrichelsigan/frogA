@@ -47,30 +47,33 @@ function restart() {
 		recreateFrogs();
 		frogInit();
 	}
+	
 }
 
 function frogaLooper(ticks, delay) {
 
 	currentFrog = getActiveFrog();	
-	if (currentFrog == null) {
-		if (frogsInWhole >= 3) {
-			headerImg.src = "img/message_levelcompleted.png"
-			headerImg.width = 318;
-			headerImg.height = 31;
-			level++;
-		}
-		else {
-			headerImg.src = "img/message_gameover.png";
-			headerImg.width = 318;
-			headerImg.height = 31;
-			gameOver = 1;
-		}
+	if (frogsInWhole >= 3) {
+		headerImg.src = "img/message_levelcompleted.png"
+		headerImg.width = 318;
+		headerImg.height = 31;
+		level++;
+		alert("Level " + level + " completed");
+		setTimeout(function () { window.location.reload(); }, loopDelay); // will call the function after 16 secs.
+		return; 
+	}
+	if (currentFrog == null) {	
+		headerImg.src = "img/message_gameover.png";
+		headerImg.width = 318;
+		headerImg.height = 31;
+		gameOver = 1;
+
 		return;
 	}
 	currentFrogId = getCurrentFrogId(currentFrog);
 
 	try {
-		moveCars();	
+		moveCars();
 		moveWalkers();
 		moveWoods();
 	} catch (exMove) {
@@ -491,7 +494,14 @@ function frogMove(jumpDir) {
 		newFrog.id = "died" + frogNr;
 	}
 
-	document.getElementById(newTd).appendChild(newFrog);
+	if (crashFrog(newTd) == false) {
+		document.getElementById(newTd).appendChild(newFrog);
+	}
+	else {
+		currentFrog = getActiveFrog();
+		currentFrogId = getCurrentFrogId();
+	}
+	
 
 	if (imgReApear != null) {
 		document.getElementById(oldTd).appendChild(imgReApear);
@@ -505,7 +515,56 @@ function frogMove(jumpDir) {
 
 }
 
+function crashFrog(tdFrogCell) {
 
+
+	var moveId, frogNr;
+	var move;
+	var moveTd, tdFrog;
+	var move_Y, move_X;
+
+	currentFrog = getActiveFrog();
+	currentFrogId = getCurrentFrogId(currentFrog);
+	tdFrog = currentFrog.getAttribute("alt");
+	frogNr = parseInt(currentFrogId.charAt(4));
+
+	let crashCnt = 0;
+	let moveCnt = 0;
+	let _move_Id = "";
+	var movers = ["car00", "car01", "car10", "car11", "car12", "car13", "person0", "person1", "person2", "person3"];
+
+	movers.forEach(function (_move_Id) {
+
+		moveId = _move_Id;
+		move = document.getElementById(moveId);
+		if (move != null) {
+			moveTd = move.getAttribute("alt");
+			move_Y = rowByTag(move);
+			move_X = rrighter(columnByTag(move));
+			if (moveTd == tdFrogCell) {				
+				try {
+					var parentCell = document.getElementById(currentFrogId).parentElement;
+					if (parentCell != null) {
+						currentFrog.id = "died" + frogNr;
+						parentCell.removeChild(currentFrog);
+					}
+					// document.getElementById(tdFrogCell).removeChild(currentFrog);
+				} catch (exFrogCrash1) {
+					// alert(exFrogCrash1);
+				}
+				if (_move_Id.length >= 4) {
+					switch (_move_Id.substr(0, 4)) {
+						case "car0": move.src = "img/car0crashed.png"; ++crashCnt; break;
+						case "car1": move.src = "img/car1crashed.png"; ++crashCnt; break;
+						case "pers": move.src = "img/walk7m.png"; ++crashCnt; break;
+						default: break;
+					}
+				}
+			}
+		}
+	});
+	return (crashCnt > 0);
+}
 
 function getActiveFrog() {
 
