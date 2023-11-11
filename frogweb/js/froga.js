@@ -8,7 +8,7 @@ var fX;
 var fY;
 var loopTicks = 0;
 var loopDelay = 1200;
-var frogDied = -1;
+var frogsDied = 0;
 var frogsInWhole = 0;
 var level = 0;
 var gameOver = 0;
@@ -17,7 +17,7 @@ var imgSavedWoodT;
 
 function frogInit() {
 	
-	frogDied = -1;
+	frogsDied = 0;
 	loopTicks = 0;
 	loopDelay = 1200;
 	frogsInWhole = 0;
@@ -312,7 +312,7 @@ function frogMove(jumpDir) {
 	var imgDisApear = null;
 	var imgReApear = null;
 
-	frogDied = -1;
+	var frogDied = -1;
 	var currentInWhole = 0;
 
 	// var rowColTag = currentFrog.getAttribute("alt");
@@ -467,7 +467,7 @@ function frogMove(jumpDir) {
 
 		if (imgDisApear != null) {
 			currentInWhole++;
-			frogsInWhole++;
+			setFrogsInWhole(++frogsInWhole);
 			let savedNr = parseInt(newFrog.id.charAt(4));
 			newFrog.src = "img/frogend1.png";
 			newFrog.id = "save" + frogNr;
@@ -489,17 +489,19 @@ function frogMove(jumpDir) {
 	if (imgDisApear != null) {
 		document.getElementById(newTd).removeChild(imgDisApear);
 	}
-		
-	if (frogDied > -1) {
-		newFrog.id = "died" + frogNr;
-	}
 
-	if (crashFrog(newTd) == false) {
-		document.getElementById(newTd).appendChild(newFrog);
-	}
-	else {
+	if (frogDied < 0)
+		frogDied = crashFrog(newTd);
+	else
+		newFrog.id = "died" + frogNr;
+
+	if (frogDied > -1) {
+		frogDied = frogNr;		
+		setFrogsDied(++frogsDied);
 		currentFrog = getActiveFrog();
 		currentFrogId = getCurrentFrogId();
+	} else {
+		document.getElementById(newTd).appendChild(newFrog);
 	}
 	
 
@@ -516,7 +518,6 @@ function frogMove(jumpDir) {
 }
 
 function crashFrog(tdFrogCell) {
-
 
 	var moveId, frogNr;
 	var move;
@@ -563,7 +564,7 @@ function crashFrog(tdFrogCell) {
 			}
 		}
 	});
-	return (crashCnt > 0);
+	return (crashCnt > 0) ? frogNr : -1;
 }
 
 function getActiveFrog() {
@@ -592,6 +593,8 @@ function getActiveFrog() {
 
 function getCurrentFrogId(aFrog) {
 	var aFrog = getActiveFrog();
+	let frogsLeftNr = 4 - parseInt(aFrog.id.charAt(4)); 
+	setFrogsLeft(frogsLeftNr);
 	return aFrog.id;
 }
 
@@ -762,4 +765,17 @@ function lefter(col) {
 		default: break;
 	}
 	return (col.charAt(0));
+}
+
+function setFrogsInWhole(inWhole) {
+	document.getElementById("frogsInWhole").innerHTML = inWhole;
+}
+
+function setFrogsLeft(frogsLeft) {
+	document.getElementById("frogsLeft").innerHTML = frogsLeft;
+}
+
+
+function setFrogsDied(frogsDied) {
+	document.getElementById("frogsDied").innerHTML = frogsDied;
 }

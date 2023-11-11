@@ -39,10 +39,10 @@ div {
     }
 
     div.frogaDIVHeader {
-        width: 72%;
-        min-width: 360pt;
+        width: 100%;
+        min-width: 320pt;
         height: 36pt;
-        min-height: 32pt;
+        min-height: 36pt;
         align-content: center;
         line-height: normal;
         padding: 0 0 0 0;
@@ -193,9 +193,9 @@ img {
     }
 
     img.frogaIMGHeader {
-        width: 144pt;
-        min-width: 144pt;
-        height: 32pt;
+        width: 240pt;
+        min-width: 240pt;
+        height: 36pt;
         min-height: 32pt;
         padding: 0 0 0 0;
         margin: 0 0 0 0;
