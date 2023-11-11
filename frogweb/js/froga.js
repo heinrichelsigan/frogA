@@ -70,7 +70,7 @@ function frogaLooper(ticks, delay) {
 	currentFrogId = getCurrentFrogId(currentFrog);
 
 	try {
-		moveCars();
+		moveCars();	
 		moveWalkers();
 		moveWoods();
 	} catch (exMove) {
@@ -91,8 +91,23 @@ function moveCars() {
 	var car_X = rrighter(columnByTag(car));
 	var newTd = "td" + car_Y + car_X;
 
+	var frX = columnByTag(currentFrog);
+	var frY = parseInt(rowByTag(currentFrog));
+	var frogNr = parseInt(currentFrogId.charAt(4));
+	var frogTd = "td" + frY + frX;
+
 	car.alt = newTd;
 	car.setAttribute("cellid", newTd);	
+	car.src = "img/car0.png";
+
+	if (newTd == frogTd) {
+		currentFrog.id = "died" + frogNr;
+		document.getElementById(newTd).removeChild(currentFrog);
+		car.src = "img/car0crashed.png"
+		currentFrog = getActiveFrog();
+		currentFrogId = getCurrentFrogId(currentFrog);
+	}
+
 	document.getElementById(oldTd).removeChild(car);
 	document.getElementById(newTd).appendChild(car);	
 
@@ -105,6 +120,15 @@ function moveCars() {
 
 	car.alt = newTd;
 	car.setAttribute("cellid", newTd);
+	car.src = "img/car0.png";
+
+	if (newTd == frogTd) {
+		currentFrog.id = "died" + frogNr;
+		document.getElementById(newTd).removeChild(currentFrog);
+		car.src = "img/car0crashed.png"
+		currentFrog = getActiveFrog();
+		currentFrogId = getCurrentFrogId(currentFrog);
+	}
 
 	document.getElementById(oldTd).removeChild(car);
 	document.getElementById(newTd).appendChild(car);
@@ -121,6 +145,15 @@ function moveCars() {
 
 		car.alt = newTd;
 		car.setAttribute("cellid", newTd);
+		car.src = "img/car1.png";
+
+		if (newTd == frogTd) {
+			currentFrog.id = "died" + frogNr;			
+			document.getElementById(newTd).removeChild(currentFrog);
+			car.src = "img/car1crashed.png"
+			currentFrog = getActiveFrog();
+			currentFrogId = getCurrentFrogId(currentFrog);
+		}
 
 		document.getElementById(oldTd).removeChild(car);
 		document.getElementById(newTd).appendChild(car);		
@@ -136,6 +169,11 @@ function moveWalkers() {
 	var walkId;
 	let walkCnt = 0;
 
+	var frX = columnByTag(currentFrog);
+	var frY = parseInt(rowByTag(currentFrog));
+	var frogNr = parseInt(currentFrogId.charAt(4));
+	var frogTd = "td" + frY + frX;
+
 	for (walkCnt = 0; walkCnt < 4; walkCnt++) {
 
 		walkId = "person" + walkCnt;
@@ -147,6 +185,21 @@ function moveWalkers() {
 
 		walk.alt = newTd;
 		walk.setAttribute("cellid", newTd);
+		switch (walkId) {
+			case "person0": walk.src = "img/walk4m.png"; break;
+			case "person1": walk.src = "img/walk5m.png"; break;
+			case "person2": walk.src = "img/walk6m.png"; break;
+			case "person3": walk.src = "img/walk3m.png"; break;
+			default: break;
+		}	
+
+		if (newTd == frogTd) {
+			currentFrog.id = "died" + frogNr;
+			document.getElementById(newTd).removeChild(currentFrog);
+			walk.src = "img/walk7m.png"
+			currentFrog = getActiveFrog();
+			currentFrogId = getCurrentFrogId(currentFrog);
+		}
 
 		document.getElementById(oldTd).removeChild(walk);
 		document.getElementById(newTd).appendChild(walk);		
@@ -444,9 +497,9 @@ function frogMove(jumpDir) {
 		document.getElementById(oldTd).appendChild(imgReApear);
 	}
 
-	if (frY == 7 && (nrY <= 6 || nrY >= 8))
+	if (frY == 7 && (nrY <= 5 || nrY >= 8))
 		imgSavedWoodB = null;
-	if (frY == 8 && (nrY <= 7 || nrY >= 9))	
+	if (frY == 8 && (nrY <= 6 || nrY >= 9))	
 		imgSavedWoodT = null;
 
 
