@@ -58,8 +58,8 @@ function frogaLooper(ticks, delay) {
 		headerImg.width = 318;
 		headerImg.height = 31;
 		level++;
-		alert("Level " + level + " completed");
-		setTimeout(function () { window.location.reload(); }, loopDelay); // will call the function after 16 secs.
+		// alert("Level " + level + " completed");
+		setTimeout(function () { window.location.reload(); }, 12000); // will call the function after 16 secs.
 		return; 
 	}
 	if (currentFrog == null) {	

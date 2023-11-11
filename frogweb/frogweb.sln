@@ -1,49 +1,41 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33213.308
+VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "frogWin", "work.darkstar.frogWin\frogWin.csproj", "{9E3D64AA-4F20-42EE-B9F5-921BED3FAA14}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "froga", "..\frogweb\froga\", "{F6A72488-928E-4D0D-9277-6821144D3732}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "froga", "froga\", "{F6A72488-928E-4D0D-9277-6821144D3732}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_51915"
-		Debug.AspNetCompiler.PhysicalPath = "..\frogweb\froga\"
+		Debug.AspNetCompiler.PhysicalPath = "froga\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51915\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_51915"
-		Release.AspNetCompiler.PhysicalPath = "..\frogweb\froga\"
+		Release.AspNetCompiler.PhysicalPath = "froga\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51915\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "51915"
+		SlnRelativePath = "froga\"
 	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9E3D64AA-4F20-42EE-B9F5-921BED3FAA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E3D64AA-4F20-42EE-B9F5-921BED3FAA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E3D64AA-4F20-42EE-B9F5-921BED3FAA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E3D64AA-4F20-42EE-B9F5-921BED3FAA14}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F6A72488-928E-4D0D-9277-6821144D3732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6A72488-928E-4D0D-9277-6821144D3732}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6A72488-928E-4D0D-9277-6821144D3732}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6A72488-928E-4D0D-9277-6821144D3732}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {83EDB181-23E1-40F4-BBF0-83E6FC90970C}
+		SolutionGuid = {BA0C04EA-E14D-4DDC-A87D-0B92A8E9BBB4}
 	EndGlobalSection
 EndGlobal
