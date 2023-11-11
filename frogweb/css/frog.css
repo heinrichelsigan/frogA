@@ -8,6 +8,12 @@ body {
 div {
     line-height: normal;
     vertical-align: middle;
+    /*
+        text-align: center;
+        align-content: center;
+        align-self: center;
+        background-color: black;
+    */
 }
 
     div.frogaDIV {
@@ -15,9 +21,15 @@ div {
         min-width: 360pt;
         height: 84%;
         min-height: 240pt;
-        border-style: none;
+        border-style: double;
+        border-color: white;
+        border-spacing: 2pt;
+        border-width: 2pt;
+        background-color: black;
         /* 
+            align-self: center;
             align-content: center;
+            text-align: center;
             line-height: normal;        
             font-size: medium;
             table-layout: fixed;
@@ -42,9 +54,12 @@ div {
 
     div.footerDiv {
         width: 100%;
-        text-align: left;
-        background-color: #bfbfbf;
+        text-align: center;
+        background-color: black;
+        align-content: center;
         font-size: medium;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
         border-style: none;
         table-layout: fixed;
         inset-block-start: initial;

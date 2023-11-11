@@ -10,17 +10,19 @@ var loopTicks = 0;
 var loopDelay = 1200;
 var frogDied = -1;
 var frogsInWhole = 0;
+var level = 0;
 var gameOver = 0;
 var imgSavedWoodB;
 var imgSavedWoodT;
 
 function frogInit() {
-
+	
 	frogDied = -1;
 	loopTicks = 0;
 	loopDelay = 1200;
 	frogsInWhole = 0;
 	gameOver = 0;
+	document.getElementById("headerImg").src = "img/header.png";
 	window.onkeydown = function (e) { // TODO: pressing two arrow keys at same time
 		if (e.which == 37) {
 			frogMove("left");
@@ -41,16 +43,28 @@ function frogInit() {
 
 
 function restart() {
-	if (gameOver == 1)
+	if (gameOver == 1) { 
+		recreateFrogs();
 		frogInit();
+	}
 }
 
 function frogaLooper(ticks, delay) {
 
-	currentFrog = getActiveFrog();
+	currentFrog = getActiveFrog();	
 	if (currentFrog == null) {
-		headerImg.src = "img/message_gameover.png";
-		gameOver = 1;
+		if (frogsInWhole >= 3) {
+			headerImg.src = "img/message_levelcompleted.png"
+			headerImg.width = 318;
+			headerImg.height = 31;
+			level++;
+		}
+		else {
+			headerImg.src = "img/message_gameover.png";
+			headerImg.width = 318;
+			headerImg.height = 31;
+			gameOver = 1;
+		}
 		return;
 	}
 	currentFrogId = getCurrentFrogId(currentFrog);
@@ -259,14 +273,19 @@ function frogMove(jumpDir) {
 		return;
 
 	if (jumpDir.charAt(0) == 'u') {
-		nrY = upper(frY);										// up 					
+		nrY = upper(frY);										// up 	
+		document.getElementById("aUp").src = "img/a_up.gif";
 	} else if (jumpDir.charAt(0) == 'd') {
 		nrY = below(frY);										// down 		
+		document.getElementById("aDown").src = "img/a_down.gif";
 	}
-	if (jumpDir.charAt(0) == 'r' || jumpDir.charAt(1) == 'r')
+	if (jumpDir.charAt(0) == 'r' || jumpDir.charAt(1) == 'r') {
 		nrX = righter(frX);										// right
-	else if (jumpDir.charAt(0) == 'l' || jumpDir.charAt(1) == 'l')
-		nrX = lefter(frX);										// left	
+		document.getElementById("aRight").src = "img/a_right.gif";
+	} else if (jumpDir.charAt(0) == 'l' || jumpDir.charAt(1) == 'l') {
+		document.getElementById("aLeft").src = "img/a_left.gif";
+		nrX = lefter(frX);										// left
+	}
 
 	var newTd = "td" + nrY + nrX;
 	var newFrog = document.getElementById(currentFrogId);
@@ -492,6 +511,56 @@ function cloneObj(obj) {
 	}
 }
 
+
+function recreateFrogs() {
+	var imgF0 = new Image(36, 27);
+	imgF0.id = "frog0";
+	imgF0.src = "img/frogactive.png";
+	imgF0.alt = "td0d";
+	imgF0.setAttribute("border", 0);	
+	imgF0.setAttribute("title", "ActiveFrog");
+	imgF0.setAttribute("class", "frogaIMG");
+	imgF0.setAttribute("className", "frogaIMG");
+	imgF0.setAttribute("cellid", "td0d");
+	imgF0.setAttribute("idwood", "");
+	document.getElementById("td0d").appendChild(imgF0);
+
+	var imgF1 = new Image(36, 27);
+	imgF1.id = "frog1";
+	imgF1.src = "img/froga.png";
+	imgF1.alt = "td0e";
+	imgF1.setAttribute("border", 0);
+	imgF1.setAttribute("title", "ActiveFrog");
+	imgF1.setAttribute("class", "frogaIMG");
+	imgF1.setAttribute("className", "frogaIMG");
+	imgF1.setAttribute("cellid", "td0e");
+	imgF1.setAttribute("idwood", "");
+	document.getElementById("td0e").appendChild(imgF1);
+
+	var imgF2 = new Image(36, 27);
+	imgF2.id = "frog2";
+	imgF2.src = "img/froga.png";
+	imgF2.alt = "td0f";
+	imgF2.setAttribute("border", 0);
+	imgF2.setAttribute("title", "ActiveFrog");
+	imgF2.setAttribute("class", "frogaIMG");
+	imgF2.setAttribute("className", "frogaIMG");
+	imgF2.setAttribute("cellid", "td0f");
+	imgF2.setAttribute("idwood", "");
+	document.getElementById("td0f").appendChild(imgF2);
+
+	var imgF3 = new Image(36, 27);
+	imgF3.id = "frog2";
+	imgF3.src = "img/froga.png";
+	imgF3.alt = "td0g";
+	imgF3.setAttribute("border", 0);
+	imgF3.setAttribute("title", "ActiveFrog");
+	imgF3.setAttribute("class", "frogaIMG");
+	imgF3.setAttribute("className", "frogaIMG");
+	imgF3.setAttribute("cellid", "td0g");
+	imgF3.setAttribute("idwood", "");
+	document.getElementById("td0g").appendChild(imgF3);
+}
 
 function copyImg(imgC) {
 	var imgD = new Image();
