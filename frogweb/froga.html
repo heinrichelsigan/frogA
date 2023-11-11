@@ -9,22 +9,23 @@
 	<body onload="frogInit()">
 		<div class="frogaDIV" align="center">
 			<div class="frogaDIVHeader">
-				<img class="frogaIMGHeader" src="img/header.png" id="headerImg" border="0" />
+				<img class="frogaIMGHeader" src="img/header.png" id="headerImg" border="0" onclick="restart()" />
 			</div>
 			<table class="frogaTBL" border="0" cellpadding="0" cellpadding="0">
 				<tr id="tr9" class="frogaTR">
 					<td class="frogaTD" width="10%" background="img/swamp0t.png" id="td9a"></td>
 					<td class="frogaTD" width="10%" background="img/swamp0t.png" id="td9b"></td>
 					<td class="frogaTD" width="10%" background="img/frogend0t.png" id="td9c">
-						<img class="frogaIMGWhole" src="img/frogend0t.png"  width="36" height="27" style="visibility: visible" border="0" id="whole0" />
+						<img class="frogaIMGWhole" src="img/frogend0t.png"  width="36" height="27" border="0" id="whole0" cellid="td9c" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/swamp0t.png" id="td9d"></td>
-					<td class="frogaTD" width="10%" background="img/swamp0t.png" id="td9e">
-						<img src="img/arrow_up.png" border="0" id="aLeft" onclick="frogMove('up')" />
+					<td class="frogaTD" width="10%" background="img/frogend0t.png" id="td9e">
+						<!-- img src="img/arrow_up.png" border="0" id="aLeft" onclick="frogMove('up')" /-->
+						<img class="frogaIMGWhole" src="img/frogend0t.png" width="36" height="27" border="0" id="whole1" cellid="td9e" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/swamp0t.png" id="td9f"></td>
 					<td class="frogaTD" width="10%" background="img/frogend0t.png" id="td9g">
-						<img class="frogaIMGWhole" src="img/frogend0t.png" width="36" height="27" style="visibility: visible" border="0" id="whole1" />
+						<img class="frogaIMGWhole" src="img/frogend0t.png" width="36" height="27" border="0" id="whole2" cellid="td9g" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/swamp0t.png" id="td9h"></td>
 					<td class="frogaTD" width="10%" background="img/swamp0t.png" id="td9i"></td>
@@ -48,38 +49,38 @@
 					<td class="frogaTD" width="10%" background="img/water0t.png" id="td7a"></td>
 					<td class="frogaTD" width="10%" background="img/water0t.png" id="td7b"></td>
 					<td class="frogaTD" width="10%" background="img/water1t.png" id="td7c">
-						<img class="frogaIMGWood" src="img/wood0t.png"  width="36" height="27" style="visibility: visible" border="0" id="woodT0" />
+						<img class="frogaIMGWood" src="img/wood0t.png"  width="36" height="27" border="0" id="woodT0" alt="td7c" cellid="td7c" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/water0t.png" id="td7d">
-						<img class="frogaIMGWood" src="img/wood0t.png"  width="36" height="27" style="visibility: visible" border="0" id="woodT1" />
+						<img class="frogaIMGWood" src="img/wood0t.png"  width="36" height="27" border="0" id="woodT1" alt="td7d" cellid="td7d" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/water2t.png" id="td7e"></td>
 					<td class="frogaTD" width="10%" background="img/water0t.png" id="td7f"></td>
 					<td class="frogaTD" width="10%" background="img/water0t.png" id="td7g"></td>
 					<td class="frogaTD" width="10%" background="img/water0t.png" id="td7h">
-						<img class="frogaIMGWood" src="img/wood0t.png"  width="36" height="27" style="visibility: visible" border="0" id="woodT2" />
+						<img class="frogaIMGWood" src="img/wood0t.png"  width="36" height="27" border="0" id="woodT2" alt="td7h" cellid="td7h"  />
 					</td>
 					<td class="frogaTD" width="10%" background="img/water3t.png" id="td7i">
-						<img class="frogaIMGWood" src="img/wood0t.png"  width="36" height="27" style="visibility: visible" border="0" id="woodT3" />
+						<img class="frogaIMGWood" src="img/wood0t.png"  width="36" height="27" border="0" id="woodT3" alt="td7i" cellid="td7i"  />
 					</td>
 					<td class="frogaTD" width="10%" background="img/water0t.png" id="td7j"></td>
 				</tr>
 				<tr id="tr6" class="frogaTR">
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6a"></td>
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6b">
-						<img class="frogaIMGWood" src="img/wood0b.png" width="36" height="27" style="visibility: visible" border="0" id="woodB0" />
+						<img class="frogaIMGWood" src="img/wood0b.png" width="36" height="27" border="0" id="woodB0" alt="td6b" cellid="td6b"  />
 					</td>
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6c">
-						<img class="frogaIMGWood" src="img/wood0b.png" width="36" height="27" style="visibility: visible"  border="0" id="woodB1" />
+						<img class="frogaIMGWood" src="img/wood0b.png" width="36" height="27" border="0" id="woodB1" alt="td6c" cellid="td6c" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6d"></td>
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6e"></td>
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6f"></td>
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6g">
-						<img class="frogaIMGWood" src="img/wood0b.png" width="36" height="27" style="visibility: visible" border="0" id="woodB2" />
+						<img class="frogaIMGWood" src="img/wood0b.png" width="36" height="27" border="0" id="woodB2" alt="td6g" cellid="td6g" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6h">
-						<img class="frogaIMGWood" src="img/wood0b.png" width="36" height="27" style="visibility: visible" border="0" id="woodB3" />
+						<img class="frogaIMGWood" src="img/wood0b.png" width="36" height="27" border="0" id="woodB3" alt="td6h" cellid="td6h"  />
 					</td>
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6i"></td>
 					<td class="frogaTD" width="10%" background="img/water0b.png" id="td6j"></td>
@@ -103,21 +104,21 @@
 				<tr id="tr4" class="frogaTR">
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4a"></td>
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4b">
-						<img src="img/walk4m.png" border="0" id="person0" alt="td4b" />
+						<img src="img/walk4m.png" border="0" id="person0" alt="td4b" cellid="td4b" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4c"></td>
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4d">
-						<img src="img/walk5m.png" border="0" id="person1" alt="td4d" />
+						<img src="img/walk5m.png" border="0" id="person1" alt="td4d" cellid="td4d" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4e"></td>
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4f"></td>
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4g">
-						<img src="img/walk6m.png" border="0" id="person2" alt="td4g" />
+						<img src="img/walk6m.png" border="0" id="person2" alt="td4g" cellid="td4g" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4h"></td>
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4i"></td>
 					<td class="frogaTD" width="10%" background="img/walk1m.png" id="td4j">
-						<img src="img/walk7m.png" border="0" id="person3" alt="td4j" />
+						<img src="img/walk7m.png" border="0" id="person3" alt="td4j" cellid="td4j" />
 					</td>
 				</tr>
 				<tr id="tr3" class="frogaTR">
@@ -134,26 +135,26 @@
 				</tr>
 				<tr id="tr2" class="frogaTR">
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2a">
-						<img src="img/car1.png" border="0" id="car10" alt="td2a" />
+						<img src="img/car1.png" border="0" id="car10" alt="td2a" cellid="td2a" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2b"></td>
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2c"></td>
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2d"></td>
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2e">
-						<img src="img/car1.png" border="0" id="car11" alt="td2e" />
+						<img src="img/car1.png" border="0" id="car11" alt="td2e" cellid="td2e" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2f"></td>
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2g"></td>
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2h"></td>
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2i">
-						<img src="img/car1.png" border="0" id="car12"  alt="td2i" />
+						<img src="img/car1.png" border="0" id="car12"  alt="td2i" cellid="td2i" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/street1t.png" id="td2j"></td>
 				</tr>
 				<tr id="tr1" class="frogaTR">
 					<td class="frogaTD" width="10%" background="img/street1b.png" id="td1a"></td>
 					<td class="frogaTD" width="10%" background="img/street1b.png" id="td1b">
-						<img src="img/car0.png" border="0" id="car00" alt="td1b" />
+						<img src="img/car0.png" border="0" id="car00" alt="td1b" cellid="td1b" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/street1b.png" id="td1c"></td>
 					<td class="frogaTD" width="10%" background="img/street1b.png" id="td1d"></td>
@@ -161,7 +162,7 @@
 					<td class="frogaTD" width="10%" background="img/street1b.png" id="td1f"></td>
 					<td class="frogaTD" width="10%" background="img/street1b.png" id="td1g"></td>
 					<td class="frogaTD" width="10%" background="img/street1b.png" id="td1h">
-						<img src="img/car0.png" border="0" id="car01" alt="td1h" />
+						<img src="img/car0.png" border="0" id="car01" alt="td1h" cellid="td1h" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/street1b.png" id="td1i"></td>
 					<td class="frogaTD" width="10%" background="img/street1b.png" id="td1j"></td>
@@ -173,16 +174,16 @@
 					<td class="frogaTD" width="10%" background="img/meadow1b.png" id="td0b"></td>
 					<td class="frogaTD" width="10%" background="img/meadow1b.png" id="td0c"></td>
 					<td class="frogaTD" width="10%" background="img/meadow1b.png" id="td0d">
-						<img id="frog0" class="frogaIMG" src="img/frogactive.png" alt="td0d" title="ActiveFrog" border="0" />
+						<img id="frog0" class="frogaIMG" src="img/frogactive.png" alt="td0d" title="ActiveFrog" border="0" idwood="" cellid="td0d" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/meadow1b.png" id="td0e">
-						<img id="frog1" class="frogaIMG" src="img/froga.png" alt="td0e" border="0" />
+						<img id="frog1" class="frogaIMG" src="img/froga.png" alt="td0e" border="0" idwood="" cellid="td0e" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/meadow1b.png" id="td0f">
 						<img id="aLeft" src="img/arrow_down.png" border="0" onclick="frogMove('down')" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/meadow1b.png" id="td0g">
-						<img id="frog2" class="frogaIMG" src="img/froga.png" alt="td0g" border="0" />
+						<img id="frog2" class="frogaIMG" src="img/froga.png" alt="td0g" border="0" idwood="" cellid="td0g" />
 					</td>
 					<td class="frogaTD" width="10%" background="img/meadow1b.png" id="td0h"></td>
 					<td class="frogaTD" width="10%" background="img/meadow1b.png" id="td0i"></td>
