@@ -775,7 +775,6 @@ function setFrogsLeft(frogsLeft) {
 	document.getElementById("frogsLeft").innerHTML = frogsLeft;
 }
 
-
 function setFrogsDied(frogsDied) {
 	document.getElementById("frogsDied").innerHTML = frogsDied;
 }
