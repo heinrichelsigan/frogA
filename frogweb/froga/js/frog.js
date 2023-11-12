@@ -134,7 +134,7 @@ function frogaLooper(ticks, delay) {
 		headerImg.height = 36;
 		gameOver = 1;
 
-		setTimeout(function () { frogReStart(true); }, 8000); // will call the function after 8 secs.
+		setTimeout(function () { frogReStart(true); }, 10000); // will call the function after 8 secs.
 		return;
 	}
 	currentFrogId = getCurrentFrogId(currentFrog);

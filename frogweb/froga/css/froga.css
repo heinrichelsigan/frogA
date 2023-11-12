@@ -1,36 +1,23 @@
 ﻿/*
-    2023-11-05  froga.js by Heinrich Elsigan (Copy left)
+    froga.css ©
+    2023-11-05 by Heinrich Elsigan
     https://area23.at/froga/
+    https://darkstar.work/froga/
+    2023-11-12 last change 
 */
-body {
+
+body.frogbody {
+    width: 100%;
 }
 
-
-min-height: 36pt; 
-min-width: 86pt; vertical-align: middle; font-size: larger; text-align: right
-
-div {
+div.froga {
+    width: 92%;
+    min-width: 414pt;
+    height: 84%;
+    min-height: 378pt;
     line-height: normal;
     vertical-align: middle;
-    /*
-        text-align: center;
-        align-content: center;
-        align-self: center;
-        background-color: black;
-    */
-}
-
-    div.frogaDIV {
-        width: 100%;
-        min-width: 360pt;
-        height: 84%;
-        min-height: 240pt;
-        border-style: double;
-        border-color: white;
-        border-spacing: 2pt;
-        border-width: 2pt;
-        background-color: black;
-        /* 
+    /* 
             align-self: center;
             align-content: center;
             text-align: center;
@@ -40,12 +27,32 @@ div {
             inset-block-start: initial;
             inset-block-start: auto;
         */
+    border-style: none;
+    border-color: white;
+    color: white;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    background-color: black;
+}
+
+    div.froga.img {
+        width: 8%;
+        min-width: 36pt;
+        height: 6%;
+        min-height: 27pt;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
     }
 
-    div.frogaDIVHeader {
-        width: 100%;
+    div.froga.frogaHeader {
+        width: 71.11%;
         min-width: 320pt;
-        height: 36pt;
+        height: 8%;
         min-height: 36pt;
         align-content: center;
         line-height: normal;
@@ -55,189 +62,154 @@ div {
         border-spacing: 0px;
         background-repeat: no-repeat;
     }
-        div.frogaDIVHeader#headerLeft {
+
+        div.froga.frogaHeader#headerLeft {
+            height: 8%;
             min-height: 36pt;
+            width: 19.11%;
             min-width: 86pt;
             vertical-align: middle;
             font-size: larger;
             text-align: right;
         }
 
-        div.frogaDIVHeader#leftNotes {
+        div.froga.frogaHeader#leftNotes {
             color: whitesmoke;
-            width: 24pt;
+            width: 5.33%;
+            max-width: 24pt;
             font-size: large;
         }
 
-        div.frogaDIVHeader#frogsInWhole {
+        div.froga.frogaHeader#frogsInWhole {
             color: greenyellow;
         }
 
-        div.frogaDIVHeader#frogsLeft {
+        div.froga.frogaHeader#frogsLeft {
             color: aqua;
             visibility: hidden;
         }
 
-        div.frogaDIVHeader#frogsDied {
+        div.froga.frogaHeader#frogsDied {
             color: gainsboro;
         }
 
-        div.frogaDIVHeader#headerCenterImage {
+        div.froga.frogaHeader#headerCenter {
+            height: 8%;
             min-height: 36pt;
+            width: 66%;
+            width: 297pt;
             min-width: 240pt;
             vertical-align: middle;
             font-size: medium;
             text-align: center;
         }
 
-        div.frogaDIVHeader#headerRight {
+        div.froga.frogaHeader.headerImage {
+            width: 53.33%;
+            min-width: 240pt;
+            height: 8%;
             min-height: 36pt;
+            padding: 0 0 0 0;
+            margin: 0 0 0 0;
+            border-style: none;
+            border-spacing: 0px;
+            border-width: 0px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        div.froga.frogaHeader#headerRight {
+            height: 7.11%;
+            min-height: 36pt;
+            width: 19.11%;
             min-width: 86pt;
             vertical-align: middle;
             font-size: larger;
             text-align: left;
         }
 
-        div.frogaDIVHeader#frogsLevel {
+        div.froga.frogaHeader#frogsLevel {
             color: orangered;
         }
 
-        div.frogaDIVHeader#frogaLevel {
+        div.froga.frogaHeader#frogaLevel {
             color: greenyellow;
         }
 
-        div.frogaDIVHeader#rightNotes {
+        div.froga.frogaHeader#rightNotes {
             color: whitesmoke;
-            width: 24pt;
+            width: 5.33%;
+            max-width: 24pt;
             font-size: large;
         }
 
-div.footerDiv {
-    width: 100%;
-    text-align: center;
-    background-color: black;
-    align-content: center;
-    font-size: medium;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-style: none;
-    table-layout: fixed;
-    inset-block-start: initial;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
-}
-
-    div.footerDiv#spanLeft {
+    div.froga.frogaFooter {
+        width: 92%;
+        min-width: 414pt;
+        /* height: 6%; */
         min-height: 27pt;
-        min-width: 36pt;
-        width: 50%;
-        vertical-align: middle;
-        text-align: left;
-    }
-
-    div.footerDiv#spanRight {
-        min-height: 27pt;
-        min-width: 36pt;
-        width: 50%;
-        vertical-align: middle;
-        text-align: right;
-    }
-    table {
-        width: 72%;
-        min-width: 360pt;
-        height: 54%;
-        min-height: 270pt;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        background-repeat: no-repeat;
-    }
-
-    table.frogaTBL {
-        width: 360pt;
-        min-width: 360pt;
-        height: 270pt;
-        min-height: 270pt;
+        text-align: center;
+        background-color: black;
         align-content: center;
+        font-size: medium;
         padding: 0 0 0 0;
         margin: 0 0 0 0;
         border-style: none;
-        border-spacing: 0px;
-        background-repeat: no-repeat;
+        table-layout: fixed;
+        inset-block-start: initial;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
     }
 
-tr {
-    /*
-        width: 72%;
-        min-width: 360pt;
-        background-size: 100% 100%;
-    */
-    width: 72%;
+        div.froga.frogaFooter#spanLeft {
+            height: 6%;
+            min-height: 27pt;
+            width: 50%;
+            min-width: 225pt;
+            vertical-align: middle;
+            text-align: left;
+        }
+
+        div.froga.frogaFooter#spanRight {
+            height: 6%;
+            min-height: 27pt;
+            width: 50%;
+            min-width: 225pt;
+            vertical-align: middle;
+            text-align: right;
+        }
+
+
+table.frogaTable {
+    width: 80%;
     min-width: 360pt;
-    height: 27pt;
-    min-height: 27pt;
+    height: 60%;
+    min-height: 270pt;
+    align-content: center;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0px;
+    background-repeat: no-repeat;
+}
+
+tr.frogaTr {
+    width: 80%;
+    min-width: 360px;
+    height: 6%;
+    min-height: 27px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
     border-spacing: 0px;
     border-width: 0px;
     background-repeat: no-repeat;
+    /* background-size: 100% 100%; */
 }
 
-    tr.frogaTR {
-        /*
-            width: 72%;
-            min-width: 360pt;
-            background-size: 100% 100%;
-        */
-        width: 360pt;
-        min-width: 360pt;
-        height: 27pt;
-        min-height: 27pt;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
-        background-repeat: no-repeat;
-    }
-
-
-td {
-    width: 36pt;
-    min-width: 36pt;
-    height: 27pt;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
-    background-repeat: no-repeat;
-    /*
-        background-size: 100% 100%;
-    */
-}
-
-    td.frogaTD {
-        width: 36pt;
-        min-width: 36pt;
-        height: 27pt;
-        min-height: 27pt;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
-
-
-img {
-    width: 36pt;
-    min-width: 36pt;
-    height: 27pt;
+td.frogaTd {
+    width: 8%;
+    /* min-width: 36pt; */
+    height: 6%;
     min-height: 27pt;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
@@ -248,75 +220,81 @@ img {
     background-size: 100% 100%;
 }
 
-    img.frogaIMGWood {
-        width: 36pt;
-        min-width: 36pt;
-        height: 27pt;
-        min-height: 27pt;
-        visibility: visible;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
-        background-repeat: no-repeat;
-        z-index: 100;
-        /*
-            backface-visibility: revert;
-            background-size: 100% 100%;
-        */
-    }
+img.frogaWood {
+    width: 100%;
+    min-width: 36pt;
+    height: 100%;
+    min-height: 27pt;
+    visibility: visible;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0px;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    z-index: 100;
+    /* backface-visibility: revert; background-size: 100% 100%; */
+}
 
-    img.frogaIMGHeader {
-        width: 240pt;
-        min-width: 240pt;
-        height: 36pt;
-        min-height: 32pt;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
+img.frogaImage {
+    width: 100%;
+    min-width: 36pt;
+    height: 100%;
+    min-height: 27pt;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0px;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    /* background-size: 100% 100%; */
+}
 
-    img#aLeft, img#aRight {
-        width: 32pt;
-        min-width: 32pt;
-        height: 27pt;
-        min-height: 27pt;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
+img.frogaImageWhole {
+    width: 100%;
+    min-width: 36pt;
+    height: 100%;
+    min-height: 27pt;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0px;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    /* background-size: 100% 100%; */
+}
 
-    img.frogaIMG {
-        width: 36pt;
-        min-width: 36pt;
-        height: 27pt;
-        min-height: 27pt;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
+img.frogaImage#frog0,
+img.frogaImage#frog1,
+img.frogaImage#frog2,
+img.frogaImage#frog3 {
+    width: 100%;
+    min-width: 36pt;
+    height: 100%;
+    min-height: 27pt;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style:;
+    border-spacing: 0px;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    /* background-size: 100% 100%; */
+}
 
-    img#frog0, img#frog1, img#frog2 {
-        min-width: 36pt;
-        min-height: 27pt;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
+
+img#aUp,
+img#aDown,
+img#aLeft,
+img#aRight {
+    width: 7.11%;
+    min-width: 32pt;
+    height: 6%;
+    min-height: 27pt;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0px;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
