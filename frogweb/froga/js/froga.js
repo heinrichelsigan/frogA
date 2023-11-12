@@ -97,6 +97,8 @@ function frogLoad() {
 		default: loopDelay = 750; break;
 	}
 	setLevel(level);
+	setFrogsInWhole(frogsInWhole);
+	setFrogsDied(frogsDied);
 
 	fX = 'd';
 	fY = 0;
