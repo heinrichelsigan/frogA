@@ -7,7 +7,13 @@
 */
 
 body.frogbody {
-    width: 100%;
+    /* width: 96%; 
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0;
+    border-width: 0;
+    */
 }
 
 div.froga {
@@ -26,13 +32,14 @@ div.froga {
             table-layout: fixed;
             inset-block-start: initial;
             inset-block-start: auto;
-        */
+
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
     border-style: none;
-    border-color: white;
-    color: white;
-    border-spacing: 0pt;
-    border-width: 0pt;
+    border-spacing: 0;
+    border-width: 0;
     background-color: black;
+                */
 }
 
     div.froga.img {
@@ -43,8 +50,8 @@ div.froga {
         padding: 0 0 0 0;
         margin: 0 0 0 0;
         border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
+        border-spacing: 0;
+        border-width: 0;
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
@@ -216,7 +223,7 @@ td.frogaTd {
     border-style: none;
     border-spacing: 0px;
     border-width: 0px;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-size: 100% 100%;
 }
 
