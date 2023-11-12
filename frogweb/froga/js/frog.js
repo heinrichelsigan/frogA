@@ -4,7 +4,7 @@
 	https://area23.at/froga/froga.html
 */
 
-var loopDelay = 1200,
+var loopDelay = 1500,
 	loopTicks = 0;
 var level = 0,
 	frogsDied = 0,
@@ -160,9 +160,6 @@ function moveCars() {
 	var carId = "car00";
 	var car = document.getElementById(carId);
 	var oldTd = car.getAttribute("cellid");
-	// var car_Y = rowByTag(car);
-	// var car_X = rrighter(columnByTag(car));
-	// var newTd = "td" + car_Y + car_X;
 	var newTd = getNewTdPositionByMoving(car, 'rr');
 
 	var frX = columnByTag(currentFrog);
@@ -170,7 +167,6 @@ function moveCars() {
 	var frogNr = parseInt(currentFrogId.charAt(4));
 	var frogTd = "td" + frY + frX;
 
-	// car.alt = newTd;
 	car.setAttribute("cellid", newTd);
 	car.src = "img/car0.png";
 
@@ -181,7 +177,6 @@ function moveCars() {
 		changeImagePlaySound(car, "img/car0crashed.png", "audio/frog_crash.ogg");
 		currentFrog = getActiveFrog();
 		currentFrogId = getCurrentFrogId(currentFrog);
-
 	}
 
 	document.getElementById(oldTd).removeChild(car);
@@ -349,9 +344,11 @@ function moveWoods() {
 				imgSavedWoodT.setAttribute("cellid", newTd);
 
 			try {
-				wood.parentElement.removeChild(wood);
+				var parentWood = wood.parentElement;
+				if (parentWood != null && parentWood.childElementCount > 0)
+					parentWood.removeChild(wood);
 			} catch (ex3) {
-				alert("wood.parentElement.id=" + wood.parentElemen.id + "wood.id=" + wood.id + "\r\nException: " + x3);
+				// alert("wood.parentElement.id=" + wood.parentElemen.id + "wood.id=" + wood.id + "\r\nException: " + x3);
 			}
 
 			newWood.setAttribute("cellid", newTd);
@@ -492,10 +489,11 @@ function frogMove(jumpDir) {
 		}
 	}
 
-	if (nrY == 8)
-		newFrog.src = "img/meadow2t.png";
+	// if (nrY == 8)
+	// 	newFrog.src = "img/meadow2t.png";
 
-	if (nrY == 9) {
+	// if (nrY == 9) {
+	if (nrY == 8) {
 		woodIt = 0;
 		imgDisApear = null;
 		while (imgDisApear == null && woodIt < frogWholeMax) {
@@ -555,7 +553,7 @@ function frogMove(jumpDir) {
 
 	if (frY == 7 && (nrY <= 5 || nrY >= 8))
 		imgSavedWoodB = null;
-	if (frY == 8 && (nrY <= 6 || nrY >= 9))
+	if (frY == 8 && (nrY <= 6 || nrY >= 8))
 		imgSavedWoodT = null;
 }
 
@@ -577,7 +575,6 @@ function frogInRiverOrSwampOrWhole(aFrog, deathImg, deathSound, idPrefix, deathT
 	if (deathSound != null && deathSound.length > 1) {
 		setTimeout(function () { frogSound(deathSound) }, 100);
 	}
-	// TODO: add sound
 	return frogNr;
 }
 
@@ -723,7 +720,9 @@ function reCreateFrogs() {
 	// first clear all bottom and top table cells, so that there rest neither frogs nor wholes there
 	var tdsToClear = [
 		"td0a", "td0b", "td0c", "td0d", "td0e", "td0f", "td0g", "td0h", "td0i",
-		"td9a", "td9b", "td9c", "td9d", "td9e", "td9f", "td9g", "td9h", "td9i"];
+		"td8a", "td8b", "td8c", "td8d", "td8e", "td8f", "td8g", "td8h", "td8i"
+		// "td9a", "td9b", "td9c", "td9d", "td9e", "td9f", "td9g", "td9h", "td9i"
+	];
 	tdsToClear.forEach(function (tdId) {
 		tableCell = document.getElementById(tdId);
 		if (tableCell != null && tableCell.children != null && tableCell.children.length > 0) {
@@ -793,8 +792,8 @@ function reCreateFrogs() {
 	imgW0.setAttribute("title", "");
 	imgW0.setAttribute("class", "frogaImageWhole");
 	imgW0.setAttribute("className", "frogaImageWhole");
-	imgW0.setAttribute("cellid", "td9c");
-	document.getElementById("td9c").appendChild(imgW0);
+	imgW0.setAttribute("cellid", "td8c");
+	document.getElementById("td8c").appendChild(imgW0);
 
 	var imgW1 = new Image(36, 27);
 	imgW1.id = "whole1";
@@ -804,8 +803,8 @@ function reCreateFrogs() {
 	imgW1.setAttribute("title", "");
 	imgW1.setAttribute("class", "frogaImageWhole");
 	imgW1.setAttribute("className", "frogaImageWhole");
-	imgW1.setAttribute("cellid", "td9e");
-	document.getElementById("td9e").appendChild(imgW1);
+	imgW1.setAttribute("cellid", "td8e");
+	document.getElementById("td8e").appendChild(imgW1);
 
 	var imgW2 = new Image(36, 27);
 	imgW2.id = "whole2";
@@ -815,21 +814,26 @@ function reCreateFrogs() {
 	imgW2.setAttribute("title", "");
 	imgW2.setAttribute("class", "frogaImageWhole");
 	imgW2.setAttribute("className", "frogaImageWhole");
-	imgW2.setAttribute("cellid", "td9g");
-	document.getElementById("td9g").appendChild(imgW2);
+	imgW2.setAttribute("cellid", "td8g");
+	document.getElementById("td8g").appendChild(imgW2);
 
-	var imgW3 = new Image(36, 27);
-	imgW3.id = "whole3";
-	imgW3.src = "img/frogend0t.png";
-	imgW3.alt = "WHOLE 3";
-	imgW3.setAttribute("border", 0);
-	imgW3.setAttribute("title", "");
-	imgW3.setAttribute("class", "frogaImageWhole");
-	imgW3.setAttribute("className", "frogaImageWhole");
-	imgW3.setAttribute("cellid", "td9i");
-	document.getElementById("td9i").appendChild(imgW3);
-	document.getElementById("td9i").setAttribute("background", "img/frogend0t.png");
-	frogWholeMax = 4;
+	if (level > 0) {
+		var imgW3 = new Image(36, 27);
+		imgW3.id = "whole3";
+		imgW3.src = "img/frogend0t.png";
+		imgW3.alt = "WHOLE 3";
+		imgW3.setAttribute("border", 0);
+		imgW3.setAttribute("title", "");
+		imgW3.setAttribute("class", "frogaImageWhole");
+		imgW3.setAttribute("className", "frogaImageWhole");
+		imgW3.setAttribute("cellid", "td8i");
+		document.getElementById("td8i").appendChild(imgW3);
+		document.getElementById("td8i").setAttribute("background", "img/frogend0t.png");
+		frogWholeMax = 4;
+	} else {
+		document.getElementById("td8i").setAttribute("background", "img/swamp0t.png");
+		frogWholeMax = 3;
+	}
 }
 
 function copyImg(imgC) {
@@ -860,7 +864,7 @@ function copyImg(imgC) {
 
 function upper(row) {
 	let rowUp = parseInt(row);
-	if (rowUp < 9)	// TODO: add constant here for different froga boards
+	if (rowUp < 8)	// TODO: add constant here for different froga boards
 		rowUp++;
 	return rowUp;
 }
