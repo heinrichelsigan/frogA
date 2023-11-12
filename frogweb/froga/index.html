@@ -7,19 +7,22 @@
 	</head>
 
 	<body onload="frogInit()">
+		<!-- embed src="Pfad/zur/Datei/sound.mid" autostart="true" loop="true" hidden="true" height="0" width="0"-->
 		<div class="frogaDIV" align="center">
 			<div class="frogaDIVHeader">
-				<span id="headerLeft" style="min-height: 36pt; min-width: 60pt; vertical-align: middle; font-size: larger; text-align: right " align="right" valign="middle">
+				<span id="headerLeft" style="min-height: 36pt; min-width: 86pt; vertical-align: middle; font-size: larger; text-align: right " align="right" valign="middle">
+					<span id="leftNotes" style="color: whitesmoke; width: 24pt; font-size: large"></span>
 					<span id="frogsInWhole" alt="frogs in whole" style="color:greenyellow">0</span> 
-					<span id="frogsLeft" alt="frogs left" style="color:aqua;">4</span>					
+					<span id="frogsLeft" alt="frogs left" style="color:aqua; visibility: hidden">4</span>					
 					<span id="frogsDied" alt="frogs died" style="color:gainsboro">0</span>
 				</span>
 				<span style="min-height: 36pt; min-width: 240pt; vertical-align:middle; font-size: medium; text-align: center" align="center" valign="middle">
 					<img class="frogaIMGHeader" src="img/header.png" id="headerImg" border="0" onclick="restart()" />
 				</span>
-				<span id="headerRight" style="min-height: 36pt; min-width: 60pt; vertical-align: middle; font-size: larger; text-align: left" align="left" valign="middle">
+				<span id="headerRight" style="min-height: 36pt; min-width: 86pt; vertical-align: middle; font-size: larger; text-align: left" align="left" valign="middle">
 					&nbsp;<span id="frogsLeft" alt="frogs left" style="color:orangered;">Level</span> 
 					<span id="frogaLevel" alt="froga level" style="color: greenyellow">0</span>
+					<span id="rightNotes" style="color: whitesmoke; width: 24pt; font-size: large"></span>
 				</span>				
 			</div>
 			<table class="frogaTBL" border="0" cellpadding="0" cellpadding="0">
@@ -181,13 +184,13 @@
 						<img id="frog0" cellid="td0d" idwood="" class="frogaIMG" src="img/frogactive.png" title="ActiveFrog" border="0" />
 					</td>
 					<td id="td0e" class="frogaTD" width="10%" background="img/meadow1b.png">
-						<img id="frog1" cellid="td0e" idwood="" class="frogaIMG" src="img/froga.png" border="0" />
+						<img id="frog1" cellid="td0e" idwood="" class="frogaIMG" src="img/frogpassive.png" border="0" />
 					</td>
 					<td id="td0f" class="frogaTD" width="10%" background="img/meadow1b.png">
-						<img id="frog2" class="frogaIMG" src="img/froga.png" border="0" idwood="" cellid="td0f" />
+						<img id="frog2" class="frogaIMG" src="img/frogpassive.png" border="0" idwood="" cellid="td0f" />
 					</td>
 					<td id="td0g" class="frogaTD" width="10%" background="img/meadow1b.png">
-						<img id="frog3" cellid="td0g" idwood="" class="frogaIMG" src="img/froga.png" border="0" />
+						<img id="frog3" cellid="td0g" idwood="" class="frogaIMG" src="img/frogpassive.png" border="0" />
 					</td>
 					<td id="td0h" class="frogaTD" width="10%" background="img/meadow1b.png"></td>
 					<td id="td0i" class="frogaTD" width="10%" background="img/meadow1b.png"></td>
