@@ -14,12 +14,14 @@
 */
 
 body.frogbody {
-    width: 100%;    
+    border-color: white;
+    color: white;
+    background-color: black;
 }
 
 div.froga {
-    width: 92%;
-    min-width: 414pt;
+    width: 86%;
+    min-width: 387pt;
     height: 84%;
     min-height: 378pt;
     line-height: normal;
@@ -37,31 +39,34 @@ div.froga {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
+    border-spacing: 0px;
+    border-width: 0px;
     border-color: white;
     color: white;
-    border-spacing: 0pt;
-    border-width: 0pt;
     background-color: black;
 }
 
     div.froga.frogaHeader {
-        width: 71.11%;
-        min-width: 320pt;
-        height: 8%;
-        min-height: 36pt;
+        width: 80%;
+        min-width: 360pt;
+        height: 10%;
+        min-height: 45pt;
         align-content: center;
         line-height: normal;
         padding: 0 0 0 0;
         margin: 0 0 0 0;
         border-style: none;
         border-spacing: 0px;
+        border-color: white;
+        color: white;
+        background-color: black;
         background-repeat: no-repeat;
     }
         div.froga.frogaHeader#headerLeft {
-            height: 8%;
-            min-height: 36pt;
-            width: 19.11%;
-            min-width: 86pt;
+            height: 10%;
+            min-height: 45pt;
+            width: 20%;
+            min-width: 90pt;
             vertical-align: middle;
             font-size: larger;
             text-align: right;
@@ -83,20 +88,19 @@ div.froga {
             color: gainsboro;
         }
         div.froga.frogaHeader#headerCenter {
-            height: 8%;
-            min-height: 36pt;
+            height: 10%;
+            min-height: 45pt;
             width: 66%;
-            width: 297pt;
-            min-width: 240pt;
+            min-width: 297pt;
             vertical-align: middle;
             font-size: medium;
             text-align: center;
         }
         div.froga.frogaHeader.headerImage {
-            width: 53.33%;
-            min-width: 240pt;
-            height: 8%;
-            min-height: 36pt;
+            width: 60%;
+            min-width: 270pt;
+            height: 10%;
+            min-height: 45pt;
             padding: 0 0 0 0;
             margin: 0 0 0 0;
             border-style: none;
@@ -106,8 +110,8 @@ div.froga {
             background-size: 100% 100%;
         }
         div.froga.frogaHeader#headerRight {
-            height: 7.11%;
-            min-height: 36pt;
+            height: 10%;
+            min-height: 45pt;
             width: 19.11%;
             min-width: 86pt;
             vertical-align: middle;
@@ -128,36 +132,44 @@ div.froga {
         }
 
     div.froga.frogaFooter {
-        width: 92%;
-        min-width: 414pt;
-        /* height: 6%; */
-        min-height: 27pt;
+        width: 80%;
+        min-width: 360pt;
+        height: 8%;
+        min-height: 36pt;
         text-align: center;
-        background-color: black;
         align-content: center;
         font-size: medium;
         padding: 0 0 0 0;
         margin: 0 0 0 0;
         border-style: none;
+        border-color: white;
+        color: white;
+        background-color: black;
         table-layout: fixed;
         inset-block-start: initial;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
     }
         div.froga.frogaFooter#spanLeft {
-            height: 6%;
-            min-height: 27pt;
-            width: 50%;
-            min-width: 225pt;
+            height: 8%;
+            min-height: 36pt;
+            width: 40%;
+            min-width: 180pt;
             vertical-align: middle;
             text-align: left;
+            border-color: white;
+            color: white;
+            background-color: black;
         }
         div.froga.frogaFooter#spanRight {
-            height: 6%;
-            min-height: 27pt;
-            width: 50%;
-            min-width: 225pt;
+            height: 8%;
+            min-height: 36pt;
+            width: 40%;
+            min-width: 180pt;
             vertical-align: middle;
             text-align: right;
+            border-color: white;
+            color: white;
+            background-color: black;
         }
 
 
@@ -174,17 +186,17 @@ div.froga {
         background-repeat: no-repeat;
     }
         div.froga.table.frogaTable.tr.frogaTr {
-            width: 80%;
-            min-width: 360px;
+            width: 8%;
+            /* min-width: 36pt; */
             height: 6%;
-            min-height: 27px;
+            min-height: 27pt;
             padding: 0 0 0 0;
             margin: 0 0 0 0;
             border-style: none;
             border-spacing: 0px;
             border-width: 0px;
-            background-repeat: no-repeat;
-            /* background-size: 100% 100%; */
+            /* background-repeat: no-repeat; */
+            background-size: 100% 100%;
         }
             div.froga.table.frogaTable.tr.frogaTr.td.frogaTd {
                 width: 8%;
