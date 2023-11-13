@@ -76,12 +76,13 @@ function frogInit() { // frogInit will be called on 1st time loading
 }
 
 function frogReStart(repeatLevel) {
-	if (repeatLevel)
+	if (repeatLevel) {
 		gameOver = 0;
-
-	// TODO: fix this
-	reCreateFrogs();
-	frogLoad();
+		window.location.reload();
+	} else { // TODO: fix this
+		reCreateFrogs();
+		frogLoad();
+	}
 }
 
 function frogLoad() {
