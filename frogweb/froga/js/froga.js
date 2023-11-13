@@ -392,13 +392,13 @@ function frogMove(jumpDir) {
 	newFrog.setAttribute("idwood", "");
 
 	if (nrY == 2)
-		newFrog.src = "img/street3b.png";
+		newFrog.src = "img/frogactive.png";
 	if (nrY == 3)
-		newFrog.src = "img/street2t.png";
+		newFrog.src = "img/frogactive.png";
 	if (nrY == 4)
-		newFrog.src = "img/meadow2m.png";
+		newFrog.src = "img/frogactive.png";
 	if (nrY == 5)
-		newFrog.src = "img/walk2m.png";
+		newFrog.src = "img/frogactive.png";
 	// if (nrY == 5)
 	//	newFrog.src = "img/meadow2t.png";
 
