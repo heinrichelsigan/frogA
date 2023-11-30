@@ -149,7 +149,7 @@ function frogaLooper(ticks, delay) {
 		moveWalkers();
 		moveWoods();
 	} catch (exMove) {
-		alert(exMove)
+		// alert(exMove)
 	}
 
 	loopTicks = ticks + 1;
@@ -332,7 +332,7 @@ function moveWoods() {
 			try {
 				wood.parentElement.removeChild(wood);
 			} catch (ex3) {
-				alert("wood.parentElement.id=" + wood.parentElemen.id + "wood.id=" + wood.id + "\r\nException: " + x3);
+				// alert("wood.parentElement.id=" + wood.parentElemen.id + "wood.id=" + wood.id + "\r\nException: " + x3);
 			}
 
 			newWood.setAttribute("cellid", newTd);
