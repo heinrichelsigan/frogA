@@ -376,13 +376,14 @@ function moveFrog(jumpDirection) {
 			if (startObj != null) {
 				var frogPrae = document.getElementById("frogPre");
 				if (frogPrae != null)
-					frogPrae.innerText = (char)(7);
+					frogPrae.innerText = String.fromCharCode(7) + '\a';
 
-				let leftNotes = document.getElementById("leftNotes");
-					leftNotes.innerHTML = "&#07;"
+				// let leftNotes = document.getElementById("leftNotes");
+				// 	leftNotes.innerHTML = String.fromCharCode(7) + "&#07;"
 				console.log('\a');
-				console.log((char)(7));
-				console.error('\a');
+				console.log(String.fromCharCode(7));
+				console.error('\x07');
+				console.error(String.fromCharCode(7));
 
 				shouldReturn = true;
 			}
