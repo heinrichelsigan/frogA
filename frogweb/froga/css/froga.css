@@ -289,20 +289,7 @@ div.froga {
             background-repeat: no-repeat;
             z-index: 100;
             /* backface-visibility: revert; background-size: 100% 100%; */
-        }
-        div.froga.img.frogaImageHole {
-            width: 100%;
-            min-width: 36pt;
-            height: 100%;
-            min-height: 27pt;
-            padding: 0 0 0 0;
-            margin: 0 0 0 0;
-            border-style: none;
-            border-spacing: 0px;
-            border-width: 0px;
-            background-repeat: no-repeat;
-            /* background-size: 100% 100%; */
-        }
+        }        
         div.froga.img.frogaImage {
             width: 100%;
             min-width: 36pt;
@@ -349,3 +336,26 @@ div.froga {
             background-size: 100% 100%;
         }
 
+
+td.frogaTd.img,
+td.frogaTd.img.frogaImageHole,
+td.frogaTd.img.frogaImageHole#hole0,
+td.frogaTd.img.frogaImageHole#hole1,
+td.frogaTd.img.frogaImageHole#hole2,
+td.frogaTd.img.frogaImageHole#hole3,
+td.frogaTd.img#hole0,
+td.frogaTd.img#hole1,
+td.frogaTd.img#hole2,
+td.frogaTd.imghole3 {
+    width: 100%;
+    min-width: 36pt;
+    height: 100%;
+    min-height: 27pt;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0px;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

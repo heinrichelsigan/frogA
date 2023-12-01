@@ -358,7 +358,7 @@ function moveFrog(jumpDirection) {
 	}
 
 	// TODO: better use newTd = getNewTdPositionByMoving(car, 'rr');
-	var newTd	= "td" + nrY + nrX;
+	var newTd = "td" + nrY + nrX;
 	var newFrog = document.getElementById(currentFrogId);
 
 	newFrog.id = currentFrogId;
@@ -770,8 +770,8 @@ function reCreateFrogs() {
 	imgW1.alt = "HOLE 1";
 	imgW1.setAttribute("border", 0);
 	imgW1.setAttribute("title", "");
-	imgW1.setAttribute("class", "frogaImageHole");
-	imgW1.setAttribute("className", "frogaImageHole");
+	imgW1.setAttribute("class", "frogaImage");
+	imgW1.setAttribute("className", "frogaImage");
 	imgW1.setAttribute("cellid", "td8e");
 	document.getElementById("td8e").appendChild(imgW1);
 
@@ -781,8 +781,8 @@ function reCreateFrogs() {
 	imgW2.alt = "HOLE 2";
 	imgW2.setAttribute("border", 0);
 	imgW2.setAttribute("title", "");
-	imgW2.setAttribute("class", "frogaImageHole");
-	imgW2.setAttribute("className", "frogaImageHole");
+	imgW2.setAttribute("class", "frogaImage");
+	imgW2.setAttribute("className", "frogaImage");
 	imgW2.setAttribute("cellid", "td8g");
 	document.getElementById("td8g").appendChild(imgW2);
 
@@ -792,8 +792,8 @@ function reCreateFrogs() {
 	imgW3.alt = "HOLE 3";
 	imgW3.setAttribute("border", 0);
 	imgW3.setAttribute("title", "");
-	imgW3.setAttribute("class", "frogaImageHole");
-	imgW3.setAttribute("className", "frogaImageHole");
+	imgW3.setAttribute("class", "frogaImage");
+	imgW3.setAttribute("className", "frogaImage");
 	imgW3.setAttribute("cellid", "td8i");
 	document.getElementById("td8i").appendChild(imgW3);
 	document.getElementById("td8i").setAttribute("background", "img/frogHole.png");
@@ -801,7 +801,9 @@ function reCreateFrogs() {
 }
 
 function setFrogsInHole(inHole) {
-	document.getElementById("frogsInHole").innerHTML = inHole;
+	var spanInHole = document.getElementById("frogsInHole");
+	if (spanInHole != null)
+		spanInHole.innerText = inHole;
 }
 
 function setFrogsLeft(frogsLeft) {
