@@ -368,7 +368,7 @@ function moveFrog(jumpDirection) {
 
 	var shouldReturn = false;
 	if (nrY == 1) {
-		var startObjects = ["meadow0b0", "frog1", , "frog2", "frog3", "meadow0b1", "meadow0b2"];
+		var startObjects = ["meadow0b0", "frog1", , "frog2", "frog3", "meadow0b1"];
 		let _startObj_Id = "";
 		var startObj = null;
 		startObjects.forEach(function (_startObj_Id) {
