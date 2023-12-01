@@ -406,7 +406,7 @@ function frogMove(jumpDir) {
 	newFrog.id = currentFrogId;
 	newFrog.title = "ActiveFrog";
 	newFrog.border = "0";
-	newFrog.src = "img/frogactive.png";
+	newFrog.src = "img/frogActive.gif";
 	newFrog.setAttribute("idwood", "");
 
 	if (nrY == 1)
@@ -654,7 +654,7 @@ function getActiveFrog() {
 		if (currentFrog != null) {
 			if (currentFrog.title != "ActiveFrog")
 				currentFrog.title = "ActiveFrog";
-			// currentFrog.src = "img/frogactive.png";
+			// currentFrog.src = "img/frogActive.gif";
 			fY = rowByTag(currentFrog);
 			fX = columnByTag(currentFrog)
 			return currentFrog;
@@ -738,7 +738,7 @@ function reCreateFrogs() {
 	// recreate frog images dynamically
 	var imgF0 = new Image(36, 27);
 	imgF0.id = "frog0";
-	imgF0.src = "img/frogactive.png";
+	imgF0.src = "img/frogActive.gif";
 	imgF0.alt = "FROG 0";
 	imgF0.setAttribute("border", 0);
 	imgF0.setAttribute("title", "ActiveFrog");

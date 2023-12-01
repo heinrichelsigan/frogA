@@ -77,7 +77,7 @@ function frogLoad() {
 	document.getElementById("headerImg").src = "img/header.png";
 	document.getElementById("headerImg").focus();
 	document.getElementById("headerImg").blur();
-	document.getElementById("frog0").focus();	
+	document.getElementById("frog0").focus();
 
 	setTimeout(function () { frogaLooper(loopTicks, loopDelay) }, loopDelay); // will call function after loopDelay milli seconds.
 }
@@ -95,7 +95,7 @@ function frogaLooper(ticks, delay) {
 	currentFrog = getActiveFrog();
 
 	// level completed
-	if (frogsInWhole >= frogWholeMax) { 
+	if (frogsInWhole >= frogWholeMax) {
 		headerImg.src = "img/message_levelcompleted.png"
 		headerImg.height = 36;
 		level++;
@@ -104,7 +104,7 @@ function frogaLooper(ticks, delay) {
 		return;
 	}
 	// game over
-	if (currentFrog == null) { 
+	if (currentFrog == null) {
 		headerImg.src = "img/message_gameover.png";
 		headerImg.height = 36;
 		gameOver = 1;
@@ -149,7 +149,7 @@ function moveCars() {
 		newTd = getNewTdPositionByMoving(car, 'll');
 
 		car.setAttribute("cellid", newTd);
-		car.src = "img/car1.png";
+		car.src = "img/car3.gif";
 
 		if (newTd == frogTd) {
 			currentFrog.id = "died" + frogNr;
@@ -174,7 +174,7 @@ function moveCars() {
 		newTd = getNewTdPositionByMoving(car, 'rr');
 
 		car.setAttribute("cellid", newTd);
-		car.src = "img/car0.png";
+		car.src = "img/car2.gif";
 
 		if (newTd == frogTd) {
 			currentFrog.id = "died" + frogNr;
@@ -363,12 +363,12 @@ function moveFrog(jumpDirection) {
 	newFrog.id = currentFrogId;
 	newFrog.title = "ActiveFrog";
 	newFrog.border = "0";
-	newFrog.src = "img/frogactive.png";
+	newFrog.src = "img/frogActive.gif";
 	newFrog.setAttribute("idwood", "");
 
 	var shouldReturn = false;
-	if (nrY == 1) {
-		var startObjects = ["meadow0b0", "frog1", , "frog2", "frog3", "meadow0b1"];
+	if (nrY == 1 || nrY == 4) {
+		var startObjects = ["meadow0b0", "frog1", "frog2", "frog3", "meadow0b1", "meadow0m0"];
 		let _startObj_Id = "";
 		var startObj = null;
 		startObjects.forEach(function (_startObj_Id) {
@@ -421,11 +421,11 @@ function moveFrog(jumpDirection) {
 				if (frY == 6)
 					imgReApear = imgSavedWoodB;
 				imgSavedWoodB = copyImg(imgDisApear);
-				newFrog.src = "img/frogOnWoodB.png#" + woodIt;
+				newFrog.src = "img/frogOnWoodB.gif#" + woodIt;
 				newFrog.setAttribute("idwood", woodId);
 				woodIt = 4;
 				break;
-			}			
+			}
 
 			woodIt++;
 		}
@@ -446,7 +446,7 @@ function moveFrog(jumpDirection) {
 				if (frY == 7)
 					imgReApear = imgSavedWoodT;
 				imgSavedWoodT = copyImg(imgDisApear);
-				newFrog.src = "img/frogOnWoodT.png#" + woodIt;
+				newFrog.src = "img/frogOnWoodT.gif#" + woodIt;
 				newFrog.setAttribute("idwood", woodId);
 				woodIt = 4;
 				break;
@@ -663,7 +663,7 @@ function getActiveFrog() {
 		if (currentFrog != null) {
 			if (currentFrog.title != "ActiveFrog")
 				currentFrog.title = "ActiveFrog";
-			// currentFrog.src = "img/frogactive.png";
+			// currentFrog.src = "img/frogActive.gif";
 			fY = rowByTag(currentFrog);
 			fX = columnByTag(currentFrog)
 			return currentFrog;
@@ -705,7 +705,7 @@ function reCreateFrogs() {
 	// recreate frog images dynamically
 	var imgF0 = new Image(36, 27);
 	imgF0.id = "frog0";
-	imgF0.src = "img/frogactive.png";
+	imgF0.src = "img/frogActive.gif";
 	imgF0.alt = "FROG 0";
 	imgF0.setAttribute("border", 0);
 	imgF0.setAttribute("title", "ActiveFrog");
