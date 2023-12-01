@@ -77,7 +77,7 @@ div.froga {
             max-width: 24pt;
             font-size: large;
         }
-        div.froga.frogaHeader#frogsInWhole {
+        div.froga.frogaHeader#frogsInHole {
             color: greenyellow;
         }
         div.froga.frogaHeader#frogsLeft {
@@ -290,7 +290,7 @@ div.froga {
             z-index: 100;
             /* backface-visibility: revert; background-size: 100% 100%; */
         }
-        div.froga.img.frogaImageWhole {
+        div.froga.img.frogaImageHole {
             width: 100%;
             min-width: 36pt;
             height: 100%;

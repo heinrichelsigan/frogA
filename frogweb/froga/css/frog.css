@@ -131,7 +131,7 @@ span#leftNotes {
     font-size: large;
 }
 
-span#frogsInWhole {
+span#frogsInHole {
     color: greenyellow;
 }
 
@@ -355,7 +355,7 @@ img.frogaImage {
     /* background-size: 100% 100%; */
 }
 
-img.frogaImageWhole {
+img.frogaImageHole {
     width: 100%;
     min-width: 36pt;
     height: 100%;
