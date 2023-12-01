@@ -358,7 +358,7 @@ function moveFrog(jumpDirection) {
 	}
 
 	// TODO: better use newTd = getNewTdPositionByMoving(car, 'rr');
-	var newTd = "td" + nrY + nrX;
+	var newTd	= "td" + nrY + nrX;
 	var newFrog = document.getElementById(currentFrogId);
 
 	newFrog.id = currentFrogId;
