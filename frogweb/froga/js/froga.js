@@ -1,956 +1,941 @@
 ﻿/*
-	2023-11-05 froga.js © by Heinrich Elsigan
-	https://darkstar.work/froga/
-	https://area23.at/froga/froga.html
+    2023-11-05 froga.js © by Heinrich Elsigan
+    https://darkstar.work/froga/
+    https://area23.at/froga/froga.html
 */
 
 var loopDelay = 1500,
-	loopTicks = 0;
+    loopTicks = 0;
 var level = 0,
-	frogsDied = 0,
-	frogsInHole = 0,
-	frogHoleMax = 3,
-	gameOver = 0;
+    frogsDied = 0,
+    frogsInHole = 0,
+    frogHoleMax = 3,
+    gameOver = 0;
 var fX, fY;
 var currentFrog, currentFrogId;
 var imgSavedWoodB, imgSavedWoodT;
 
-
+// windows cursor key press hanlder
 function windowCursorKeysHandler() {
-	window.onkeydown = function (e) { // TODO: pressing two arrow keys at same time
-		if (e.which == 37) {
-			moveFrog("left");
-		}
-		if (e.which == 39) {
-			moveFrog("right");
-		}
-		if (e.which == 38) {
-			moveFrog("up");
-		}
-		if (e.which == 40) {
-			moveFrog("down");
-		}
-	};
+    window.onkeydown = function (e) { // TODO: pressing two arrow keys at same time
+        if (e.which == 37)
+            moveFrog("left");
+        if (e.which == 39)
+            moveFrog("right");
+        if (e.which == 38)
+            moveFrog("up");
+        if (e.which == 40)
+            moveFrog("down");
+    };
 }
 
-function frogInit() { // frogInit will be called on 1st time loading
-
-	windowCursorKeysHandler();
-	frogLoad();
+// frogInit will be called on 1st time loading
+function frogInit() {
+    windowCursorKeysHandler();
+    frogLoad();
 }
 
+// frogReStart(repeatLevel) => repeatLevel = true
 function frogReStart(repeatLevel) {
-	if (repeatLevel) {
-		gameOver = 0;
-		window.location.reload();
-	} else {
-		// TODO: fix this
-		reCreateFrogs();
-		frogLoad();
-	}
+    if (repeatLevel) {
+        gameOver = 0;
+        window.location.reload();
+    } else { // TODO: fix this		
+        reCreateFrogs();
+        frogLoad();
+    }
 }
 
+// frog loader
 function frogLoad() {
-	loopTicks = 0;
-	frogsDied = 0;
-	frogsInHole = 0;
-	gameOver = 0;
+    loopTicks = 0;
+    frogsDied = 0;
+    frogsInHole = 0;
+    gameOver = 0;
 
-	switch (level) {
-		case 0: loopDelay = 1500; break;
-		case 1: loopDelay = 1375; break;
-		case 2: loopDelay = 1250; break;
-		case 3: loopDelay = 1125; break;
-		case 4: loopDelay = 1000; break;
-		case 5: loopDelay = 875; break;
-		default: loopDelay = 750; break;
-	}
-	setLevel(level);
-	setFrogsInHole(frogsInHole);
-	setFrogsDied(frogsDied);
+    switch (level) {
+        case 0: loopDelay = 1500; break;
+        case 1: loopDelay = 1375; break;
+        case 2: loopDelay = 1250; break;
+        case 3: loopDelay = 1125; break;
+        case 4: loopDelay = 1000; break;
+        case 5: loopDelay = 875; break;
+        default: loopDelay = 750; break;
+    }
+    setLevel(level);
+    setFrogsInHole(frogsInHole);
+    setFrogsDied(frogsDied);
 
-	fX = 'd';
-	fY = 0;
-	imgSavedWoodB = null;
-	imgSavedWoodT = null;
+    fX = 'd';
+    fY = 0;
+    imgSavedWoodB = null;
+    imgSavedWoodT = null;
 
-	document.getElementById("headerImg").src = "img/header.png";
-	document.getElementById("headerImg").focus();
-	document.getElementById("headerImg").blur();
-	document.getElementById("frog0").focus();
+    var headerImg = document.getElementById("headerImg");
+    if (headerImg != null) {
+        document.getElementById("headerImg").src = "img/header.png";
+        document.getElementById("headerImg").focus();
+        document.getElementById("headerImg").blur();
+    }
+    var frogZero = document.getElementById("frog0");
+    if (frogZero != null)
+        frogZero.focus();
 
-	setTimeout(function () { frogaLooper(loopTicks, loopDelay) }, loopDelay); // will call function after loopDelay milli seconds.
+    setTimeout(function () { frogaLooper(loopTicks, loopDelay) }, loopDelay); // will call function after loopDelay milli seconds.
 }
 
 // main js looper => keeping game in movement
 function frogaLooper(ticks, delay) {
 
-	let leftNotes = document.getElementById("leftNotes");
-	let rightNotes = document.getElementById("rightNotes");
-	if (leftNotes.innerHTML.length > 1)
-		leftNotes.innerHTML = "";
-	if (rightNotes.innerHTML.length > 1)
-		rightNotes.innerHTML = "";
+    let leftNotes = document.getElementById("leftNotes");
+    let rightNotes = document.getElementById("rightNotes");
+    if (leftNotes.innerHTML.length > 1)
+        leftNotes.innerHTML = "";
+    if (rightNotes.innerHTML.length > 1)
+        rightNotes.innerHTML = "";
 
-	currentFrog = getActiveFrog();
+    currentFrog = getActiveFrog();
 
-	// level completed
-	if (frogsInHole >= frogHoleMax) {
-		headerImg.src = "img/message_levelcompleted.png"
-		headerImg.height = 36;
-		level++;
+    // level completed
+    if (frogsInHole >= frogHoleMax) {
+        headerImg.src = "img/message_levelcompleted.png"
+        headerImg.height = 36;
+        level++;
+        setTimeout(function () { frogReStart(false); }, 4000); // will call the function after 8 secs.
+        return;
+    }
+    // game over
+    if (currentFrog == null) {
+        headerImg.src = "img/message_gameover.png";
+        headerImg.height = 36;
+        gameOver = 1;
+        setTimeout(function () { frogReStart(true); }, 5000); // will call the function after 8 secs.
+        return;
+    }
 
-		setTimeout(function () { frogReStart(false); }, 4000); // will call the function after 8 secs.
-		return;
-	}
-	// game over
-	if (currentFrog == null) {
-		headerImg.src = "img/message_gameover.png";
-		headerImg.height = 36;
-		gameOver = 1;
+    currentFrogId = getCurrentFrogId(currentFrog);
 
-		setTimeout(function () { frogReStart(true); }, 5000); // will call the function after 8 secs.
-		return;
-	}
+    try {
+        moveCars();
+        moveWalkers();
+        moveWoods();
+    } catch (exMove) {
+        // alert(exMove)
+    }
 
-	currentFrogId = getCurrentFrogId(currentFrog);
+    loopTicks = ticks + 1;
 
-	try {
-		moveCars();
-		moveWalkers();
-		moveWoods();
-	} catch (exMove) {
-		// alert(exMove)
-	}
-
-	loopTicks = ticks + 1;
-
-	setTimeout(function () { frogaLooper(loopTicks, delay) }, delay); // will call the function after 16 secs.
+    setTimeout(function () { frogaLooper(loopTicks, delay) }, delay); // will call the function after 16 secs.
 }
 
 
 // move cars in froga game
 function moveCars() {
-	var car, carId = "car2";
-	var oldTd, newTd;
-	var frX = columnByTag(currentFrog);
-	var frY = parseInt(rowByTag(currentFrog));
-	var frogNr = parseInt(currentFrogId.charAt(4));
-	var frogTd = "td" + frY + frX;
+    var car, carId = "car2";
+    var oldTd, newTd;
+    var frX = columnByTag(currentFrog);
+    var frY = parseInt(rowByTag(currentFrog));
+    var frogNr = parseInt(currentFrogId.charAt(4));
+    var frogTd = "td" + frY + frX;
 
-	carId = "car3";
-	let carCnt = 0;
-	for (carCnt = 0; carCnt <= 2; carCnt++) {
-		carId = "car3" + carCnt;
+    carId = "car3";
+    let carCnt = 0;
+    for (carCnt = 0; carCnt <= 2; carCnt++) {
+        carId = "car3" + carCnt;
 
-		car = document.getElementById(carId);
-		oldTd = car.getAttribute("cellid");
+        car = document.getElementById(carId);
+        oldTd = car.getAttribute("cellid");
 
-		newTd = getNewTdPositionByMoving(car, 'll');
+        newTd = getNewTdPositionByMoving(car, 'll');
 
-		car.setAttribute("cellid", newTd);
-		car.src = "img/car3.gif";
+        car.setAttribute("cellid", newTd);
+        car.src = "img/car3.gif";
 
-		if (newTd == frogTd) {
-			currentFrog.id = "died" + frogNr;
-			document.getElementById(newTd).removeChild(currentFrog);
-			car.src = "img/car1crashed.png"
-			changeImagePlaySound(car, "img/car1crashed.png", "audio/frogCrash.ogg");
-			currentFrog = getActiveFrog();
-			currentFrogId = getCurrentFrogId(currentFrog);
-		}
+        if (newTd == frogTd) {
+            currentFrog.id = "died" + frogNr;
+            document.getElementById(newTd).removeChild(currentFrog);
+            car.src = "img/car1crashed.png"
+            changeImagePlaySound(car, "img/car1crashed.png", "audio/frogCrash.ogg");
+            currentFrog = getActiveFrog();
+            currentFrogId = getCurrentFrogId(currentFrog);
+        }
 
-		document.getElementById(oldTd).removeChild(car);
-		document.getElementById(newTd).appendChild(car);
-	}
+        document.getElementById(oldTd).removeChild(car);
+        document.getElementById(newTd).appendChild(car);
+    }
 
-	carCnt = 0;
-	for (carCnt = 0; carCnt < 2; carCnt++) {
-		carId = "car2" + carCnt;
+    carCnt = 0;
+    for (carCnt = 0; carCnt < 2; carCnt++) {
+        carId = "car2" + carCnt;
 
-		car = document.getElementById(carId);
-		oldTd = car.getAttribute("cellid");
+        car = document.getElementById(carId);
+        oldTd = car.getAttribute("cellid");
 
-		newTd = getNewTdPositionByMoving(car, 'rr');
+        newTd = getNewTdPositionByMoving(car, 'rr');
 
-		car.setAttribute("cellid", newTd);
-		car.src = "img/car2.gif";
+        car.setAttribute("cellid", newTd);
+        car.src = "img/car2.gif";
 
-		if (newTd == frogTd) {
-			currentFrog.id = "died" + frogNr;
-			document.getElementById(newTd).removeChild(currentFrog);
-			car.src = "img/car1crashed.png"
-			changeImagePlaySound(car, "img/car0crashed.png", "audio/frogCrash.ogg");
-			currentFrog = getActiveFrog();
-			currentFrogId = getCurrentFrogId(currentFrog);
-		}
+        if (newTd == frogTd) {
+            currentFrog.id = "died" + frogNr;
+            document.getElementById(newTd).removeChild(currentFrog);
+            car.src = "img/car1crashed.png"
+            changeImagePlaySound(car, "img/car0crashed.png", "audio/frogCrash.ogg");
+            currentFrog = getActiveFrog();
+            currentFrogId = getCurrentFrogId(currentFrog);
+        }
 
-		document.getElementById(oldTd).removeChild(car);
-		document.getElementById(newTd).appendChild(car);
-	}
+        document.getElementById(oldTd).removeChild(car);
+        document.getElementById(newTd).appendChild(car);
+    }
 }
 
 // move wakjers
 function moveWalkers() {
-	var walk;
-	var oldTd;
-	var walk_Y;
-	var walk_X;
-	var newTd;
-	var walkId;
-	let walkCnt = 0;
+    var walk;
+    var oldTd;
+    var walk_Y;
+    var walk_X;
+    var newTd;
+    var walkId;
+    let walkCnt = 0;
 
-	var frX = columnByTag(currentFrog);
-	var frY = parseInt(rowByTag(currentFrog));
-	var frogNr = parseInt(currentFrogId.charAt(4));
-	var frogTd = "td" + frY + frX;
+    var frX = columnByTag(currentFrog);
+    var frY = parseInt(rowByTag(currentFrog));
+    var frogNr = parseInt(currentFrogId.charAt(4));
+    var frogTd = "td" + frY + frX;
 
-	for (walkCnt = 0; walkCnt < 4; walkCnt++) {
+    for (walkCnt = 0; walkCnt < 4; walkCnt++) {
 
-		walkId = "person" + walkCnt;
-		walk = document.getElementById(walkId);
-		oldTd = walk.getAttribute("cellid");
-		newTd = getNewTdPositionByMoving(walk, 'rr');
+        walkId = "person" + walkCnt;
+        walk = document.getElementById(walkId);
+        oldTd = walk.getAttribute("cellid");
+        newTd = getNewTdPositionByMoving(walk, 'rr');
 
-		walk.setAttribute("cellid", newTd);
+        walk.setAttribute("cellid", newTd);
 
-		switch (walkId) {
-			case "person0": walk.src = "img/walk4m.png"; break;
-			case "person1": walk.src = "img/walk5m.png"; break;
-			case "person2": walk.src = "img/walk6m.png"; break;
-			case "person3": walk.src = "img/walk3m.png"; break;
-			default: break;
-		}
+        switch (walkId) {
+            case "person0": walk.src = "img/walk4m.png"; break;
+            case "person1": walk.src = "img/walk5m.png"; break;
+            case "person2": walk.src = "img/walk6m.png"; break;
+            case "person3": walk.src = "img/walk3m.png"; break;
+            default: break;
+        }
 
-		if (newTd == frogTd) {
-			currentFrog.id = "died" + frogNr;
-			document.getElementById(newTd).removeChild(currentFrog);
-			walk.src = "img/walk7m.png"
-			changeImagePlaySound(walk, "img/walk7m.png", "audio/frogJump.ogg");
-			currentFrog = getActiveFrog();
-			currentFrogId = getCurrentFrogId(currentFrog);
-		}
+        if (newTd == frogTd) {
+            currentFrog.id = "died" + frogNr;
+            document.getElementById(newTd).removeChild(currentFrog);
+            walk.src = "img/walk7m.png"
+            changeImagePlaySound(walk, "img/walk7m.png", "audio/frogJump.ogg");
+            currentFrog = getActiveFrog();
+            currentFrogId = getCurrentFrogId(currentFrog);
+        }
 
-		document.getElementById(oldTd).removeChild(walk);
-		document.getElementById(newTd).appendChild(walk);
-	}
+        document.getElementById(oldTd).removeChild(walk);
+        document.getElementById(newTd).appendChild(walk);
+    }
 }
 
+// move woods on water
 function moveWoods() {
-	var woodId;
-	var wood;
-	var oldTd;
-	var oldTdCell;
-	var wood_Y;
-	var wood_X;
-	var newTd;
-	var newWood;
-	let woodCnt = 0;
+    var woodId;
+    var wood;
+    var oldTd;
+    var oldTdCell;
+    var wood_Y;
+    var wood_X;
+    var newTd;
+    var newWood;
+    let woodCnt = 0;
 
-	var newFrog = document.getElementById(currentFrogId);
-	var frX = columnByTag(newFrog);
-	var frY = parseInt(rowByTag(newFrog));
-	let checkFrog = (frY == 6 || frY == 7);
+    var newFrog = document.getElementById(currentFrogId);
+    var frX = columnByTag(newFrog);
+    var frY = parseInt(rowByTag(newFrog));
+    let checkFrog = (frY == 6 || frY == 7);
 
-	let frogCnt = 0;
-	for (frogCnt = 0; frogCnt < 3; frogCnt++) {
-		var deadFrogId = "died" + frogCnt;
-		var deadFrog = document.getElementById(deadFrogId);
-		if (deadFrog != null) {
-			var parentElem = deadFrog.parentElement;
-			var parentNode = deadFrog.parentNode;
-			if (parentElem != null)
-				parentElem.removeChild(deadFrog);
-		}
-	}
+    let frogCnt = 0;
+    for (frogCnt = 0; frogCnt < 3; frogCnt++) {
+        var deadFrogId = "died" + frogCnt;
+        var deadFrog = document.getElementById(deadFrogId);
+        if (deadFrog != null) {
+            var parentElem = deadFrog.parentElement;
+            var parentNode = deadFrog.parentNode;
+            if (parentElem != null)
+                parentElem.removeChild(deadFrog);
+        }
+    }
 
-	for (woodCnt = 3; woodCnt >= 0; woodCnt--) {
-		woodId = "woodB" + woodCnt;
-		wood = document.getElementById(woodId);
-		if (wood == null && checkFrog && newFrog.getAttribute("idwood") == woodId) {
-			wood = newFrog;
-		}
-		if (wood != null) {
-			oldTd = wood.getAttribute("cellid");
-			newTd = getNewTdPositionByMoving(wood, 'rr');
+    for (woodCnt = 3; woodCnt >= 0; woodCnt--) {
+        woodId = "woodB" + woodCnt;
+        wood = document.getElementById(woodId);
+        if (wood == null && checkFrog && newFrog.getAttribute("idwood") == woodId) {
+            wood = newFrog;
+        }
+        if (wood != null) {
+            oldTd = wood.getAttribute("cellid");
+            newTd = getNewTdPositionByMoving(wood, 'rr');
 
-			newWood = copyImg(wood);
-			newWood.setAttribute("cellid", newTd);
+            newWood = copyImg(wood);
+            newWood.setAttribute("cellid", newTd);
 
-			if (imgSavedWoodB != null && imgSavedWoodB.id != null && imgSavedWoodB.id == woodId)
-				imgSavedWoodB.setAttribute("cellid", newTd);
+            if (imgSavedWoodB != null && imgSavedWoodB.id != null && imgSavedWoodB.id == woodId)
+                imgSavedWoodB.setAttribute("cellid", newTd);
 
-			document.getElementById(newTd).appendChild(newWood);
-			document.getElementById(oldTd).removeChild(wood);
-		}
-	}
+            document.getElementById(newTd).appendChild(newWood);
+            document.getElementById(oldTd).removeChild(wood);
+        }
+    }
 
-	woodCnt = 0;
-	for (woodCnt = 0; woodCnt < 4; woodCnt++) {
-		woodId = "woodT" + woodCnt;
-		wood = document.getElementById(woodId);
-		if (wood == null && checkFrog && newFrog.getAttribute("idwood") == woodId) {
-			wood = newFrog;
-		}
-		if (wood != null) {
-			oldTd = wood.getAttribute("cellid");
-			newTd = getNewTdPositionByMoving(wood, 'll');
+    woodCnt = 0;
+    for (woodCnt = 0; woodCnt < 4; woodCnt++) {
+        woodId = "woodT" + woodCnt;
+        wood = document.getElementById(woodId);
+        if (wood == null && checkFrog && newFrog.getAttribute("idwood") == woodId) {
+            wood = newFrog;
+        }
+        if (wood != null) {
+            oldTd = wood.getAttribute("cellid");
+            newTd = getNewTdPositionByMoving(wood, 'll');
 
-			newWood = copyImg(wood);
-			newWood.setAttribute("cellid", newTd);
+            newWood = copyImg(wood);
+            newWood.setAttribute("cellid", newTd);
 
-			if (imgSavedWoodT != null && imgSavedWoodT.id != null && imgSavedWoodT.id == woodId)
-				imgSavedWoodT.setAttribute("cellid", newTd);
+            if (imgSavedWoodT != null && imgSavedWoodT.id != null && imgSavedWoodT.id == woodId)
+                imgSavedWoodT.setAttribute("cellid", newTd);
 
-			try {
-				wood.parentElement.removeChild(wood);
-			} catch (ex3) {
-				// alert("wood.parentElement.id=" + wood.parentElemen.id + "wood.id=" + wood.id + "\r\nException: " + x3);
-			}
+            try {
+                wood.parentElement.removeChild(wood);
+            } catch (ex3) {
+                // alert("wood.parentElement.id=" + wood.parentElemen.id + "wood.id=" + wood.id + "\r\nException: " + x3);
+            }
 
-			newWood.setAttribute("cellid", newTd);
-			document.getElementById(newTd).appendChild(newWood);
-		}
-	}
+            newWood.setAttribute("cellid", newTd);
+            document.getElementById(newTd).appendChild(newWood);
+        }
+    }
 
 }
 
 // move frog => frog jumping handler
 function moveFrog(jumpDirection) {
 
-	currentFrog = getActiveFrog();
-	currentFrogId = getCurrentFrogId(currentFrog);
-	var frogNr = parseInt(currentFrogId.charAt(4));	// TODO		better implementation of frog number
+    currentFrog = getActiveFrog();
+    currentFrogId = getCurrentFrogId(currentFrog);
+    var frogNr = parseInt(currentFrogId.charAt(4));	// TODO		better implementation of frog number
 
-	var imgDisApear = null;
-	var imgReApear = null;
+    var imgDisApear = null;
+    var imgReApear = null;
 
-	var frogDied = -1;
-	var frogCrashed = -1;
+    var frogDied = -1;
+    var frogCrashed = -1;
 
-	// var rowColTag = currentFrog.getAttribute("cellid");
+    var frX = columnByTag(currentFrog);
+    var frY = parseInt(rowByTag(currentFrog));
+    var oldTd = "td" + frY + frX;
 
-	var frX = columnByTag(currentFrog);
-	var frY = parseInt(rowByTag(currentFrog));
-	var oldTd = "td" + frY + frX;
+    var nrX = fX;
+    var nrY = parseInt(fY);
 
-	var nrX = fX;
-	var nrY = parseInt(fY);
+    if (jumpDirection == null || jumpDirection.length < 2)
+        return;
 
-	if (jumpDirection == null || jumpDirection.length < 2)
-		return;
+    if (jumpDirection.charAt(0) == 'u') {
+        nrY = upper(frY);												// up 	
+        document.getElementById("aUp").src = "img/a_up.gif";
+    }
+    else if (jumpDirection.charAt(0) == 'd') { 							// TODO should we let frog drive back to start meadow
+        nrY = below(frY);												// down 				
+        document.getElementById("aDown").src = "img/a_down.gif";
+    }
 
-	if (jumpDirection.charAt(0) == 'u') {
-		nrY = upper(frY);												// up 	
-		document.getElementById("aUp").src = "img/a_up.gif";
-	}
-	else if (jumpDirection.charAt(0) == 'd') { 							// TODO should we let frog drive back to start meadow
-		nrY = below(frY);												// down 				
-		document.getElementById("aDown").src = "img/a_down.gif";
-	}
+    if (jumpDirection.charAt(0) == 'r' || jumpDirection.charAt(1) == 'r') {
+        nrX = righter(frX);												// right
+        document.getElementById("aRight").src = "img/a_right.gif";
+    } else if (jumpDirection.charAt(0) == 'l' || jumpDirection.charAt(1) == 'l') {
+        nrX = lefter(frX);												// left
+        document.getElementById("aLeft").src = "img/a_left.gif";
+    }
 
-	if (jumpDirection.charAt(0) == 'r' || jumpDirection.charAt(1) == 'r') {
-		nrX = righter(frX);												// right
-		document.getElementById("aRight").src = "img/a_right.gif";
-	} else if (jumpDirection.charAt(0) == 'l' || jumpDirection.charAt(1) == 'l') {
-		nrX = lefter(frX);												// left
-		document.getElementById("aLeft").src = "img/a_left.gif";
-	}
+    // TODO: better use newTd = getNewTdPositionByMoving(car, 'rr');
+    var newTd = "td" + nrY + nrX;
+    var newFrog = document.getElementById(currentFrogId);
 
-	// TODO: better use newTd = getNewTdPositionByMoving(car, 'rr');
-	var newTd = "td" + nrY + nrX;
-	var newFrog = document.getElementById(currentFrogId);
+    newFrog.id = currentFrogId;
+    newFrog.title = "ActiveFrog";
+    newFrog.border = "0";
+    newFrog.src = "img/frogActive.gif";
+    newFrog.setAttribute("idwood", "");
 
-	newFrog.id = currentFrogId;
-	newFrog.title = "ActiveFrog";
-	newFrog.border = "0";
-	newFrog.src = "img/frogActive.gif";
-	newFrog.setAttribute("idwood", "");
+    var shouldReturn = false;
+    if (nrY == 1 || nrY == 4) {
+        var startObjects = ["meadow0b0", "frog1", "frog2", "frog3", "meadow0b1", "meadow0m0"];
+        let _startObj_Id = "";
+        var startObj = null;
+        startObjects.forEach(function (_startObj_Id) {
+            startObj = document.getElementById(newTd).children[_startObj_Id];
+            if (startObj != null) {
+                var frogPrae = document.getElementById("frogPre");
+                if (frogPrae != null)
+                    frogPrae.innerText = String.fromCharCode(7) + '\a';
+                // let leftNotes = document.getElementById("leftNotes");
+                // 	leftNotes.innerHTML = String.fromCharCode(7) + "&#07;"
+                console.log('\a');
+                console.log(String.fromCharCode(7));
+                console.error('\x07');
+                console.error(String.fromCharCode(7));
 
-	var shouldReturn = false;
-	if (nrY == 1 || nrY == 4) {
-		var startObjects = ["meadow0b0", "frog1", "frog2", "frog3", "meadow0b1", "meadow0m0"];
-		let _startObj_Id = "";
-		var startObj = null;
-		startObjects.forEach(function (_startObj_Id) {
-			startObj = document.getElementById(newTd).children[_startObj_Id];
-			if (startObj != null) {
-				var frogPrae = document.getElementById("frogPre");
-				if (frogPrae != null)
-					frogPrae.innerText = String.fromCharCode(7) + '\a';
+                shouldReturn = true;
+            }
+        });
+    }
 
-				// let leftNotes = document.getElementById("leftNotes");
-				// 	leftNotes.innerHTML = String.fromCharCode(7) + "&#07;"
-				console.log('\a');
-				console.log(String.fromCharCode(7));
-				console.error('\x07');
-				console.error(String.fromCharCode(7));
+    if (shouldReturn)
+        return;
 
-				shouldReturn = true;
-			}
-		});
-	}
+    frogCrashed = crashFrog(newTd);
 
-	if (shouldReturn)
-		return;
+    // saved bottom wood image will be restored
+    let woodIt = 0;
+    if (frY == 6 && (nrY == 5 || nrY == 6 || nrY == 7)) {
+        if (imgSavedWoodB != null)
+            imgReApear = imgSavedWoodB;
+    }
 
-	frogCrashed = crashFrog(newTd);
+    // saved top wood image will be restored
+    if (frY == 7 && (nrY == 6 || nrY == 7 || nrY == 8)) {
+        if (imgSavedWoodT != null)
+            imgReApear = imgSavedWoodT;
+    }
 
-	// saved bottom wood image will be restored
-	let woodIt = 0;
-	if (frY == 6 && (nrY == 5 || nrY == 6 || nrY == 7)) {
-		if (imgSavedWoodB != null) {
-			imgReApear = imgSavedWoodB;
-		}
-	}
+    // set frog on bottom wood
+    if (nrY == 6 && (frY == 5 || frY == 6 || frY == 7)) {
+        woodIt = 0;
+        imgDisApear = null;
+        while (imgDisApear == null && woodIt < 4) {
+            var woodId = "woodB" + woodIt;
+            imgDisApear = document.getElementById(newTd).children[woodId];
+            if (imgDisApear != null) {
+                if (frY == 6)
+                    imgReApear = imgSavedWoodB;
+                imgSavedWoodB = copyImg(imgDisApear);
+                newFrog.src = "img/frogOnWoodB.gif#" + woodIt;
+                newFrog.setAttribute("idwood", woodId);
+                woodIt = 4;
+                break;
+            }
+            woodIt++;
+        }
+        // frog dies in river
+        if (imgDisApear == null) {
+            frogDied = frogInRiverOrSwampOrHole(newFrog, "img/frogDiesInWaterB.gif", "audio/frogUnderWater.ogg", "died", "Frog died!");
+        }
+    }
 
-	// saved top wood image will be restored
-	if (frY == 7 && (nrY == 6 || nrY == 7 || nrY == 8)) {
-		if (imgSavedWoodT != null) {
-			imgReApear = imgSavedWoodT;
-		}
-	}
+    // set frog on top wood
+    if (nrY == 7 && (frY == 6 || frY == 7 || frY == 8)) {
+        woodIt = 0;
+        imgDisApear = null;
+        while (imgDisApear == null && woodIt < 4) {
+            var woodId = "woodT" + woodIt;
+            imgDisApear = document.getElementById(newTd).children[woodId];
+            if (imgDisApear != null) {
+                if (frY == 7)
+                    imgReApear = imgSavedWoodT;
+                imgSavedWoodT = copyImg(imgDisApear);
+                newFrog.src = "img/frogOnWoodT.gif#" + woodIt;
+                newFrog.setAttribute("idwood", woodId);
+                woodIt = 4;
+                break;
+            }
+            woodIt++;
+        }
+        // frog dies in river
+        if (imgDisApear == null) {
+            frogDied = frogInRiverOrSwampOrHole(newFrog, "img/frogDiesInWaterT.gif", "audio/frogUnderWater.ogg", "died", "Frog died!");
+        }
+    }
 
-	// set frog on bottom wood
-	if (nrY == 6 && (frY == 5 || frY == 6 || frY == 7)) {
-		woodIt = 0;
-		imgDisApear = null;
-		while (imgDisApear == null && woodIt < 4) {
-			var woodId = "woodB" + woodIt;
-			imgDisApear = document.getElementById(newTd).children[woodId];
-			if (imgDisApear != null) {
-				if (frY == 6)
-					imgReApear = imgSavedWoodB;
-				imgSavedWoodB = copyImg(imgDisApear);
-				newFrog.src = "img/frogOnWoodB.gif#" + woodIt;
-				newFrog.setAttribute("idwood", woodId);
-				woodIt = 4;
-				break;
-			}
+    if (nrY == 8) {
+        woodIt = 0;
+        imgDisApear = null;
+        while (imgDisApear == null && woodIt < frogHoleMax) {
+            imgDisApear = document.getElementById(newTd).children["hole" + woodIt];
+            if (imgDisApear != null) {
+                woodIt = 4;
+                break;
+            }
+            woodIt++;
+        }
+        if (imgDisApear == null) {
+            if (nrX.charAt(0) == 'c')
+                imgDisApear = document.getElementById("hole0");
+            if (nrX.charAt(0) == 'e')
+                imgDisApear = document.getElementById("hole1");
+            if (nrX.charAt(0) == 'g')
+                imgDisApear = document.getElementById("hole2");
+            if (nrX.charAt(0) == 'i')
+                imgDisApear = document.getElementById("hole3");
+        }
 
-			woodIt++;
-		}
-		// frog dies in river
-		if (imgDisApear == null) {
-			frogDied = frogInRiverOrSwampOrHole(newFrog, "img/frogDiesInWaterB.gif", "audio/frogUnderWater.ogg", "died", "Frog died!");
-		}
-	}
+        if (imgDisApear != null) {
+            frogsInHole++;
+            setFrogsInHole(frogsInHole);
+            frogInRiverOrSwampOrHole(newFrog, "img/frogInHole.gif", "audio/frogInHole.ogg", "save", "frog" + frogNr + "@home");
+        }
+        if (imgDisApear == null) {
+            frogDied = frogInRiverOrSwampOrHole(newFrog, "img/frogDiesInSwamp.gif", "audio/frogInSwamp.ogg", "died", "Frog died!");
+        }
+    }
 
-	// set frog on top wood
-	if (nrY == 7 && (frY == 6 || frY == 7 || frY == 8)) {
-		woodIt = 0;
-		imgDisApear = null;
-		while (imgDisApear == null && woodIt < 4) {
-			var woodId = "woodT" + woodIt;
-			imgDisApear = document.getElementById(newTd).children[woodId];
-			if (imgDisApear != null) {
-				if (frY == 7)
-					imgReApear = imgSavedWoodT;
-				imgSavedWoodT = copyImg(imgDisApear);
-				newFrog.src = "img/frogOnWoodT.gif#" + woodIt;
-				newFrog.setAttribute("idwood", woodId);
-				woodIt = 4;
-				break;
-			}
+    newFrog.setAttribute("cellid", newTd);
 
-			woodIt++;
-		}
-		// frog dies in river
-		if (imgDisApear == null) {
-			frogDied = frogInRiverOrSwampOrHole(newFrog, "img/frogDiesInWaterT.gif", "audio/frogUnderWater.ogg", "died", "Frog died!");
-		}
-	}
+    if (imgDisApear != null) {
+        document.getElementById(newTd).removeChild(imgDisApear);
+    }
 
-	if (nrY == 8) {
-		woodIt = 0;
-		imgDisApear = null;
-		while (imgDisApear == null && woodIt < frogHoleMax) {
+    if (frogsInHole >= 3 || (frogCrashed) < 0) {
+        document.getElementById(newTd).appendChild(newFrog);
+    } else {
+        currentFrog = getActiveFrog();
+        currentFrogId = getCurrentFrogId()
+        frogDied = frogCrashed;
+    }
 
-			imgDisApear = document.getElementById(newTd).children["hole" + woodIt];
-			if (imgDisApear != null) {
-				woodIt = 4;
-				break;
-			}
+    if (frogDied > -1)
+        setFrogsDied(++frogsDied);
 
-			woodIt++;
-		}
-		if (imgDisApear == null) {
-			if (nrX.charAt(0) == 'c')
-				imgDisApear = document.getElementById("hole0");
-			if (nrX.charAt(0) == 'e')
-				imgDisApear = document.getElementById("hole1");
-			if (nrX.charAt(0) == 'g')
-				imgDisApear = document.getElementById("hole2");
-			if (nrX.charAt(0) == 'i')
-				imgDisApear = document.getElementById("hole3");
-		}
-
-		if (imgDisApear != null) {
-			frogsInHole++;
-			setFrogsInHole(frogsInHole);
-			frogInRiverOrSwampOrHole(newFrog, "img/frogInHole.gif", "audio/frogInHole.ogg", "save", "frog" + frogNr + "@home");
-		}
-		if (imgDisApear == null) {
-			frogDied = frogInRiverOrSwampOrHole(newFrog, "img/frogDiesInSwamp.gif", "audio/frogInSwamp.ogg", "died", "Frog died!");
-		}
-	}
-
-	newFrog.setAttribute("cellid", newTd);
-
-	if (imgDisApear != null) {
-		document.getElementById(newTd).removeChild(imgDisApear);
-	}
-
-	if (frogsInHole >= 3 || (frogCrashed) < 0) {
-		document.getElementById(newTd).appendChild(newFrog);
-	} else {
-		currentFrog = getActiveFrog();
-		currentFrogId = getCurrentFrogId()
-		frogDied = frogCrashed;
-	}
-
-	if (frogDied > -1)
-		setFrogsDied(++frogsDied);
-
-	if (imgReApear != null) {
-		document.getElementById(oldTd).appendChild(imgReApear);
-	}
+    if (imgReApear != null) {
+        document.getElementById(oldTd).appendChild(imgReApear);
+    }
 
 
-	if (frY == 7 && (nrY <= 5 || nrY >= 8))
-		imgSavedWoodB = null;
-	if (frY == 8 && (nrY <= 6 || nrY >= 8))
-		imgSavedWoodT = null;
+    if (frY == 7 && (nrY <= 5 || nrY >= 8))
+        imgSavedWoodB = null;
+    if (frY == 8 && (nrY <= 6 || nrY >= 8))
+        imgSavedWoodT = null;
 }
 
 
 // sound and image 
 function frogSound(soundName) {
-	let sound = new Audio(soundName);
-	sound.autoplay = true;
-	sound.loop = false;
+    let sound = new Audio(soundName);
+    sound.autoplay = true;
+    sound.loop = false;
 
-	let leftNotes = document.getElementById("leftNotes");
-	let rightNotes = document.getElementById("rightNotes");
-	leftNotes.innerHTML = "";
-	rightNotes.innerHTML = "";
+    let leftNotes = document.getElementById("leftNotes");
+    let rightNotes = document.getElementById("rightNotes");
+    leftNotes.innerHTML = "";
+    rightNotes.innerHTML = "";
 
-	setTimeout(function () {
-		sound.play();
-		leftNotes.innerHTML = "♪ ";
-		rightNotes.innerHTML = " ♫";
-	}, 100);
+    setTimeout(function () {
+        sound.play();
+        leftNotes.innerHTML = "♪ ";
+        rightNotes.innerHTML = " ♫";
+    }, 100);
 
-	setTimeout(function () {
-		leftNotes.innerHTML = " ♪";
-		rightNotes.innerHTML = "♫ ";
-	}, 500);
+    setTimeout(function () {
+        leftNotes.innerHTML = " ♪";
+        rightNotes.innerHTML = "♫ ";
+    }, 500);
 
-	setTimeout(function () {
-		leftNotes.innerHTML = "  ";
-		rightNotes.innerHTML = "  ";
-		sound.loop = false;
-		sound.pause();
-		sound.autoplay = false;
-		sound.currentTime = 0;
-		try {
-			sound.src = "";
-			sound = null;
-		} catch (exSnd) {
-		}
-	}, 900);
+    setTimeout(function () {
+        leftNotes.innerHTML = "  ";
+        rightNotes.innerHTML = "  ";
+        sound.loop = false;
+        sound.pause();
+        sound.autoplay = false;
+        sound.currentTime = 0;
+        try {
+            sound.src = "";
+            sound = null;
+        } catch (exSnd) {
+        }
+    }, 900);
 
 }
 
+// exchange image & play sound
 function changeImagePlaySound(imageToChange, newImageUrl, soundToPlay) {
-	if (imageToChange != null)
-		imageToChange.src = newImageUrl;
+    if (imageToChange != null)
+        imageToChange.src = newImageUrl;
 
-	if (soundToPlay != null && soundToPlay.length > 1)
-		setTimeout(function () { frogSound(soundToPlay) }, 100);
+    if (soundToPlay != null && soundToPlay.length > 1)
+        setTimeout(function () { frogSound(soundToPlay) }, 100);
 }
 
 
 // frog in river or swamp
 function frogInRiverOrSwampOrHole(aFrog, deathImg, deathSound, idPrefix, deathTitle) {
-	var frogNr = parseInt(aFrog.id.charAt(4));
-	aFrog.src = deathImg;
-	aFrog.title = (deathTitle == null) ? "" : deathTitle;
-	aFrog.id = idPrefix + frogNr;
+    var frogNr = parseInt(aFrog.id.charAt(4));
+    aFrog.src = deathImg;
+    aFrog.title = (deathTitle == null) ? "" : deathTitle;
+    aFrog.id = idPrefix + frogNr;
 
-	if (deathSound != null && deathSound.length > 1) {
-		setTimeout(function () { frogSound(deathSound) }, 100);
-	}
+    if (deathSound != null && deathSound.length > 1)
+        setTimeout(function () { frogSound(deathSound) }, 100);
 
-	return frogNr;
+    return frogNr;
 }
 
 // crash frog
 function crashFrog(tdFrogCell) {
 
-	var moveId, frogNr;
-	var move;
-	var moveTd, tdFrog;
-	var move_Y, move_X;
+    var moveId, frogNr;
+    var move;
+    var moveTd, tdFrog;
+    var move_Y, move_X;
 
-	currentFrog = getActiveFrog();
-	currentFrogId = getCurrentFrogId(currentFrog);
-	tdFrog = currentFrog.getAttribute("cellid");
-	frogNr = parseInt(currentFrogId.charAt(4));
+    currentFrog = getActiveFrog();
+    currentFrogId = getCurrentFrogId(currentFrog);
+    tdFrog = currentFrog.getAttribute("cellid");
+    frogNr = parseInt(currentFrogId.charAt(4));
 
-	let crashCnt = 0;
-	let moveCnt = 0;
-	let _move_Id = "";
+    let crashCnt = 0;
+    let moveCnt = 0;
+    let _move_Id = "";
 
-	var movers = ["car20", "car21", , "car22", "car30", "car31", "car32", "car33", "person0", "person1", "person2", "person3"];
+    var movers = ["car20", "car21", , "car22", "car30", "car31", "car32", "car33", "person0", "person1", "person2", "person3"];
 
-	movers.forEach(function (_move_Id) {
+    movers.forEach(function (_move_Id) {
 
-		moveId = _move_Id;
-		move = document.getElementById(moveId);
-		if (move != null) {
-			moveTd = move.getAttribute("cellid");
-			move_Y = rowByTag(move);
-			move_X = rrighter(columnByTag(move));
-			if (moveTd == tdFrogCell) {
-				try {
-					var parentCell = document.getElementById(currentFrogId).parentElement;
-					if (parentCell != null) {
-						currentFrog.id = "died" + frogNr;
-						parentCell.removeChild(currentFrog);
-					}
-					// document.getElementById(tdFrogCell).removeChild(currentFrog);
-				} catch (exFrogCrash1) {
-					// alert(exFrogCrash1);
-				}
+        moveId = _move_Id;
+        move = document.getElementById(moveId);
+        if (move != null) {
+            moveTd = move.getAttribute("cellid");
+            move_Y = rowByTag(move);
+            move_X = rrighter(columnByTag(move));
+            if (moveTd == tdFrogCell) {
+                try {
+                    var parentCell = document.getElementById(currentFrogId).parentElement;
+                    if (parentCell != null) {
+                        currentFrog.id = "died" + frogNr;
+                        parentCell.removeChild(currentFrog);
+                    }
+                    // document.getElementById(tdFrogCell).removeChild(currentFrog);
+                } catch (exFrogCrash1) {
+                    // alert(exFrogCrash1);
+                }
 
-				if (_move_Id.length >= 4) {
-					switch (_move_Id.substr(0, 4)) {
-						case "car2": ++crashCnt;
-							changeImagePlaySound(move, "img/car0crashed.png", "audio/frogCrash.ogg");
-							move.src = "img/car0crashed.png";
-							break;
-						case "car3": ++crashCnt;
-							changeImagePlaySound(move, "img/car1crashed.png", "audio/frogCrash.ogg");
-							move.src = "img/car1crashed.png";
-							break;
-						case "pers": ++crashCnt;
-							changeImagePlaySound(move, "img/walk7m.png", "audio/frogJump.ogg");
-							move.src = "img/walk7m.png";
-							break;
-						default: break;
-					}
-				}
-			}
-		}
-	});
+                if (_move_Id.length >= 4) {
+                    switch (_move_Id.substr(0, 4)) {
+                        case "car2": ++crashCnt;
+                            changeImagePlaySound(move, "img/car0crashed.png", "audio/frogCrash.ogg");
+                            move.src = "img/car0crashed.png";
+                            break;
+                        case "car3": ++crashCnt;
+                            changeImagePlaySound(move, "img/car1crashed.png", "audio/frogCrash.ogg");
+                            move.src = "img/car1crashed.png";
+                            break;
+                        case "pers": ++crashCnt;
+                            changeImagePlaySound(move, "img/walk7m.png", "audio/frogJump.ogg");
+                            move.src = "img/walk7m.png";
+                            break;
+                        default: break;
+                    }
+                }
+            }
+        }
+    });
 
-	return (crashCnt > 0) ? frogNr : -1;
+    return (crashCnt > 0) ? frogNr : -1;
 }
 
 
 // get active current frog
 function getActiveFrog() {
 
-	let aFrogIt = 0;
-	var aFrogId = "frog0";
-	currentFrog = null;
+    let aFrogIt = 0;
+    var aFrogId = "frog0";
+    currentFrog = null;
 
-	for (aFrogIt = 0; aFrogIt < 4; aFrogIt++) {
+    for (aFrogIt = 0; aFrogIt < 4; aFrogIt++) {
 
-		aFrogId = "frog" + aFrogIt;							// TODO: define frog prefix "frog" as constant
-		currentFrog = document.getElementById(aFrogId);
+        aFrogId = "frog" + aFrogIt;							// TODO: define frog prefix "frog" as constant
+        currentFrog = document.getElementById(aFrogId);
 
-		if (currentFrog != null) {
-			if (currentFrog.title != "ActiveFrog")
-				currentFrog.title = "ActiveFrog";
-			// currentFrog.src = "img/frogActive.gif";
-			fY = rowByTag(currentFrog);
-			fX = columnByTag(currentFrog)
-			return currentFrog;
-		}
-	}
+        if (currentFrog != null) {
+            if (currentFrog.title != "ActiveFrog")
+                currentFrog.title = "ActiveFrog";
+            // currentFrog.src = "img/frogActive.gif";
+            fY = rowByTag(currentFrog);
+            fX = columnByTag(currentFrog)
+            return currentFrog;
+        }
+    }
 
-	return currentFrog;
+    return currentFrog;
 }
 
 // get current frog id
 function getCurrentFrogId(aFrog) {
-	var aFrog = getActiveFrog();
-	let frogsLeftNr = 4 - parseInt(aFrog.id.charAt(4));
-	setFrogsLeft(frogsLeftNr);
-	return aFrog.id;
+    var aFrog = getActiveFrog();
+    let frogsLeftNr = 4 - parseInt(aFrog.id.charAt(4));
+    setFrogsLeft(frogsLeftNr);
+    return aFrog.id;
 }
 
 
 function reCreateFrogs() {
+    // first clear all bottom and top table cells, so that there rest neither frogs nor holes there
+    var tdsToClear = [
+        // "td1b", "td1c", "td1d", "td1e", "td1f", "td1g", "td1h", "td1i",
+        "td8a", "td8b", "td8c", "td8d", "td8e", "td8f", "td8g", "td8h", "td8i"];
+    // "td9a", "td9b", "td9c", "td9d", "td9e", "td9f", "td9g", "td9h", "td9i"];
+    tdsToClear.forEach(function (tdId) {
+        tableCell = document.getElementById(tdId);
+        if (tableCell != null && tableCell.children != null && tableCell.children.length > 0) {
+            for (tdCellIt = 0; tdCellIt < tableCell.children.length; tdCellIt++) {
+                childFromTableCell = tableCell.children[tdCellIt];
+                if (childFromTableCell != null)
+                    tableCell.removeChild(childFromTableCell);
+            }
+        }
+    });
+    var frogsToClear = ["frog0", "frog1", "frog2", "frog3"];
+    frogsToClear.forEach(function (frogId) {
+        var frogMatch = document.getElementById(frogId);
+        if (frogMatch != null && frogMatch.parentElement != null)
+            frogMatch.parentElement.removeChild(frogMatch);
+    });
 
-	// first clear all bottom and top table cells, so that there rest neither frogs nor holes there
-	var tdsToClear = [
-		// "td0a", "td0b", "td0c", "td0d", "td0e", "td0f", "td0g", "td0h", "td0i",
-		// "td1a", 
-		"td1b", "td1c", "td1d", "td1e", "td1f", "td1g", "td1h", "td1i",
-		"td8a", "td8b", "td8c", "td8d", "td8e", "td8f", "td8g", "td8h", "td8i"];
-	// "td9a", "td9b", "td9c", "td9d", "td9e", "td9f", "td9g", "td9h", "td9i"];
-	tdsToClear.forEach(function (tdId) {
-		tableCell = document.getElementById(tdId);
-		if (tableCell != null && tableCell.children != null && tableCell.children.length > 0) {
-			for (tdCellIt = 0; tdCellIt < tableCell.children.length; tdCellIt++) {
-				childFromTableCell = tableCell.children[tdCellIt];
-				if (childFromTableCell != null)
-					tableCell.removeChild(childFromTableCell);
-			}
-		}
-	});
+    // recreate frog images dynamically
+    reCreateNewFrogImage(0);
+    reCreateNewFrogImage(1);
+    reCreateNewFrogImage(2);
+    reCreateNewFrogImage(3);
 
-	// recreate frog images dynamically
-	var imgF0 = new Image(36, 27);
-	imgF0.id = "frog0";
-	imgF0.src = "img/frogActive.gif";
-	imgF0.alt = "FROG 0";
-	imgF0.setAttribute("border", 0);
-	imgF0.setAttribute("title", "ActiveFrog");
-	imgF0.setAttribute("class", "frogaImage");
-	imgF0.setAttribute("className", "frogaImage");
-	imgF0.setAttribute("cellid", "td1d");
-	imgF0.setAttribute("idwood", "");
-	document.getElementById("td1d").appendChild(imgF0);
+    // recreate holes images for frog goal dynamically
+    reCreateFrogHole(0);
+    reCreateFrogHole(1);
+    reCreateFrogHole(2);
+    reCreateFrogHole(3);
 
-	var imgF1 = new Image(36, 27);
-	imgF1.id = "frog1";
-	imgF1.src = "img/frogpassive.png";
-	imgF1.alt = "FROG 1";
-	imgF1.setAttribute("border", 0);
-	imgF1.setAttribute("title", "ActiveFrog");
-	imgF1.setAttribute("class", "frogaImage");
-	imgF1.setAttribute("className", "frogaImage");
-	imgF1.setAttribute("cellid", "td1e");
-	imgF1.setAttribute("idwood", "");
-	document.getElementById("td1e").appendChild(imgF1);
+    frogHoleMax = 4;
+}
 
-	var imgF2 = new Image(36, 27);
-	imgF2.id = "frog2";
-	imgF2.src = "img/frogpassive.png";
-	imgF2.alt = "FROG 2";
-	imgF2.setAttribute("border", 0);
-	imgF2.setAttribute("title", "");
-	imgF2.setAttribute("class", "frogaImage");
-	imgF2.setAttribute("className", "frogaImage");
-	imgF2.setAttribute("cellid", "td1f");
-	imgF2.setAttribute("idwood", "");
-	document.getElementById("td1f").appendChild(imgF2);
+function reCreateNewFrogImage(frogNr) {
+    var frogImg = new Image(36, 27);
+    var frogTitle = "";
+    var frogSrc = "img/frogpassive.png";
+    var frogCellTd = "td1d";
+    switch (parseInt(frogNr)) {
+        case 0:
+            frogTitle = "ActiveFrog";
+            frogSrc = "img/frogActive.gif"
+            frogCellTd = "td1d";
+            break;
+        case 1:
+            frogCellTd = "td1e"; break;
+        case 2:
+            frogCellTd = "td1f"; break;
+        case 3:
+            frogCellTd = "td1g"; break;
+        default:
+            break;
+    }
 
-	var imgF3 = new Image(36, 27);
-	imgF3.id = "frog3";
-	imgF3.src = "img/frogpassive.png";
-	imgF3.alt = "FROG 3";
-	imgF3.setAttribute("border", 0);
-	imgF3.setAttribute("title", "");
-	imgF3.setAttribute("class", "frogaImage");
-	imgF3.setAttribute("className", "frogaImage");
-	imgF3.setAttribute("cellid", "td1g");
-	imgF3.setAttribute("idwood", "");
-	document.getElementById("td1g").appendChild(imgF3);
+    frogImg.id = "frog" + parseInt(frogNr);
+    frogImg.alt = "FROG " + parseInt(frogNr);
+    frogImg.src = frogSrc
+    frogImg.setAttribute("border", 0);
+    frogImg.setAttribute("title", frogTitle);
+    frogImg.setAttribute("class", "frogaImage");
+    frogImg.setAttribute("className", "frogaImage");
+    frogImg.setAttribute("cellid", frogCellTd);
+    frogImg.setAttribute("idwood", "");
 
-	// recreate holes images for frog goal dynamically
-	var imgW0 = new Image(36, 27);
-	imgW0.id = "hole0";
-	imgW0.src = "img/frogHole.png";
-	imgW0.alt = "HOLE 0";
-	imgW0.setAttribute("border", 0);
-	imgW0.setAttribute("title", "");
-	imgW0.setAttribute("class", "frogaImage");
-	imgW0.setAttribute("className", "frogaImage");
-	imgW0.setAttribute("cellid", "td8c");
-	document.getElementById("td8c").appendChild(imgW0);
+    if (frogCellTd != null && frogImg != null) {
+        var cellTd = document.getElementById(frogCellTd);
+        if (cellTd != null)
+            cellTd.appendChild(frogImg);
+    }
+}
 
-	var imgW1 = new Image(36, 27);
-	imgW1.id = "hole1";
-	imgW1.src = "img/frogHole.png";
-	imgW1.alt = "HOLE 1";
-	imgW1.setAttribute("border", 0);
-	imgW1.setAttribute("title", "");
-	imgW1.setAttribute("class", "frogaImage");
-	imgW1.setAttribute("className", "frogaImage");
-	imgW1.setAttribute("cellid", "td8e");
-	document.getElementById("td8e").appendChild(imgW1);
+function reCreateFrogHole(frogNr) {
+    var holeImg = new Image(36, 27);
+    holeImg.id = "hole" + parseInt(frogNr);
+    holeImg.alt = "HOLE " + parseInt(frogNr);
+    holeImg.src = "img/frogHole.png";
+    holeImg.setAttribute("border", 0);
+    holeImg.setAttribute("title", "");
+    holeImg.setAttribute("class", "frogaImage");
+    holeImg.setAttribute("className", "frogaImage");
 
-	var imgW2 = new Image(36, 27);
-	imgW2.id = "hole2";
-	imgW2.src = "img/frogHole.png";
-	imgW2.alt = "HOLE 2";
-	imgW2.setAttribute("border", 0);
-	imgW2.setAttribute("title", "");
-	imgW2.setAttribute("class", "frogaImage");
-	imgW2.setAttribute("className", "frogaImage");
-	imgW2.setAttribute("cellid", "td8g");
-	document.getElementById("td8g").appendChild(imgW2);
+    var holeCellTd = "td8c";
+    switch (parseInt(frogNr)) {
+        case 0:
+            holeCellTd = "td8c"; break;
+        case 1:
+            holeCellTd = "td8e"; break;
+        case 2:
+            holeCellTd = "td8g"; break;
+        case 3:
+            holeCellTd = "td8i"; break;
+        default:
+            break;
+    }
 
-	var imgW3 = new Image(36, 27);
-	imgW3.id = "hole3";
-	imgW3.src = "img/frogHole.png";
-	imgW3.alt = "HOLE 3";
-	imgW3.setAttribute("border", 0);
-	imgW3.setAttribute("title", "");
-	imgW3.setAttribute("class", "frogaImage");
-	imgW3.setAttribute("className", "frogaImage");
-	imgW3.setAttribute("cellid", "td8i");
-	document.getElementById("td8i").appendChild(imgW3);
-	document.getElementById("td8i").setAttribute("background", "img/frogHole.png");
-	frogHoleMax = 4;
+    if (holeCellTd != null) {
+        holeImg.setAttribute("cellid", holeCellTd);
+        var cellTd = document.getElementById(holeCellTd);
+        if (cellTd != null) {
+            cellTd.appendChild(holeImg);
+            if (holeCellTd == "td8i") {
+                try {
+                    cellTd.setAttribute("background", "img/frogHole.png");
+                } catch (Exception) { }
+            }
+        }
+    }
 }
 
 function setFrogsInHole(inHole) {
-	var spanInHole = document.getElementById("frogsInHole");
-	if (spanInHole != null)
-		spanInHole.innerText = inHole;
+    var spanInHole = document.getElementById("frogsInHole");
+    if (spanInHole != null)
+        spanInHole.innerText = inHole;
 }
 
 function setFrogsLeft(frogsLeft) {
-	document.getElementById("frogsLeft").innerHTML = frogsLeft;
+    document.getElementById("frogsLeft").innerHTML = frogsLeft;
 }
 
 function setFrogsDied(frogsDied) {
-	document.getElementById("frogsDied").innerHTML = frogsDied;
+    document.getElementById("frogsDied").innerHTML = frogsDied;
 }
 
 function setLevel(frogLevel) {
-	document.getElementById("frogaLevel").innerHTML = frogLevel;
+    document.getElementById("frogaLevel").innerHTML = frogLevel;
 }
 
 
 function getNewTdPositionByMoving(elemImage, direction) {
-	var elem_Y = rowByTag(elemImage);
-	var elem_X = columnByTag(elemImage);
+    var elem_Y = rowByTag(elemImage);
+    var elem_X = columnByTag(elemImage);
 
-	if (direction != null && direction.charAt(0) != '\0') {
-		switch (direction.charAt(0)) {
-			case 'r': elem_X = rrighter(elem_X); break;
-			case 'l': elem_X = llefter(elem_X); break;
-			case 'u': elem_Y = upper(elem_Y); break;
-			case 'd': elem_Y = below(elem_Y); break;
-			default: break;
-		}
-	}
-	return "td" + elem_Y + elem_X;
+    if (direction != null && direction.charAt(0) != '\0') {
+        switch (direction.charAt(0)) {
+            case 'r': elem_X = rrighter(elem_X); break;
+            case 'l': elem_X = llefter(elem_X); break;
+            case 'u': elem_Y = upper(elem_Y); break;
+            case 'd': elem_Y = below(elem_Y); break;
+            default: break;
+        }
+    }
+    return "td" + elem_Y + elem_X;
 }
 
 function rowByTag(aVehicle) {
-	var cellidTag = aVehicle.getAttribute("cellid");
-	if (cellidTag != null) //  && cellidTag.length >= 2) 
-		return parseInt(cellidTag.charAt(2));
-	// fY = 0;
-	return -1;
+    var cellidTag = aVehicle.getAttribute("cellid");
+    if (cellidTag != null) //  && cellidTag.length >= 2) 
+        return parseInt(cellidTag.charAt(2));
+    // fY = 0;
+    return -1;
 }
 
 function columnByTag(aVehicle) {
-	var cellidtag = aVehicle.getAttribute("cellid");
-	if (cellidtag != null) // && cellidtag.length >= 2)
-		return cellidtag.charAt(3);
-	// fX 
-	return 'd';
+    var cellidtag = aVehicle.getAttribute("cellid");
+    if (cellidtag != null) // && cellidtag.length >= 2)
+        return cellidtag.charAt(3);
+    // fX 
+    return 'd';
 }
 
 
 function upper(row) {
-	let rowUp = parseInt(row);
-	if (rowUp < 8)	// TODO: add constant here for different froga boards
-		rowUp++;
-	return rowUp;
+    let rowUp = parseInt(row);
+    if (rowUp < 8)	// TODO: add constant here for different froga boards
+        rowUp++;
+    return rowUp;
 }
 
 function below(row) {
-	let rowBelow = parseInt(row);
-	if (rowBelow > 1)
-		rowBelow--;
-	return rowBelow;
+    let rowBelow = parseInt(row);
+    if (rowBelow > 1)
+        rowBelow--;
+    return rowBelow;
 }
 
 function righter(col) {
-	// TODO: add constant here for different froga boards
-	switch (col.charAt(0)) {
-		case 'a': return 'b';
-		case 'b': return 'c';
-		case 'c': return 'd';
-		case 'd': return 'e';
-		case 'e': return 'f';
-		case 'f': return 'g';
-		case 'g': return 'h';
-		case 'h': return 'i';
-		case 'i': return 'j';
-		case 'j': return 'j';
-		default: break;
-	}
-	return (col.charAt(0));
+    // TODO: add constant here for different froga boards
+    switch (col.charAt(0)) {
+        case 'a': return 'b';
+        case 'b': return 'c';
+        case 'c': return 'd';
+        case 'd': return 'e';
+        case 'e': return 'f';
+        case 'f': return 'g';
+        case 'g': return 'h';
+        case 'h': return 'i';
+        case 'i': return 'j';
+        case 'j': return 'j';
+        default: break;
+    }
+    return (col.charAt(0));
 }
 
 function rrighter(col) {
-	if (col.charAt(0) == 'j')
-		return 'a';
-	var rightMov = righter(col);
-	return rightMov;
+    if (col.charAt(0) == 'j')
+        return 'a';
+    var rightMov = righter(col);
+    return rightMov;
 }
 
 function llefter(col) {
-	if (col.charAt(0) == 'a')
-		return 'j';
-	var leftMov = lefter(col);
-	return leftMov;
+    if (col.charAt(0) == 'a')
+        return 'j';
+    var leftMov = lefter(col);
+    return leftMov;
 }
 
 function lefter(col) {
-	// TODO: add constant here for different froga boa
-	switch (col.charAt(0)) {
-		case 'a': return 'a';
-		case 'b': return 'a';
-		case 'c': return 'b';
-		case 'd': return 'c';
-		case 'e': return 'd';
-		case 'f': return 'e';
-		case 'g': return 'f';
-		case 'h': return 'g';
-		case 'i': return 'h';
-		case 'j': return 'i';
-		default: break;
-	}
-	return (col.charAt(0));
+    // TODO: add constant here for different froga boa
+    switch (col.charAt(0)) {
+        case 'a': return 'a';
+        case 'b': return 'a';
+        case 'c': return 'b';
+        case 'd': return 'c';
+        case 'e': return 'd';
+        case 'f': return 'e';
+        case 'g': return 'f';
+        case 'h': return 'g';
+        case 'i': return 'h';
+        case 'j': return 'i';
+        default: break;
+    }
+    return (col.charAt(0));
 }
 
 
 function cloneObj(obj) {
-	var copy;
-	if (obj instanceof Object) {
-		copy = {};
-		for (var attr in obj) {
-			if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
-		}
-		return copy;
-	}
+    var copy;
+    if (obj instanceof Object) {
+        copy = {};
+        for (var attr in obj) {
+            if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+        }
+        return copy;
+    }
 }
 
 function copyImg(imgC) {
-	var imgD = new Image();
-	if (imgC != null && imgC.id != null) {
-		imgD.id = imgC.id;
-		imgD.src = imgC.src;
-		imgD.width = imgC.width;
-		imgD.height = imgC.height;
-		imgD.alt = imgC.alt;
-		// imgD.title = imgC.title;
-		// imgD.className = imgC.className;
-		// imgD.setAttribute("alt", imgC.getAttribute("alt"));
-		if (imgC.getAttribute("title") != null)
-			imgD.setAttribute("title", imgC.getAttribute("title"));
-		if (imgC.getAttribute("className") != null)
-			imgD.setAttribute("className", imgC.getAttribute("className"));
-		imgD.setAttribute("class", imgC.getAttribute("class"));
-		if (imgC.getAttribute("cellid") != null)
-			imgD.setAttribute("cellid", imgC.getAttribute("cellid"));
-		if (imgC.getAttribute("idwood") != null)
-			imgD.setAttribute("idwood", imgC.getAttribute("idwood"));
-		imgD.setAttribute("border", 0);
+    var imgD = new Image();
+    if (imgC != null && imgC.id != null) {
+        imgD.id = imgC.id;
+        imgD.src = imgC.src;
+        imgD.width = imgC.width;
+        imgD.height = imgC.height;
+        imgD.alt = imgC.alt;
+        if (imgC.getAttribute("title") != null)
+            imgD.setAttribute("title", imgC.getAttribute("title"));
+        if (imgC.getAttribute("className") != null)
+            imgD.setAttribute("className", imgC.getAttribute("className"));
+        imgD.setAttribute("class", imgC.getAttribute("class"));
+        if (imgC.getAttribute("cellid") != null)
+            imgD.setAttribute("cellid", imgC.getAttribute("cellid"));
+        if (imgC.getAttribute("idwood") != null)
+            imgD.setAttribute("idwood", imgC.getAttribute("idwood"));
+        imgD.setAttribute("border", 0);
 
-	}
-	return imgD;
+    }
+    return imgD;
 }
-

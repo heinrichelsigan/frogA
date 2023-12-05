@@ -15,9 +15,14 @@
 
 
 body.frogbody {
-    border-color: white;
     color: white;
     background-color: black;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
 }
 
 div.froga {
@@ -27,24 +32,14 @@ div.froga {
     min-height: 378pt;
     line-height: normal;
     vertical-align: middle;
-    /* 
-            align-self: center;
-            align-content: center;
-            text-align: center;
-            line-height: normal;        
-            font-size: medium;
-            table-layout: fixed;
-            inset-block-start: initial;
-            inset-block-start: auto;
-        */
+    color: white;
+    background-color: black;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
     border-spacing: 0pt;
     border-width: 0pt;
-    border-color: white;
-    color: white;
-    background-color: black;
+    border-color: transparent;
 }
 
     div.froga.img {
@@ -55,8 +50,9 @@ div.froga {
         padding: 0 0 0 0;
         margin: 0 0 0 0;
         border-style: none;
-        border-spacing: 0;
-        border-width: 0;
+        border-spacing: 0pt;
+        border-width: 0pt;
+        border-color: transparent;
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
@@ -67,12 +63,8 @@ div.froga {
         height: 10%;
         min-height: 45pt;
         align-content: center;
+        font-size: medium;
         line-height: normal;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
         border-color: white;
         color: white;
         background-color: black;
@@ -107,8 +99,8 @@ div.froga {
             padding: 0 0 0 0;
             margin: 0 0 0 0;
             border-style: none;
-            border-spacing: 0px;
-            border-width: 0px;
+            border-spacing: 0pt;
+            border-width: 0pt;
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
@@ -162,27 +154,25 @@ span#rightNotes {
 }
 
 
-    div.froga.frogaFooter {
-        width: 80%;
-        min-width: 360pt;
-        height: 8%;
-        min-height: 36pt;
-        text-align: center;
-        background-color: black;
-        align-content: center;
-        font-size: medium;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0px;
-        border-width: 0px;
-        border-color: white;
-        color: white;
-        background-color: black;
-        table-layout: fixed;
-        inset-block-start: initial;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
-    }
+div.froga.frogaFooter {
+    width: 80%;
+    min-width: 360pt;
+    height: 8%;
+    min-height: 36pt;
+    text-align: center;
+    font-size: medium;
+    background-color: black;
+    align-content: center;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
+    table-layout: fixed;
+    inset-block-start: initial;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
+}
 
         div.froga.frogaFooter#spanLeft {
             height: 8%;
@@ -191,8 +181,6 @@ span#rightNotes {
             min-width: 180pt;
             vertical-align: middle;
             text-align: left;
-            color: white;
-            background-color: black;
         }
 
         div.froga.frogaFooter#spanRight {
@@ -201,9 +189,7 @@ span#rightNotes {
             width: 40%;
             min-width: 180pt;
             vertical-align: middle;
-            text-align: right;
-            color: white;
-            background-color: black;
+            text-align: right
         }
 
 
@@ -216,7 +202,9 @@ table.frogaTable {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
-    border-spacing: 0px;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
     background-repeat: no-repeat;
 }
 
@@ -228,8 +216,9 @@ tr.frogaTr {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
     background-repeat: no-repeat;
     /* background-size: 100% 100%; */
 }
@@ -242,8 +231,9 @@ tr.frogaTrUpStreet {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
     background-repeat: no-repeat;
     /* background-size: 100% 100%; */
 }
@@ -256,127 +246,27 @@ td.frogaTd {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
     /* background-repeat: no-repeat; */
     background-size: 100% 100%;
 }
 
-td.frogaTdUpStreet {
-    width: 8%;
-    /* min-width: 36pt; */
-    height: 6%;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-spacing: 0px;
-    border-width: 0px;
-    background-repeat: no-repeat;
-    /*  
-        background-image: none;
-        background-image: ../img/street1t.png; 
-        border-bottom: dashed;
-        border-bottom-color: black;
-        border-bottom-width: 1px;
-    */
-    background-size: 100% 100%;
-    background-image: none;
-    background-color: #f0d3d3;
-}
-
-td.frogaTdDownStreet {
-    width: 8%;
-    /* min-width: 36pt; */
-    height: 6%;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-spacing: 0px;
-    border-width: 0px;
-    background-repeat: no-repeat;
-    /*          
-        background-image: ../img/street1t.png;
-        border-top: dashed;
-        border-top-color: black;
-        border-top-width: 1px;
-    */
-    background-size: 100% 100%;
-    background-color: #f0d3d3;
-}
-
-td.frogaTdStartMeadow {
-    width: 8%;
-    /* min-width: 36pt; */
-    height: 6%;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-spacing: 0px;
-    border-width: 0px;
-    background-size: 100% 100%;
-    /*  
-        background-repeat: no-repeat;  
-        background-image: none; 
-        background-color: #eed3d3;
-        visibility: visible;
-        border-bottom: thin;
-        border-bottom-color: black;
-        border-bottom-width: 1px;
-    */
-}
-
+img.frogaImage,
 img.frogaWood {
     width: 100%;
     min-width: 36pt;
     height: 100%;
     min-height: 27pt;
-    visibility: visible;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
-    background-repeat: no-repeat;
-    z-index: 100;
-    /* backface-visibility: revert; background-size: 100% 100%; */
-}
-
-img.frogaImage {
-    width: 100%;
-    min-width: 36pt;
-    height: 100%;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
     background-repeat: no-repeat;
     /* background-size: 100% 100%; */
-}
-
-
-td.frogaTd.img,
-td.frogaTd.img.frogaImageHole,
-td.frogaTd.img.frogaImageHole#hole0,
-td.frogaTd.img.frogaImageHole#hole1,
-td.frogaTd.img.frogaImageHole#hole2,
-td.frogaTd.img.frogaImageHole#hole3,
-td.frogaTd.img#hole0,
-td.frogaTd.img#hole1,
-td.frogaTd.img#hole2,
-td.frogaTd.imghole3 {
-    width: 100%;
-    min-width: 36pt;
-    height: 100%;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
 }
 
 img.frogaImage#frog0,
@@ -389,9 +279,10 @@ img.frogaImage#frog3 {
     min-height: 27pt;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
-    border-style:;
-    border-spacing: 0px;
-    border-width: 0px;
+    border-style: none;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
     background-repeat: no-repeat;
     /* background-size: 100% 100%; */
 }
@@ -408,8 +299,9 @@ img#aRight {
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
