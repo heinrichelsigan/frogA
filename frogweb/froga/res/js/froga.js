@@ -154,8 +154,8 @@ function moveCars() {
         if (newTd == frogTd) {
             currentFrog.id = "died" + frogNr;
             document.getElementById(newTd).removeChild(currentFrog);
-            car.src = "res/img/car1crashed.png"
-            changeImagePlaySound(car, "res/img/car1crashed.png", "res/audio/frogCrash.ogg");
+            car.src = "res/img/car3crashed.png"
+            changeImagePlaySound(car, "res/img/car3crashed.png", "res/audio/frogCrash.ogg");
             currentFrog = getActiveFrog();
             currentFrogId = getCurrentFrogId(currentFrog);
         }
@@ -179,8 +179,8 @@ function moveCars() {
         if (newTd == frogTd) {
             currentFrog.id = "died" + frogNr;
             document.getElementById(newTd).removeChild(currentFrog);
-            car.src = "res/img/car1crashed.png"
-            changeImagePlaySound(car, "res/img/car0crashed.png", "res/audio/frogCrash.ogg");
+            car.src = "res/img/car2crashed.png"
+            changeImagePlaySound(car, "res/img/car2crashed.png", "res/audio/frogCrash.ogg");
             currentFrog = getActiveFrog();
             currentFrogId = getCurrentFrogId(currentFrog);
         }
@@ -215,10 +215,10 @@ function moveWalkers() {
         walk.setAttribute("cellid", newTd);
 
         switch (walkId) {
-            case "person0": walk.src = "res/img/walk4m.png"; break;
-            case "person1": walk.src = "res/img/walk5m.png"; break;
-            case "person2": walk.src = "res/img/walk6m.png"; break;
-            case "person3": walk.src = "res/img/walk3m.png"; break;
+            case "person0": walk.src = "res/img/walk2m.gif"; break;
+            case "person1": walk.src = "res/img/walk5m.gif"; break;
+            case "person2": walk.src = "res/img/walk6m.gif"; break;
+            case "person3": walk.src = "res/img/walk3m.gif"; break;
             default: break;
         }
 
@@ -226,7 +226,7 @@ function moveWalkers() {
             currentFrog.id = "died" + frogNr;
             document.getElementById(newTd).removeChild(currentFrog);
             walk.src = "res/img/walk7m.png"
-            changeImagePlaySound(walk, "res/img/walk7m.png", "res/audio/frogJump.ogg");
+            changeImagePlaySound(walk, "res/img/walk0m.gif", "res/audio/frogJump.ogg");
             currentFrog = getActiveFrog();
             currentFrogId = getCurrentFrogId(currentFrog);
         }
@@ -619,12 +619,12 @@ function crashFrog(tdFrogCell) {
                 if (_move_Id.length >= 4) {
                     switch (_move_Id.substr(0, 4)) {
                         case "car2": ++crashCnt;
-                            changeImagePlaySound(move, "res/img/car0crashed.png", "res/audio/frogCrash.ogg");
-                            move.src = "res/img/car0crashed.png";
+                            changeImagePlaySound(move, "res/img/car2crashed.png", "res/audio/frogCrash.ogg");
+                            move.src = "res/img/car2crashed.png";
                             break;
                         case "car3": ++crashCnt;
-                            changeImagePlaySound(move, "res/img/car1crashed.png", "res/audio/frogCrash.ogg");
-                            move.src = "res/img/car1crashed.png";
+                            changeImagePlaySound(move, "res/img/car3crashed.png", "res/audio/frogCrash.ogg");
+                            move.src = "res/img/car3crashed.png";
                             break;
                         case "pers": ++crashCnt;
                             changeImagePlaySound(move, "res/img/walk7m.png", "res/audio/frogJump.ogg");

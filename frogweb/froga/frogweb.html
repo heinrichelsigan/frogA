@@ -277,7 +277,7 @@
             if (repeatLevel) {
                 gameOver = 0;
                 window.location.reload();
-            } else { // TODO: fix this		
+            } else { // TODO: fix this
                 reCreateFrogs();
                 frogLoad();
             }
@@ -452,18 +452,18 @@
                 walk.setAttribute("cellid", newTd);
 
                 switch (walkId) {
-                    case "person0": walk.src = "res/img/walk4m.png"; break;
-                    case "person1": walk.src = "res/img/walk5m.png"; break;
-                    case "person2": walk.src = "res/img/walk6m.png"; break;
-                    case "person3": walk.src = "res/img/walk3m.png"; break;
+                    case "person0": walk.src = "res/img/walk2m.gif"; break;
+                    case "person1": walk.src = "res/img/walk5m.gif"; break;
+                    case "person2": walk.src = "res/img/walk6m.gif"; break;
+                    case "person3": walk.src = "res/img/walk3m.gif"; break;
                     default: break;
                 }
 
                 if (newTd == frogTd) {
                     currentFrog.id = "died" + frogNr;
                     document.getElementById(newTd).removeChild(currentFrog);
-                    walk.src = "res/img/walk7m.png"
-                    changeImagePlaySound(walk, "res/img/walk7m.png", "res/audio/frogJump.ogg");
+                    walk.src = "res/img/walk0m.gif"
+                    changeImagePlaySound(walk, "res/img/walk0m.gif", "res/audio/frogJump.ogg");
                     currentFrog = getActiveFrog();
                     currentFrogId = getCurrentFrogId(currentFrog);
                 }
@@ -865,8 +865,8 @@
                                     move.src = "res/img/car3crashed.png";
                                     break;
                                 case "pers": ++crashCnt;
-                                    changeImagePlaySound(move, "res/img/walk7m.png", "res/audio/frogJump.ogg");
-                                    move.src = "res/img/walk7m.png";
+                                    changeImagePlaySound(move, "res/img/walk0m.gif", "res/audio/frogJump.ogg");
+                                    move.src = "res/img/walk0m.gif";
                                     break;
                                 default: break;
                             }
@@ -878,7 +878,7 @@
             return (crashCnt > 0) ? frogNr : -1;
         }
 
-
+        
         // get active current frog
         function getActiveFrog() {
 
@@ -1262,21 +1262,21 @@
 			<tr id="tr5" class="frogaTr">
 				<td id="td5a" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png"></td>
 				<td id="td5b" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png">
-					<img id="person0" cellid="td5b" class="frogaImage" src="res/img/walk4m.png" border="0" />
+					<img id="person0" cellid="td5b" class="frogaImage" src="res/img/walk2m.gif" border="0" />
 				</td>
 				<td id="td5c" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png"></td>
 				<td id="td5d" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png">
-					<img id="person1" cellid="td5d" class="frogaImage" src="res/img/walk5m.png" border="0" />
+					<img id="person1" cellid="td5d" class="frogaImage" src="res/img/walk5m.gif" border="0" />
 				</td>
 				<td id="td5e" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png"></td>
 				<td id="td5f" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png"></td>
 				<td id="td5g" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png">
-					<img id="person2" cellid="td5g" class="frogaImage" src="res/img/walk6m.png" border="0" />
+					<img id="person2" cellid="td5g" class="frogaImage" src="res/img/walk6m.gif" border="0" />
 				</td>
 				<td id="td5h" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png"></td>
 				<td id="td5i" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png"></td>
 				<td id="td5j" class="frogaTd" width="8%" height="6%" background="res/img/walk1m.png">
-					<img id="person3" cellid="td5j" class="frogaImage" src="res/img/walk3m.png" border="0" />
+					<img id="person3" cellid="td5j" class="frogaImage" src="res/img/walk3m.gif" border="0" />
 				</td>
 			</tr>
 			<tr id="tr4" class="frogaTr">
