@@ -4,8 +4,9 @@
 	https://area23.at/froga/froga.html
 */
 
-var loopDelay = 1500,
-    loopTicks = 0;
+var loopDelay = 1625,
+    loopTicks = 0, 
+    soundDuration = 1625;
 var level = 0,
     frogsDied = 0,
     frogsInHole = 0,
@@ -54,13 +55,12 @@ function frogLoad() {
     gameOver = 0;
 
     switch (level) {
-        case 0: loopDelay = 1500; break;
-        case 1: loopDelay = 1375; break;
-        case 2: loopDelay = 1250; break;
-        case 3: loopDelay = 1125; break;
-        case 4: loopDelay = 1000; break;
-        case 5: loopDelay = 875; break;
-        default: loopDelay = 750; break;
+        case 0: loopDelay = 1625; break;
+        case 1: loopDelay = 1500; break;
+        case 2: loopDelay = 1375; break;
+        case 3: loopDelay = 1250; break;
+        case 4: loopDelay = 1125; break;
+        default: loopDelay = 1000; break;
     }
     setLevel(level);
     setFrogsInHole(frogsInHole);
@@ -104,6 +104,7 @@ function frogaLooper(ticks, delay) {
             headerImg.src = "res/img/levelperfect.gif"
         headerImg.height = 36;
         level++;
+        soundDuration = 3600;
         setTimeout(function () { frogSound("res/audio/levelCompleted.mp3") }, 100);
         setTimeout(function () { frogReStart(false); }, 4000); // will call the function after 8 secs.
         return;
@@ -113,6 +114,7 @@ function frogaLooper(ticks, delay) {
         headerImg.src = "res/img/gameover.png";
         headerImg.height = 36;
         gameOver = 1;
+        soundDuration = 4800;
         setTimeout(function () { frogSound("res/audio/frogaGameOver.mp3") }, 100);
         setTimeout(function () { frogReStart(true); }, 5000); // will call the function after 8 secs.
         return;
@@ -519,7 +521,13 @@ function moveFrog(jumpDirection) {
 
 // sound and image 
 function frogSound(soundName) {
+    var dursec = 1625;
+    dursec = parseInt(soundDuration);
+    if (dursec < parseInt(loopDelay))
+        dursec = parseInt(loopDelay);
+
     let sound = new Audio(soundName);
+
     sound.autoplay = true;
     sound.loop = false;
 
@@ -551,9 +559,10 @@ function frogSound(soundName) {
             sound = null;
         } catch (exSnd) {
         }
-    }, 1300);
-
+        soundDuration = parseInt(loopDelay);
+    }, dursec);
 }
+
 
 // exchange image & play sound
 function changeImagePlaySound(imageToChange, newImageUrl, soundToPlay) {
