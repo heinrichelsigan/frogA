@@ -2,7 +2,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Frog.Web</title>	
-	<link rel="shortcut icon" href="https://area23.at/froga/favicon.ico" type="image/x-icon" />
+	<link rel="froga icon" href="favicon.ico" type="image/x-icon" />
 	<style>
         body.frogbody {
             color: white;
@@ -600,29 +600,20 @@
 
             newFrog.id = currentFrogId;
             newFrog.title = "ActiveFrog";
-            newFrog.border = "0";
-            newFrog.src = "data:image/gif;base64,R0lGODlhJAAbAKU4AAAAAAAAAGBmAGuvAG6wAHGwAG+xAG+yAHCyAHKyAHCzAHKzAHG0AHO2AHS2AHW2AHG4AHW3AHS7AHW8AHi+AHy9AH6+AHnAAH/AAK+yAHvDAKm1AIPAFoDEAIPEBITECYTEEoXFDIbEG4nELo3HNYvKHovLHYvMHYzMH5DJPI3NIY7NHo7OIpDOJJDPKpTSO5vQTJfTOpzSSZ3SSprUPqfXWsrWAKzcYv///////////////////////////////yH+EUNyZWF0ZWQgd2l0aCBHSU1QACH5BAEPAD8ALAAAAAAkABsAAAaewJ9wSCz+RrffbWRsOp8/WE0Kg1qhKdKDlLp6izZbZxz+mgVissD8TY87NrYxHhe+7+Mh3Rvv/Px2eG9Dfn51T4V5gYKAf3mNTndEjIqLkJGUmXhemp2VcplyUKGimIylpoKoTaSiLa+vlps/sLFQtbiZuLVOu7W6vrZFwa/Awb3EjMQtt8HKx1bOgtBX0m/UX7t4u6stHd6Ohd7MUEEAIfkEAQ8APwAsAAAAACQAGwAABv7An3BILP5Gt99tZGw6nz9YTQqDWqEp0oOUunqLG5tibNt8zwIxWXD+ZhJjRSLTNsp+d2FhwYgzFgVDd3lWMz8XPyBDCHGNCEOKiIZQFD8dHQNDB41xB0MDlz+VUAMXGiFEBpxjBkQhGheZVhQUF7YXE6qrBhO3F7ReAxIQwxATBKsKBBMQxMSydT+6nK3RTslj1tfY2k2Mq4/dRZurntY0LizqQn2rDELqLC40Vi8xLfHqJhHJESb5LFrEeOHkxQqA6lRgSIZBBUIWKwgaKfFQ3YdkHyqyKOFEI4oGnBqg0AhFYwVOFUhaqeiBk4eKXx6ecBDHwYmHdRBaiGMBYQ03ERyA/ojzI2hQK0EAADs=";
+            newFrog.border = "0";            
+            newFrog.src = "data:image/gif;base64,R0lGODlhJAAbAMZhAGBmAF5lJ3d5AHyBAGuvAG2xAG+xAG6yAG+yAHCyAHKyAHCzAHKzAHG0AHK0AHC0CHezAHK1AHO1AHO2AHS2AHW2AHO3AHW3AnyvR3W3BXa2DnS4AHO5AHO6AHe5AHS6AHe5AXi5AY2zAHS7AHW7AHW8AHe9AHe+AHi+AHy8C3y8Dni/AH28FH69C36+AHnAAKi0Aa+yAH3CAKm1AILAEoLAF37CFoPAHoDEAITBF37DF4TBGYS9TaizRIPEBITDEoTECYbCH4TEEoTEG4bEGojDIYjDI4jDJIfEHobFH4nELovAWa7BAI3HNY7HN5DJPJLJQK7IAJTLQZTNRpbNRpfNRpnJbpvQTJvRSLbOE5zSSZ3SSr3OEqfXWsrWAKraX6zcYv///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH+IkNyZWF0ZWQgIGJ5IGhlQGFyZWEyMy5hdCB3aXRoIEdJTVAAIfkECRIAfwAsAAABACQAGgAAB9SAf4KDhIWGh4iJiouMikpgf2BKjZSEV12XV5WbT00VTU+blDNeC6ZeM6KMAKWnAKqFWn+ygjEKpgsKMYOytI1bfy9/QoMMDbgNDIPEwsCMKH84LwSDuNaDBC/C0IzZ2oTWuITa05Tk5CPhpiPn35QE7OjqCyMl6NSwfwTz+PmF++r6+cPGb+C/gvmMKDQiCGA4fAsZMooY8c+8PxQXLsqoEMg8IBwlKgo5IdyEkJQ4ugjnguOmjD7C+cioKiMFXBRowqK40lTLiv4WurBo6s9PkYgCAQAh+QQJEgB/ACwAAAAAJAAbAAAH2oB/goOEhYaHiImHSmB/YEqKkYpXXZRXkpiGT00VTU+ZoH8zXgulXjOhmACkpgCphlp/sYIxCqULCjGDsbOYW38vf0KDDA23DQyDw8G/kih/OC8Eg7fVgwQvwc+S2NmE1beE2dKZ4+Mj4KUj5t6ZBOvn6QsjJefTr4IE8vf4hvrp/PoR+gcuoMB8+w4WIljNYCgjEI1QSzcookRJFi3+kfcnY8RIHiECkQck5EVFJieAm2AyU0gX4FyEfJjRBzgfHl95pHCLQk58GWGWkqlRYEQXG0v9IXpSocBAACH5BAkSAH8ALAAAAAAkABsAAAemgH+Cg4SFfzxWf1Y8ho2Oj39LVpJLkJaQPDwYmZedhT09GKKgnqUBoaMBpZ6oohg9q4aVlYKutqKDs52VGH+9tbeug729tI/EuMDBv764zI62hMvJys/Q09i3ndnc1LHYsZDg4dfL5OXB543j4Znu1dqH7oyY8/PY9vOO+ffT/O+G/mXCJ3CfwGUC6Rnkh/DfpX8N83mCaMvhqny3JJ5zh4wYwEeBAAA7";
             // newFrog.src = "res/img/frogActive.gif";
             newFrog.setAttribute("idwood", "");
 
             var shouldReturn = false;
             if (nrY == 1) {
-                var startObjects = ["meadow0b0", "frog1", "frog2", "frog3", "meadow0b1"];
+                var startObjects = ["meadow0b0", "frog0", "frog1", "frog2", "frog3", "meadow0b1"];
                 let _startObj_Id = "";
                 var startObj = null;
                 startObjects.forEach(function (_startObj_Id) {
                     startObj = document.getElementById(newTd).children[_startObj_Id];
                     if (startObj != null) {
-                        var frogPrae = document.getElementById("frogPre");
-                        if (frogPrae != null)
-                            frogPrae.innerText = String.fromCharCode(7) + '\a';
-                        // let leftNotes = document.getElementById("leftNotes");
-                        // 	leftNotes.innerHTML = String.fromCharCode(7) + "&#07;"
-                        console.log('\a');
-                        console.log(String.fromCharCode(7));
-                        console.error('\x07');
-                        console.error(String.fromCharCode(7));
-
+                        
                         shouldReturn = true;
                     }
                 });
@@ -701,7 +692,8 @@
                     imgDisApear = document.getElementById(newTd).children["hole" + woodIt];
                     if (imgDisApear != null && imgDisApear.src != null) {
                         let idaLen = imgDisApear.src.length;
-                        if (imgDisApear.src.substr(idaLen - 22) == "res/img/frogInHole.gif") {
+                        if ((imgDisApear.src.substr(idaLen - 27) == "res/img/frogTwiceInHole.gif") ||
+                            (imgDisApear.src.substr(idaLen - 22) == "res/img/frogInHole.gif")) {
                             frogDoubleHole++;
                             woodIt = 4; break;
                         }
@@ -712,28 +704,21 @@
                     }
                     woodIt++;
                 }
-                if (imgDisApear == null) {
-                    if (nrX.charAt(0) == 'c')
-                        imgDisApear = document.getElementById("hole0");
-                    if (nrX.charAt(0) == 'e')
-                        imgDisApear = document.getElementById("hole1");
-                    if (nrX.charAt(0) == 'g')
-                        imgDisApear = document.getElementById("hole2");
-                    if (nrX.charAt(0) == 'i')
-                        imgDisApear = document.getElementById("hole3");
-                }
 
-                if (imgDisApear != null) {
-                    if (frogDoubleHole < 1) {
+                if (imgDisApear == null) {
+                    frogDied = frogInRiverOrSwampOrHole(newFrog, "res/img/frogDiesInSwamp.gif", "res/audio/frogInSwamp.ogg", "died", "Frog died!");
+                }
+                else if (imgDisApear != null) {
+                    if (frogDoubleHole >= 1) {
+                        newTd = "td" + nrY + lefter(nrX);
+                        frogDied = frogInRiverOrSwampOrHole(newFrog, "res/img/frogDiesInSwamp.gif", "res/audio/frogInSwamp.ogg", "died", "frog" + frogNr + "@graveyard");
+                        imgDisApear = null;
+                    }
+                    else if (frogDoubleHole < 1) {
                         frogsInHole++;
                         setFrogsInHole(frogsInHole);
                         frogInRiverOrSwampOrHole(newFrog, "res/img/frogInHole.gif", "res/audio/frogInHole.ogg", "save", "frog" + frogNr + "@home");
-                    } else {
-                        frogDied = frogInRiverOrSwampOrHole(newFrog, "res/img/frogTwiceInHole.gif", "res/audio/frogInSwamp.ogg", "died", "Frog died!");
                     }
-                }
-                if (imgDisApear == null) {
-                    frogDied = frogInRiverOrSwampOrHole(newFrog, "res/img/frogDiesInSwamp.gif", "res/audio/frogInSwamp.ogg", "died", "Frog died!");
                 }
             }
 
@@ -964,7 +949,7 @@
         function reCreateNewFrogImage(frogNr) {
             var frogImg = new Image(36, 27);
             var frogTitle = "";
-            var frogSrc = "res/img/frogInActive.png";
+            var frogSrc = "res/img/frogSleepy.png";
             var frogCellTd = "td1d";
             switch (parseInt(frogNr)) {
                 case 0:
@@ -1334,13 +1319,13 @@
 					<img id="frog0" cellid="td1d" idwood="" class="frogaImage" src="res/img/frogActive.gif" title="ActiveFrog" border="0" />
 				</td>
 				<td id="td1e" class="frogaTd" width="8%" height="6%" background="res/img/meadow1b.png">
-					<img id="frog1" cellid="td1e" idwood="" class="frogaImage" src="res/img/frogInActive.png" border="0" />
+					<img id="frog1" cellid="td1e" idwood="" class="frogaImage" src="res/img/frogSleepy.png" border="0" />
 				</td>
 				<td id="td1f" class="frogaTd" width="8%" height="6%" background="res/img/meadow1b.png">
-					<img id="frog2" cellid="td1f" class="frogaImage" src="res/img/frogInActive.png" border="0" idwood="" />
+					<img id="frog2" cellid="td1f" class="frogaImage" src="res/img/frogSleepy.png" border="0" idwood="" />
 				</td>
 				<td id="td1g" class="frogaTd" width="8%" height="6%" background="res/img/meadow1b.png">
-					<img id="frog3" cellid="td1g" idwood="" class="frogaImage" src="res/img/frogInActive.png" border="0" />
+					<img id="frog3" cellid="td1g" idwood="" class="frogaImage" src="res/img/frogSleepy.png" border="0" />
 				</td>
 				<td id="td1h" class="frogaTd" width="8%" height="6%" background="res/img/meadow1b.png"></td>
 				<td id="td1i" class="frogaTd" width="8%" height="6%" background="res/img/meadow1b.png"></td>

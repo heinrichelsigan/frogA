@@ -364,27 +364,18 @@ function moveFrog(jumpDirection) {
     newFrog.id = currentFrogId;
     newFrog.title = "ActiveFrog";
     newFrog.border = "0";
-    newFrog.src = "res/img/frogActive.gif";
+    newFrog.src = "res/img/frogJumpLand.gif";
     newFrog.setAttribute("idwood", "");
 
     var shouldReturn = false;
+
     if (nrY == 1 || nrY == 4) {
-        var startObjects = ["meadow0b0", "frog1", "frog2", "frog3", "meadow0b1", "meadow0m0"];
+        var startObjects = ["meadow0b0", "frog0", "frog1", "frog2", "frog3", "meadow0b1", "meadow0m0"];
         let _startObj_Id = "";
         var startObj = null;
         startObjects.forEach(function (_startObj_Id) {
             startObj = document.getElementById(newTd).children[_startObj_Id];
-            if (startObj != null) {
-                var frogPrae = document.getElementById("frogPre");
-                if (frogPrae != null)
-                    frogPrae.innerText = String.fromCharCode(7) + '\a';
-                // let leftNotes = document.getElementById("leftNotes");
-                // 	leftNotes.innerHTML = String.fromCharCode(7) + "&#07;"
-                console.log('\a');
-                console.log(String.fromCharCode(7));
-                console.error('\x07');
-                console.error(String.fromCharCode(7));
-
+            if (startObj != null) {                
                 shouldReturn = true;
             }
         });
@@ -463,10 +454,11 @@ function moveFrog(jumpDirection) {
             imgDisApear = document.getElementById(newTd).children["hole" + woodIt];
             if (imgDisApear != null && imgDisApear.src != null) {
                 let idaLen = imgDisApear.src.length;
-                if (imgDisApear.src.substr(idaLen - 22) == "res/img/frogInHole.gif") {
+                if ((imgDisApear.src.substr(idaLen - 27) == "res/img/frogTwiceInHole.gif") || 
+                    (imgDisApear.src.substr(idaLen - 22) == "res/img/frogInHole.gif")) {
                     frogDoubleHole++;
                     woodIt = 4; break;
-                }
+                }                
                 if (imgDisApear.src.substr(idaLen - 20) == "res/img/frogHole.png") {
                     woodIt = 4;
                     break;
@@ -474,28 +466,21 @@ function moveFrog(jumpDirection) {
             }
             woodIt++;
         }
-        if (imgDisApear == null) {
-            if (nrX.charAt(0) == 'c')
-                imgDisApear = document.getElementById("hole0");
-            if (nrX.charAt(0) == 'e')
-                imgDisApear = document.getElementById("hole1");
-            if (nrX.charAt(0) == 'g')
-                imgDisApear = document.getElementById("hole2");
-            if (nrX.charAt(0) == 'i')
-                imgDisApear = document.getElementById("hole3");
-        }
 
-        if (imgDisApear != null) {
-            if (frogDoubleHole < 1) {
+        if (imgDisApear == null) {
+            frogDied = frogInRiverOrSwampOrHole(newFrog, "res/img/frogDiesInSwamp.gif", "res/audio/frogInSwamp.ogg", "died", "Frog died!");
+        }
+        else if (imgDisApear != null) {
+            if (frogDoubleHole >= 1) {
+                newTd = "td" + nrY + lefter(nrX);
+                frogDied = frogInRiverOrSwampOrHole(newFrog, "res/img/frogDiesInSwamp.gif", "res/audio/frogInSwamp.ogg", "died", "frog" + frogNr + "@graveyard");
+                imgDisApear = null;
+            }
+            else if (frogDoubleHole < 1) {
                 frogsInHole++;
                 setFrogsInHole(frogsInHole);
                 frogInRiverOrSwampOrHole(newFrog, "res/img/frogInHole.gif", "res/audio/frogInHole.ogg", "save", "frog" + frogNr + "@home");
-            } else {
-                frogDied = frogInRiverOrSwampOrHole(newFrog, "res/img/frogTwiceInHole.gif", "res/audio/frogInSwamp.ogg", "died", "Frog died!");
-            }
-        }
-        if (imgDisApear == null) {
-            frogDied = frogInRiverOrSwampOrHole(newFrog, "res/img/frogDiesInSwamp.gif", "res/audio/frogInSwamp.ogg", "died", "Frog died!");
+            }            
         }
     }
 
@@ -519,7 +504,6 @@ function moveFrog(jumpDirection) {
     if (imgReApear != null) {
         document.getElementById(oldTd).appendChild(imgReApear);
     }
-
 
     if (frY == 7 && (nrY <= 5 || nrY >= 8))
         imgSavedWoodB = null;
@@ -729,7 +713,7 @@ function reCreateFrogs() {
 function reCreateNewFrogImage(frogNr) {
     var frogImg = new Image(36, 27);
     var frogTitle = "";
-    var frogSrc = "res/img/frogInActive.png";
+    var frogSrc = "res/img/frogSleepy.png";
     var frogCellTd = "td1d";
     switch (parseInt(frogNr)) {
         case 0:
