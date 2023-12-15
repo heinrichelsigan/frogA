@@ -4,9 +4,11 @@ GPL3.0 root@darkstar.work
 
 ## frogA Web in JavaScript only
 
-https://darkstar.work/froga/
-
 https://area23.at/froga/
+
+https://darkstar.work/froga/frogweb.htm
+
+https://youtu.be/NZmkPhS1oJg
 
 ## frogger port android v1.2
 
