@@ -98,7 +98,10 @@ function frogaLooper(ticks, delay) {
 
     // level completed
     if (frogsInHole >= frogHoleMax) {
-        headerImg.src = "res/img/message_levelcompleted.png"
+        if (frogsDied > 0)
+            headerImg.src = "res/img/levelcompleted.gif"
+        else
+            headerImg.src = "res/img/levelperfect.gif"
         headerImg.height = 36;
         level++;
         setTimeout(function () { frogReStart(false); }, 4000); // will call the function after 8 secs.
@@ -106,7 +109,7 @@ function frogaLooper(ticks, delay) {
     }
     // game over
     if (currentFrog == null) {
-        headerImg.src = "res/img/message_gameover.png";
+        headerImg.src = "res/img/gameover.png";
         headerImg.height = 36;
         gameOver = 1;
         setTimeout(function () { frogReStart(true); }, 5000); // will call the function after 8 secs.
