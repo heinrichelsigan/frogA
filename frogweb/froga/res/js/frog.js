@@ -104,14 +104,16 @@ function frogaLooper(ticks, delay) {
             headerImg.src = "res/img/levelperfect.gif"
         headerImg.height = 36;
         level++;
+        setTimeout(function () { frogSound("res/audio/levelCompleted.mp3") }, 100);
         setTimeout(function () { frogReStart(false); }, 4000); // will call the function after 8 secs.
         return;
     }
     // game over
-    if (currentFrog == null) {
+    if (currentFrog == null || frogsDied > 3) {
         headerImg.src = "res/img/gameover.png";
         headerImg.height = 36;
         gameOver = 1;
+        setTimeout(function () { frogSound("res/audio/frogaGameOver.mp3") }, 100);
         setTimeout(function () { frogReStart(true); }, 5000); // will call the function after 8 secs.
         return;
     }
@@ -535,7 +537,7 @@ function frogSound(soundName) {
     setTimeout(function () {
         leftNotes.innerHTML = " ♪";
         rightNotes.innerHTML = "♫ ";
-    }, 500);
+    }, 800);
 
     setTimeout(function () {
         leftNotes.innerHTML = "  ";
@@ -549,7 +551,7 @@ function frogSound(soundName) {
             sound = null;
         } catch (exSnd) {
         }
-    }, 900);
+    }, 1300);
 
 }
 
