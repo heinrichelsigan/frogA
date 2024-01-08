@@ -44,13 +44,14 @@
             }
 
             div.froga.frogaHeader {
-                width: 80%;
+                width: 90%;
                 min-width: 360pt;
                 height: 10%;
                 min-height: 45pt;
                 align-content: center;
                 font-size: medium;
                 line-height: normal;
+                border-color: white;
                 color: white;
                 background-color: black;
                 background-repeat: no-repeat;
@@ -59,7 +60,7 @@
         div.frogaHeader#headerLeft {
             height: 10%;
             min-height: 45pt;
-            width: 20%;
+            width: 27%;
             min-width: 90pt;
             vertical-align: middle;
             font-size: larger;
@@ -69,7 +70,7 @@
         div.frogaHeader#headerCenter {
             height: 10%;
             min-height: 45pt;
-            width: 66%;
+            width: 64%;
             min-width: 297pt;
             vertical-align: middle;
             font-size: medium;
@@ -81,6 +82,11 @@
             min-width: 270pt;
             height: 10%;
             min-height: 45pt;
+            padding: 0 0 0 0;
+            margin: 0 0 0 0;
+            border-style: none;
+            border-spacing: 0pt;
+            border-width: 0pt;
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
@@ -96,8 +102,20 @@
         }
 
 
-        span#leftNotes,
-        span#rightNotes {
+        img.frogsInImg {
+            width: 32pt;
+            height: 27pt;
+            padding: 0 0 0 0;
+            margin: 0 0 0 0;
+            border-style: none;
+            border-spacing: 0pt;
+            border-width: 0pt;
+            border-color: transparent;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        span#leftNotes {
             color: whitesmoke;
             width: 5.33%;
             max-width: 24pt;
@@ -106,17 +124,30 @@
 
         span#frogsInHole {
             color: greenyellow;
+            width: 32pt;
+            margin-left: -18pt;
+            padding-right: 6pt;
+            font-weight: bold;
         }
 
         span#frogsLeft {
             color: aqua;
-            visibility: hidden;
+            width: 32pt;
+            margin-left: -18pt;
+            padding-right: 2pt;
+            font-size: large;
+            /*visibility: hidden; */
         }
 
         span#frogsDied {
             color: gainsboro;
+            width: 32pt;
+            font-size: medium;
+            font-weight: bold;
+            margin-left: -18pt;
+            padding-right: 4pt;
         }
-
+           
         span#frogsLevel {
             color: orangered;
             font-size: larger;
@@ -127,6 +158,13 @@
             font-size: larger;
         }
 
+        span#leftNotes,
+        span#rightNotes {
+            color: whitesmoke;
+            width: 5.33%;
+            max-width: 24pt;
+            font-size: large;
+        }
 
         div.froga.frogaFooter {
             width: 80%;
@@ -1194,12 +1232,12 @@
 	<noscript>Your browser does not support JavaScript!</noscript>
 	<div class="froga" align="center">
 		<div class="frogaHeader">
-			<span id="headerLeft" align="right" valign="middle">
-				<span id="leftNotes"></span>
-				<span id="frogsInHole" alt="frogs in hole">0</span>
-				<span id="frogsLeft" alt="frogs left">4</span>
-				<span id="frogsDied" alt="frogs died">0</span>
-			</span>
+            <span id="headerLeft" align="right" valign="middle">
+                <span id="leftNotes"></span>
+                <img class="frogsInImg" src="res/img/frogsLeftCount.png" /><span id="frogsLeft" alt="frogs left">4</span>
+                <img class="frogsInImg" src="res/img/frogsDiedCount.png" /><span id="frogsDied" alt="frogs died">0</span>
+                <img class="frogsInImg" src="res/img/frogsInHoleCount.png" /><span id="frogsInHole" alt="frogs in hole">0</span>
+            </span>
 			<span id="headerCenter" align="center" valign="middle">
 				<img class="headerImage" src="res/img/header.png" id="headerImg" border="0" onclick="restart()" />
 			</span>

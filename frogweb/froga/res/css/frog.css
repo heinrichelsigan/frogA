@@ -58,7 +58,7 @@ div.froga {
     }
 
     div.froga.frogaHeader {
-        width: 80%;
+        width: 90%;
         min-width: 360pt;
         height: 10%;
         min-height: 45pt;
@@ -74,7 +74,7 @@ div.froga {
         div.frogaHeader#headerLeft {
             height: 10%;
             min-height: 45pt;
-            width: 20%;
+            width: 27%;
             min-width: 90pt;
             vertical-align: middle;
             font-size: larger;
@@ -84,7 +84,7 @@ div.froga {
         div.frogaHeader#headerCenter {
             height: 10%;
             min-height: 45pt;
-            width: 66%;
+            width: 64%;
             min-width: 297pt;
             vertical-align: middle;
             font-size: medium;
@@ -116,6 +116,19 @@ div.froga {
         }
 
 
+img.frogsInImg {
+    width: 32pt;
+    height: 27pt;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0pt;
+    border-width: 0pt;
+    border-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
 span#leftNotes {
     color: whitesmoke;
     width: 5.33%;
@@ -125,15 +138,28 @@ span#leftNotes {
 
 span#frogsInHole {
     color: greenyellow;
+    width: 32pt;
+    margin-left: -18pt;
+    padding-right: 6pt;
+    font-weight: bold;
 }
 
 span#frogsLeft {
     color: aqua;
-    visibility: hidden;
+    width: 32pt;
+    margin-left: -18pt;
+    padding-right: 2pt;
+    font-size: large;
+    /*visibility: hidden; */
 }
 
 span#frogsDied {
     color: gainsboro;
+    width: 32pt;
+    font-size: medium;
+    font-weight: bold;
+    margin-left: -18pt;
+    padding-right: 4pt;
 }
 
 span#frogsLevel {
@@ -240,7 +266,7 @@ tr.frogaTrUpStreet {
 
 td.frogaTd {
     width: 8%;
-    /* min-width: 36pt; */
+    min-width: 36pt;
     height: 6%;
     min-height: 27pt;
     padding: 0 0 0 0;
