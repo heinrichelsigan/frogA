@@ -15,64 +15,56 @@
 
 
 body.frogbody {
-    border-color: white;
     color: white;
     background-color: black;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0px;
+    border-width: 0px;
+    border-color: transparent;
 }
 
 div.froga {
     width: 86%;
-    min-width: 387pt;
+    min-width: 387px;
     height: 84%;
-    min-height: 378pt;
+    min-height: 378px;
     line-height: normal;
     vertical-align: middle;
-    /* 
-            align-self: center;
-            align-content: center;
-            text-align: center;
-            line-height: normal;        
-            font-size: medium;
-            table-layout: fixed;
-            inset-block-start: initial;
-            inset-block-start: auto;
-        */
+    color: white;
+    background-color: black;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
-    border-spacing: 0pt;
-    border-width: 0pt;
-    border-color: white;
-    color: white;
-    background-color: black;
+    border-spacing: 0px;
+    border-width: 0px;
+    border-color: transparent;
 }
 
     div.froga.img {
         width: 8%;
-        min-width: 36pt;
+        min-width: 36px;
         height: 6%;
-        min-height: 27pt;
-        padding: 0 0 0 0;
-        margin: 0 0 0 0;
-        border-style: none;
-        border-spacing: 0;
-        border-width: 0;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
-
-    div.froga.frogaHeader {
-        width: 80%;
-        min-width: 360pt;
-        height: 10%;
-        min-height: 45pt;
-        align-content: center;
-        line-height: normal;
+        min-height: 27px;
         padding: 0 0 0 0;
         margin: 0 0 0 0;
         border-style: none;
         border-spacing: 0px;
         border-width: 0px;
+        border-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    div.froga.frogaHeader {
+        width: 90%;
+        min-width: 360px;
+        height: 10%;
+        min-height: 45px;
+        align-content: center;
+        font-size: medium;
+        line-height: normal;
         border-color: white;
         color: white;
         background-color: black;
@@ -81,9 +73,9 @@ div.froga {
 
 div.frogaHeader#headerLeft {
     height: 10%;
-    min-height: 45pt;
-    width: 20%;
-    min-width: 90pt;
+    min-height: 45px;
+    width: 27%;
+    min-width: 90px;
     vertical-align: middle;
     font-size: larger;
     text-align: right;
@@ -91,9 +83,9 @@ div.frogaHeader#headerLeft {
 
 div.frogaHeader#headerCenter {
     height: 10%;
-    min-height: 45pt;
-    width: 66%;
-    min-width: 297pt;
+    min-height: 45px;
+    width: 64%;
+    min-width: 297px;
     vertical-align: middle;
     font-size: medium;
     text-align: center;
@@ -101,9 +93,9 @@ div.frogaHeader#headerCenter {
 
 div.frogaHeader.headerImage {
     width: 60%;
-    min-width: 270pt;
+    min-width: 270px;
     height: 10%;
-    min-height: 45pt;
+    min-height: 45px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
@@ -115,33 +107,59 @@ div.frogaHeader.headerImage {
 
 div.frogaHeader#headerRight {
     height: 10%;
-    min-height: 45pt;
+    min-height: 45px;
     width: 19.11%;
-    min-width: 86pt;
+    min-width: 86px;
     vertical-align: middle;
     font-size: larger;
     text-align: left;
 }
 
 
+img.frogsInImg {
+    width: 32px;
+    height: 27px;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border-style: none;
+    border-spacing: 0px;
+    border-width: 0px;
+    border-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
 span#leftNotes {
     color: whitesmoke;
     width: 5.33%;
-    max-width: 24pt;
+    max-width: 24px;
     font-size: large;
 }
 
 span#frogsInHole {
     color: greenyellow;
+    width: 32px;
+    margin-left: -18px;
+    padding-right: 6px;
+    font-weight: bold;
 }
 
 span#frogsLeft {
     color: aqua;
-    visibility: hidden;
+    width: 32px;
+    margin-left: -18px;
+    padding-right: 2px;
+    font-size: large;
+    /*visibility: hidden; */
 }
 
 span#frogsDied {
     color: gainsboro;
+    width: 32px;
+    font-size: medium;
+    font-weight: bold;
+    margin-left: -18px;
+    padding-right: 4px;
 }
 
 span#frogsLevel {
@@ -157,28 +175,26 @@ span#frogaLevel {
 span#rightNotes {
     color: whitesmoke;
     width: 5.33%;
-    max-width: 24pt;
+    max-width: 24px;
     font-size: large;
 }
 
 
 div.froga.frogaFooter {
     width: 80%;
-    min-width: 360pt;
+    min-width: 360px;
     height: 8%;
-    min-height: 36pt;
+    min-height: 36px;
     text-align: center;
+    font-size: medium;
     background-color: black;
     align-content: center;
-    font-size: medium;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
     border-spacing: 0px;
     border-width: 0px;
-    border-color: white;
-    color: white;
-    background-color: black;
+    border-color: transparent;
     table-layout: fixed;
     inset-block-start: initial;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
@@ -186,215 +202,163 @@ div.froga.frogaFooter {
 
     div.froga.frogaFooter#spanLeft {
         height: 8%;
-        min-height: 36pt;
+        min-height: 36px;
         width: 40%;
-        min-width: 180pt;
+        min-width: 180px;
         vertical-align: middle;
         text-align: left;
-        color: white;
-        background-color: black;
     }
 
     div.froga.frogaFooter#spanRight {
         height: 8%;
-        min-height: 36pt;
+        min-height: 36px;
         width: 40%;
-        min-width: 180pt;
+        min-width: 180px;
         vertical-align: middle;
-        text-align: right;
-        color: white;
-        background-color: black;
+        text-align: right
     }
 
 
 table.frogaTable {
-    width: 80%;
-    min-width: 360pt;
-    height: 60%;
-    min-height: 270pt;
+    width: 92%;    
+    max-width: 92%;
+    min-width: 360px;
+    height: 69%;
+    min-height: 270px;
     align-content: center;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
     border-spacing: 0px;
+    border-width: 0px;
+    border-color: transparent;
     background-repeat: no-repeat;
 }
 
 tr.frogaTr {
-    width: 80%;
+    width: 92%;
     min-width: 360px;
-    height: 6%;
+    height: 6.9%;
     min-height: 27px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
     border-spacing: 0px;
     border-width: 0px;
+    border-color: transparent;
     background-repeat: no-repeat;
     /* background-size: 100% 100%; */
 }
 
 tr.frogaTrUpStreet {
-    width: 80%;
+    width: 9.2%;
     min-width: 360px;
-    height: 6%;
+    height: 6.9%;
     min-height: 27px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
     border-spacing: 0px;
     border-width: 0px;
+    border-color: transparent;
     background-repeat: no-repeat;
     /* background-size: 100% 100%; */
 }
 
 td.frogaTd {
-    width: 8%;
-    /* min-width: 36pt; */
-    height: 6%;
-    min-height: 27pt;
+    width: 9.2%;
+    min-width: 36px;
+    height: 6.9%;
+    min-height: 27px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
     border-spacing: 0px;
     border-width: 0px;
+    border-color: transparent;
     /* background-repeat: no-repeat; */
     background-size: 100% 100%;
 }
 
-td.frogaTdUpStreet {
-    width: 8%;
-    /* min-width: 36pt; */
-    height: 6%;
-    min-height: 27pt;
+
+td.upStreetTd {
+    width: 9.2%;
+    min-width: 36px;
+    height: 6.9%;
+    min-height: 27px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
+    border-style: none;
     border-spacing: 0px;
     border-width: 0px;
-    background-repeat: no-repeat;
-    /*  
-        background-image: none;
-        background-image: ../img/street1t.png; 
-        border-bottom: dashed;
-        border-bottom-color: black;
-        border-bottom-width: 1px;
-    */
-    background-size: 100% 100%;
-    background-image: none;
+    border-color: transparent;
+    border-top-style: double;
+    border-top-color: #a78d8d;
+    border-top-width: 2px;
+    border-bottom-style: dashed;
+    border-bottom-color: #a78d8d;
+    border-bottom-width: 1px;
     background-color: #f0d3d3;
+    /* background-repeat: no-repeat; */
+    background-size: 100% 100%;
 }
 
-td.frogaTdDownStreet {
-    width: 8%;
-    /* min-width: 36pt; */
-    height: 6%;
-    min-height: 27pt;
+td.downStreetTd {
+    width: 9.2%;
+    min-width: 36px;
+    height: 6.9%;
+    min-height: 27px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
+    border-style: none;
     border-spacing: 0px;
     border-width: 0px;
-    background-repeat: no-repeat;
-    /*          
-        background-image: ../img/street1t.png;
-        border-top: dashed;
-        border-top-color: black;
-        border-top-width: 1px;
-    */
-    background-size: 100% 100%;
+    border-color: transparent;
+    border-top-style: dashed;
+    border-top-color: #a78d8d;
+    border-top-width: 1px;
+    border-bottom-style: double;
+    border-bottom-color: #a78d8d;
+    border-bottom-width: 2px;
     background-color: #f0d3d3;
-}
-
-td.frogaTdStartMeadow {
-    width: 8%;
-    /* min-width: 36pt; */
-    height: 6%;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-spacing: 0px;
-    border-width: 0px;
+    /* background-repeat: no-repeat; */
     background-size: 100% 100%;
-    /*  
-        background-repeat: no-repeat;  
-        background-image: none; 
-        background-color: #eed3d3;
-        visibility: visible;
-        border-bottom: thin;
-        border-bottom-color: black;
-        border-bottom-width: 1px;
-    */
 }
 
+
+img.frogaImage,
 img.frogaWood {
     width: 100%;
-    min-width: 36pt;
+    min-width: 36px;
     height: 100%;
-    min-height: 27pt;
-    visibility: visible;
+    min-height: 27px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
     border-spacing: 0px;
     border-width: 0px;
-    background-repeat: no-repeat;
-    z-index: 100;
-    /* backface-visibility: revert; background-size: 100% 100%; */
-}
-
-img.frogaImage {
-    width: 100%;
-    min-width: 36pt;
-    height: 100%;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
+    border-color: transparent;
     background-repeat: no-repeat;
     /* background-size: 100% 100%; */
 }
 
-
-td.frogaTd.img,
-td.frogaTd.img.frogaImageHole,
-td.frogaTd.img.frogaImageHole#hole0,
-td.frogaTd.img.frogaImageHole#hole1,
-td.frogaTd.img.frogaImageHole#hole2,
-td.frogaTd.img.frogaImageHole#hole3,
-td.frogaTd.img#hole0,
-td.frogaTd.img#hole1,
-td.frogaTd.img#hole2,
-td.frogaTd.imghole3 {
-    width: 100%;
-    min-width: 36pt;
-    height: 100%;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-style: none;
-    border-spacing: 0px;
-    border-width: 0px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-img.frogaImage#frog0,
-img.frogaImage#frog1,
-img.frogaImage#frog2,
-img.frogaImage#frog3 {
-    width: 100%;
-    min-width: 36pt;
-    height: 100%;
-    min-height: 27pt;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-    border-style:;
-    border-spacing: 0px;
-    border-width: 0px;
-    background-repeat: no-repeat;
-    /* background-size: 100% 100%; */
-}
+    img.frogaImage#frog0,
+    img.frogaImage#frog1,
+    img.frogaImage#frog2,
+    img.frogaImage#frog3 {
+        width: 100%;
+        min-width: 36px;
+        height: 100%;
+        min-height: 27px;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
+        border-style: none;
+        border-spacing: 0px;
+        border-width: 0px;
+        border-color: transparent;
+        background-repeat: no-repeat;
+        /* background-size: 100% 100%; */
+    }
 
 
 img#aUp,
@@ -402,14 +366,15 @@ img#aDown,
 img#aLeft,
 img#aRight {
     width: 7.11%;
-    min-width: 32pt;
+    min-width: 32px;
     height: 6%;
-    min-height: 27pt;
+    min-height: 27px;
     padding: 0 0 0 0;
     margin: 0 0 0 0;
     border-style: none;
     border-spacing: 0px;
     border-width: 0px;
+    border-color: transparent;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }

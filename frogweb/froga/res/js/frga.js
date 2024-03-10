@@ -5,17 +5,18 @@
     https://area23.at/froga/froga.html
 */
 
-var loopDelay = 1625,
+var loopDelay = 1600,
     loopTicks = 0,
     soundDuration = 1625;
 var level = 0,
     frogsDied = 0,
     frogsInHole = 0,
     frogHoleMax = 3,
-    gameOver = 0;
+    isGameOver = 0;
 var fX, fY;
 var currentFrog, currentFrogId;
 var imgSavedWoodB, imgSavedWoodT;
+var car20, car21, car22, car30, car31, car32;
 
 // windows cursor key press hanlder
 function windowCursorKeysHandler() {
@@ -31,6 +32,38 @@ function windowCursorKeysHandler() {
     };
 }
 
+
+// function Level Completed
+function levelCompleted() {
+    if (frogsInHole >= frogHoleMax) {
+        if (frogsDied > 0)
+            headerImg.src = "res/img/levelcompleted.gif"
+        else
+            headerImg.src = "res/img/levelperfect.gif"
+        headerImg.height = 36;
+        level++;      
+        soundDuration = 3600;  
+        playSound("res/audio/levelCompleted.mp3");
+
+        return true;
+    }
+    return false;
+}
+
+// function Game Over
+function gameOver() {
+    if (currentFrog == null || frogsDied > 3) {
+        headerImg.src = "res/img/gameover.png";
+        headerImg.height = 36;
+        isGameOver = 1;
+        soundDuration = 4800;
+        playSound("res/audio/frogaGameOver.mp3");
+
+        return true;
+    }
+    return false;
+}
+
 // frogInit will be called on 1st time loading
 function frogInit() {
     windowCursorKeysHandler();
@@ -40,7 +73,7 @@ function frogInit() {
 // frogReStart(repeatLevel) => repeatLevel = true
 function frogReStart(repeatLevel) {
     if (repeatLevel) {
-        gameOver = 0;
+        isGameOver = 0;
         window.location.reload();
     } else { // TODO: fix this		
         reCreateFrogs();
@@ -53,7 +86,7 @@ function frogLoad() {
     loopTicks = 0;
     frogsDied = 0;
     frogsInHole = 0;
-    gameOver = 0;
+    isGameOver = 0;
 
     switch (level) {
         case 0: loopDelay = 1600; break;
@@ -88,41 +121,23 @@ function frogLoad() {
 
 // main js looper => keeping game in movement
 function frogaLooper(ticks, delay) {
+    // currentFrog = getActiveFrog();
+    currentFrogId = getCurrentFrogId(currentFrog);
 
-    let leftNotes = document.getElementById("leftNotes");
-    let rightNotes = document.getElementById("rightNotes");
-    if (leftNotes.innerHTML.length > 1)
-        leftNotes.innerHTML = "";
-    if (rightNotes.innerHTML.length > 1)
-        rightNotes.innerHTML = "";
-
-    currentFrog = getActiveFrog();
+    setNotes("", "");
 
     // level completed
-    if (frogsInHole >= frogHoleMax) {
-        if (frogsDied > 0)
-            headerImg.src = "res/img/levelcompleted.gif"
-        else
-            headerImg.src = "res/img/levelperfect.gif"
-        headerImg.height = 36;
-        level++;
-        soundDuration = 3600;
-        setTimeout(function () { frogSound("res/audio/levelCompleted.mp3") }, 100);
+    if (levelCompleted()) {
         setTimeout(function () { frogReStart(false); }, 4000); // will call the function after 8 secs.
         return;
     }
     // game over
-    if (currentFrog == null || frogsDied > 3) {
-        headerImg.src = "res/img/gameover.png";
-        headerImg.height = 36;
-        gameOver = 1;
-        soundDuration = 4800;
-        setTimeout(function () { frogSound("res/audio/frogaGameOver.mp3") }, 100);
+    if (gameOver()) {        
         setTimeout(function () { frogReStart(true); }, 5000); // will call the function after 8 secs.
         return;
     }
 
-    currentFrogId = getCurrentFrogId(currentFrog);
+    loopTicks = ticks + 1;
 
     try {
         moveCars();
@@ -130,11 +145,50 @@ function frogaLooper(ticks, delay) {
         moveWoods();
     } catch (exMove) {
         // alert(exMove)
-    }
-
-    loopTicks = ticks + 1;
+    }    
 
     setTimeout(function () { frogaLooper(loopTicks, delay) }, delay); // will call the function after 16 secs.
+}
+
+
+function carLooper(carMargin, ticks, delay) {
+
+    if (carMargin <= -16 || ticks != loopTicks)
+        return;
+
+
+    try {
+        car30.style.marginLeft = carMargin; // + "px";
+        car30.width = 36;
+        car30.height = 27;
+        car31.style.marginLeft = carMargin + "px";
+        car31.width = 36;
+        car31.height = 27;
+        car32.style.marginLeft = carMargin + "px";
+        car32.width = 36;
+        car32.height = 27;
+
+        // car30.style.marginRight = -carMargin; // + "px";
+        // car31.style.marginRight = -carMargin; // + "px";
+        // car32.style.marginRight = -carMargin; // + "px";
+    } catch (excar30) {
+        alert("car31.style.marginRight = " + -carMargin + "px\t" + excar30);
+    }
+
+    try {    
+        car20.style.marginLeft = -carMargin + "px";
+        car20.width = 36;
+        car20.height = 27;
+        car21.style.marginLeft = -carMargin + "px";
+        car21.width = 36;
+        car21.height = 27;
+        // car20.style.marginRight = carMargin + "px";
+        // car21.style.marginRight = carMargin + "px";
+    } catch (excar20) {
+        alert("car20.style.marginLeft = " + -carMargin + "px\t" + excar20);
+    }
+
+
 }
 
 
@@ -147,6 +201,13 @@ function moveCars() {
     var frogNr = parseInt(currentFrogId.charAt(4));
     var frogTd = "td" + frY + frX;
 
+    // const oldTds = [];
+    // oldTds.length = 3;
+    const newTds = [];
+    newTds.length = 3;
+    const cars = [];
+    cars.length = 3;
+
     carId = "car3";
     let carCnt = 0;
     for (carCnt = 0; carCnt <= 2; carCnt++) {
@@ -154,28 +215,49 @@ function moveCars() {
 
         car = document.getElementById(carId);
         oldTd = car.getAttribute("cellid");
+        // oldTds[carCnt] = oldTd;
 
         newTd = getNewTdPositionByMoving(car, 'll');
+        newTds[carCnt] = newTd;
 
         car.setAttribute("cellid", newTd);
         car.src = "res/img/car3.gif";
+        car.style.marginLeft = "21px";
+        cars[carCnt] = car;
+        car.width = 36;
+        car.height = 27;
+        // car.style.marginRight = "-18"; // "px";
 
         if (newTd == frogTd) {
             currentFrog.id = "died" + frogNr;
             document.getElementById(newTd).removeChild(currentFrog);
 
-            car.src = "res/img/car3crashed.png"
+            car.src = "res/img/car3crashed.png";
+            car.style.marginLeft = "0px";
+            car.style.marginRight = "0px";
             changeImagePlaySound(car, "res/img/car3crashed.png", "res/audio/frogCrash.ogg");
 
             // currentFrog & currentFrogId will be fetched in setFrogsDied
             setFrogsDied(++frogsDied);
-            // currentFrog = getActiveFrog();
-            // currentFrogId = getCurrentFrogId(currentFrog);
         }
-
+        
         document.getElementById(oldTd).removeChild(car);
-        document.getElementById(newTd).appendChild(car);
+        // document.getElementById(newTd).appendChild(car);
     }
+
+    for (ccnt = 0; ccnt < 3; ccnt++) {
+        document.getElementById(newTds[ccnt]).appendChild(cars[ccnt]);
+    }
+
+
+    car30 = document.getElementById("car30");
+    car31 = document.getElementById("car31");
+    car32 = document.getElementById("car32");
+
+    const new2Tds = [];
+    new2Tds.length = 2;
+    const cars2 = [];
+    cars2.length = 2;
 
     carCnt = 0;
     for (carCnt = 0; carCnt < 2; carCnt++) {
@@ -185,26 +267,58 @@ function moveCars() {
         oldTd = car.getAttribute("cellid");
 
         newTd = getNewTdPositionByMoving(car, 'rr');
+        new2Tds[carCnt] = newTd;
 
         car.setAttribute("cellid", newTd);
         car.src = "res/img/car2.gif";
+        car.width = 36;
+        car.height = 27;
+        car.style.marginLeft = "-21px";
+        cars2[carCnt] = car;
+        // car.style.marginRight = "18px";
 
         if (newTd == frogTd) {
             currentFrog.id = "died" + frogNr;
             document.getElementById(newTd).removeChild(currentFrog);
 
-            car.src = "res/img/car2crashed.png"
+            car.src = "res/img/car2crashed.png";
+            car.style.marginLeft = "0px";
+            car.style.marginRight = "0px";
             changeImagePlaySound(car, "res/img/car2crashed.png", "res/audio/frogCrash.ogg");
 
             // currentFrog & currentFrogId will be fetched in setFrogsDied
             setFrogsDied(++frogsDied);
-            // currentFrog = getActiveFrog();
-            // currentFrogId = getCurrentFrogId(currentFrog);
         }
 
         document.getElementById(oldTd).removeChild(car);
-        document.getElementById(newTd).appendChild(car);
+        // document.getElementById(newTd).appendChild(car);
     }
+
+    for (ccnt = 0; ccnt < 2; ccnt++) {
+        document.getElementById(new2Tds[ccnt]).appendChild(cars2[ccnt]);
+    }
+
+    car20 = document.getElementById("car20");
+    car21 = document.getElementById("car21");   
+
+    let carDelay = 100;
+    let carTicks = loopTicks;
+    setTimeout(function () { carLooper(18, carTicks, carDelay) }, 100);
+    setTimeout(function () { carLooper(15, carTicks, carDelay) }, 200);
+    setTimeout(function () { carLooper(12, carTicks, carDelay) }, 300);
+    setTimeout(function () { carLooper(9, carTicks, carDelay) }, 400);
+    setTimeout(function () { carLooper(6, carTicks, carDelay) }, 500);
+    setTimeout(function () { carLooper(3, carTicks, carDelay) }, 600);
+    setTimeout(function () { carLooper(0, carTicks, carDelay) }, 700);
+    setTimeout(function () { carLooper(-3, carTicks, carDelay) }, 800);   
+    setTimeout(function () { carLooper(-6, carTicks, carDelay) }, 900);   
+    setTimeout(function () { carLooper(-9, carTicks, carDelay) }, 1000);   
+    setTimeout(function () { carLooper(-12, carTicks, carDelay) }, 1100);
+    setTimeout(function () { carLooper(-15, carTicks, carDelay) }, 1200);
+    setTimeout(function () { carLooper(-18, carTicks, carDelay) }, 1300);
+    setTimeout(function () { carLooper(-21, carTicks, carDelay) }, 1400);
+    setTimeout(function () { carLooper(-24, carTicks, carDelay) }, 1500);
+
 }
 
 // move wakjers
@@ -247,9 +361,7 @@ function moveWalkers() {
             changeImagePlaySound(walk, "res/img/walk0m.gif", "res/audio/frogJump.ogg");
 
             // currentFrog & currentFrogId will be fetched in setFrogsDied
-            setFrogsDied(++frogsDied);
-            // currentFrog = getActiveFrog();
-            // currentFrogId = getCurrentFrogId(currentFrog);
+            setFrogsDied(++frogsDied);            
         }
 
         document.getElementById(oldTd).removeChild(walk);
@@ -340,7 +452,7 @@ function moveWoods() {
 // move frog => frog jumping handler
 function moveFrog(jumpDirection) {
 
-    currentFrog = getActiveFrog();
+    // currentFrog = getActiveFrog();
     currentFrogId = getCurrentFrogId(currentFrog);
     var frogNr = parseInt(currentFrogId.charAt(4));	// TODO		better implementation of frog number
 
@@ -473,7 +585,7 @@ function moveFrog(jumpDirection) {
         imgDisApear = null;
         while (imgDisApear == null && woodIt < frogHoleMax) {
             imgDisApear = document.getElementById(newTd).children["hole" + woodIt];
-            if (imgDisApear == null) 
+            if (imgDisApear == null)
                 imgDisApear = document.getElementById(newTd).children["save" + woodIt];
             if (imgDisApear != null && imgDisApear.src != null) {
                 let idaLen = imgDisApear.src.length;
@@ -552,25 +664,19 @@ function frogSound(soundName) {
     sound.autoplay = true;
     sound.loop = false;
 
-    let leftNotes = document.getElementById("leftNotes");
-    let rightNotes = document.getElementById("rightNotes");
-    leftNotes.innerHTML = "";
-    rightNotes.innerHTML = "";
+    setNotes("", "");
 
     setTimeout(function () {
         sound.play();
-        leftNotes.innerHTML = "♪ ";
-        rightNotes.innerHTML = " ♫";
+        setNotes("♪ ", " ♪");
     }, 100);
 
     setTimeout(function () {
-        leftNotes.innerHTML = " ♪";
-        rightNotes.innerHTML = "♫ ";
+        setNotes("♪♫", "♫♪");
     }, 800);
 
     setTimeout(function () {
-        leftNotes.innerHTML = "  ";
-        rightNotes.innerHTML = "  ";
+        setNotes("", "");
         sound.loop = false;
         sound.pause();
         sound.autoplay = false;
@@ -584,14 +690,18 @@ function frogSound(soundName) {
     }, dursec);
 }
 
+// play Sound
+function playSound(soundUrl) {
+    if (soundUrl != null && soundUrl.length > 1)
+        setTimeout(function () { frogSound(soundUrl) }, 100);
+}
 
 // exchange image & play sound
 function changeImagePlaySound(imageToChange, newImageUrl, soundToPlay) {
     if (imageToChange != null)
         imageToChange.src = newImageUrl;
 
-    if (soundToPlay != null && soundToPlay.length > 1)
-        setTimeout(function () { frogSound(soundToPlay) }, 100);
+    playSound(soundToPlay);
 }
 
 
@@ -602,8 +712,7 @@ function frogInRiverOrSwampOrHole(aFrog, deathImg, deathSound, idPrefix, deathTi
     aFrog.title = (deathTitle == null) ? "" : deathTitle;
     aFrog.id = idPrefix + frogNr;
 
-    if (deathSound != null && deathSound.length > 1)
-        setTimeout(function () { frogSound(deathSound) }, 100);
+    playSound(deathSound);
 
     return frogNr;
 }
@@ -615,7 +724,7 @@ function crashFrog(tdFrogCell) {
     var move;
     var moveTd, tdFrog;
 
-    currentFrog = getActiveFrog();
+    // currentFrog = getActiveFrog();
     currentFrogId = getCurrentFrogId(currentFrog);
     tdFrog = currentFrog.getAttribute("cellid");
     frogNr = parseInt(currentFrogId.charAt(4));
@@ -696,10 +805,12 @@ function getActiveFrog() {
 
 // get current frog id
 function getCurrentFrogId(aFrog) {
-    var aFrog = getActiveFrog();
-    let frogsLeftNr = 4 - parseInt(aFrog.id.charAt(4));
+    aFrog = getActiveFrog();
+    let frogsLeftNr = 0;
+    if (aFrog != null && aFrog.id != null && aFrog.id.length >= 4)
+        frogsLeftNr = 4 - parseInt(aFrog.id.charAt(4));
     setFrogsLeft(frogsLeftNr);
-    return aFrog.id;
+    return (aFrog == null || aFrog.id == null) ? -1 : aFrog.id;
 }
 
 
@@ -818,22 +929,37 @@ function reCreateFrogHole(frogNr) {
     }
 }
 
+function setNotes(leftNoteString, rightNoteString) {
 
+    if (leftNoteString == null || leftNoteString == "")
+        leftNoteString = "  ";
+    if (rightNoteString == null || rightNoteString == "")
+        rightNoteString = "  ";
+
+    let leftNotes = document.getElementById("leftNotes");
+    let rightNotes = document.getElementById("rightNotes");
+    if (leftNotes.innerHTML.length > 1)
+        leftNotes.innerHTML = leftNoteString;
+    if (rightNotes.innerHTML.length > 1)
+        rightNotes.innerHTML = rightNoteString;
+}
+
+// setFrogsInHole - sets number of frogs in hole
 function setFrogsInHole(inHole) {
     var spanInHole = document.getElementById("frogsInHole");
     if (spanInHole != null)
         spanInHole.innerText = inHole;
-    // currentFrog = getActiveFrog();
-    // currentFrogId = getCurrentFrogId(currentFrog);
 }
 
+// setFrogsLeft - sets remaining frogs, called by getCurrentFrogId(aFrog)
 function setFrogsLeft(frogsLeft) {
     document.getElementById("frogsLeft").innerHTML = frogsLeft;
 }
 
+// setFrogsDies - sets death frogs
 function setFrogsDied(frogsDied) {
     document.getElementById("frogsDied").innerHTML = frogsDied;
-    currentFrog = getActiveFrog();
+    // currentFrog = getActiveFrog();
     currentFrogId = getCurrentFrogId(currentFrog);
 }
 
