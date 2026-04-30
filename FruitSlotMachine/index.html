@@ -1,0 +1,144 @@
+<html>
+<head><title>fruit slot machine</title>
+<script>
+
+	var machineStarted = 0;
+	// playSound
+	function playSound(soundName) {
+		var dursec = 1625;		
+
+		let sound = new Audio(soundName);
+		sound.autoplay = true;
+		sound.loop = false;
+	
+		setTimeout(function () { sound.play(); }, 100);
+
+		setTimeout(function () {
+			sound.loop = false;
+			sound.pause();
+			sound.autoplay = false;
+			sound.currentTime = 0;
+			try {
+				sound.src = "";
+				sound = null;
+			} catch (exSnd) {
+			}
+			soundDuration = 1625;
+		}, dursec);
+	}
+
+	// playSoundUrl
+	function playSoundUrl(soundUrl) {
+		if (soundUrl != null && soundUrl.length > 1)
+			setTimeout(function () { playSound(soundUrl) }, 23000);
+	}
+
+	// Returns a random number r > (min - 1) && r < (max + 1)
+	function getRandomBetweenMinToMax(min, max) {
+		var maxUp = max + 1;
+		var randResult = (maxUp > min) ? (Math.random() * (maxUp - min) + min) : min;		
+		return randResult;					
+	}
+
+	// Returns a random integer between min (inclusive) and max (inclusive).	
+	function getRandomInt(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+	
+	// gets random fruit and random speed
+	function getFruitByNumber(slotNumber) {
+		var fruit = "";
+		const fruitNum = getRandomInt(1, 3);
+		const slotSpeed = (slotNumber == 4) ? 4 : getRandomInt(slotNumber, slotNumber + 1);
+		switch (fruitNum) {
+			case 1: fruit = "apple" + slotSpeed + ".gif"; break;
+			case 2: fruit = "orange" + slotSpeed + ".gif"; break;
+			case 3: fruit = "cherry" + slotSpeed + ".gif"; break;
+			default: alert("No fruit availible for fruit number: " + fruitNum); break;
+		}
+		
+		return fruit;
+	}
+	
+	// starts fruit slot machine
+	function fruitSlotMachineStart() {		
+		var fruitSlotId = "fruitSlot";		
+		var ac = 0, cc = 0, oc = 0;
+		machineStarted++;
+		
+		if (document.getElementById("machineTurn") != null) {
+			
+			playSound("coin.wav");			
+			document.getElementById("machineTurn").src = "./maschineStart.gif";
+			
+			var slcnt = 0;		
+			while (slcnt < 4) {			
+				fruitSlotId = "fruitSlot" + slcnt;
+				if (document.getElementById(fruitSlotId) != null) {					
+					
+					let fruitImage = getFruitByNumber((slcnt < 3) ? (slcnt * 2) : 5);										
+					document.getElementById(fruitSlotId).src = fruitImage;
+					document.getElementById(fruitSlotId).alt = fruitImage + " slot" + slcnt;
+					
+					if (fruitImage.indexOf('apple') > -1) ac++;
+					if (fruitImage.indexOf('cherry') > -1) cc++;
+					if (fruitImage.indexOf('orange') > -1) oc++;					
+				}
+				slcnt++;
+			}
+						
+			var delayInMilliseconds = 1400; //1,5 second
+			setTimeout(function() {
+				document.getElementById("machineTurn").src  = "machineReady.gif";
+				},  delayInMilliseconds);			
+				
+			if (ac == 4 || oc == 4 || cc == 4) 
+				playSoundUrl("four4.wav");
+			else if (ac == 3 || oc == 3 || cc == 3) 
+				playSoundUrl("three3.wav");
+			else if ((ac == 2 && oc == 2) || (ac == 2 && cc == 2) || (cc == 2 && oc == 2))
+				playSoundUrl("two2.wav");
+			else 
+				playSoundUrl("one1.wav");
+		}
+	}
+	
+	function slotMachineTurnOver() {
+		if (machineStarted == 0)
+			document.getElementById("machineTurn").src = 'machineOver.gif';
+	}
+	
+	function slotMachineTurnOut() {
+		if (machineStarted < 2)
+			document.getElementById("machineTurn").src = 'machineReady.gif';
+	}
+	
+</script>
+</head>
+<body>
+<table border="0" width="660px" height="360px" cellpadding="0" cellspacing="0">
+	<tr height="360px">
+		<td width="120px"> 
+			<img id="fruitSlot0" src="cherry.gif" width="120px" border="0" />
+		</td>
+		<td width="120px"> 
+			<img id="fruitSlot1" src="orange.gif" width="120px" border="0" />
+		</td>
+		<td width="120px"> 
+			<img id="fruitSlot2" src="apple.gif" width="120px" border="0" />
+		</td>		
+		<td width="120px"> 
+			<img id="fruitSlot3" src="cherry.gif" width="120px" border="0" />
+		</td>
+		<td width="180px"> 
+			<img id="machineTurn" src="machineReady.gif" width="180px" border="0"
+				onmouseover="slotMachineTurnOver(); return false;" 
+				onmouseout="slotMachineTurnOut(); return false;" 
+				onclick="fruitSlotMachineStart(); return false;" />
+		</td>
+	</tr>
+</table>
+</body>
+</html>
